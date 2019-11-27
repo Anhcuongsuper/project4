@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments/app-index :: head"></head>
+<body>
+<style>
+	.input-cors{
+		display: -ms-flexbox; /* IE10 */
+		display: flex;
+		width: 100%;
+		margin-bottom: 15px;
+	}
+	.iconinput {
+		padding: 10px;
+		background: dodgerblue;
+		color: white;
+		min-width: 50px;
+		text-align: center;
+	}
+	.input-fielder {
+		width: 100%;
+		padding: 10px;
+		outline: none;
+		border-radius: 10px;
+	}
+	.input-fielder:focus {
+		border: 2px solid dodgerblue;
+	}
+
+</style>
+<div th:replace="fragments/app-index ::top"></div>
+<!--end search-->
+<!--menu-->
+<div th:replace="fragments/app-index ::menu"></div>
+<div class="container">
+	<div class="row">
+		<div class="span12">
+			<div class="container">
+				<div class="row">
+					<div class="span12 auth">
+						<h1 class="page-header">Đăng Nhập Tài Khoản</h1>
+						<div class="alert alert-info">
+							<p><b>Username:</b> Địa chỉ Email dùng để đăng nhập Facebook của các bạn. Ví dụ: thanhluan.dev@gmail.com</p>
+							<p><b>Mật khẩu:</b> Giống hệt tên đăng nhập. Ví dụ: anhcuongsuper.dev@gmail.com</p>
+						</div>
+						<div class="row">
+							<div class="span9">
+								<form th:action="@{/account/login}" method="POST"><div style='display:none'>
+									<div id="div_id_username" class="form-group">
+										<label for="id_username" style="font-weight: bold" class="control-label requiredField">Tên đăng nhập<span class="asteriskField">*</span></label>
+										<div class="input-cors">
+											<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+											<input name="email" maxlength="254" type="text" autofocus="autofocus" required="required" placeholder="Tên tài khoản" class="input-fielder" id="id_username"/>
+										</div>
+									</div>
+									<div id="div_id_password" class="form-group">
+										<label style="font-weight: bold" for="id_password" class="control-label requiredField">Mật khẩu<span class="asteriskField">*</span></label>
+										<div class="input-cors">
+											<input name="password" placeholder="Mật khẩu" required="required" type="password" class="input-fielder" id="id_password"/>
+										</div>
+									</div>
+									<button type="submit" class="btn btn-primary" data-loading-text="Đang xử lí">
+										<i class=""></i> Đăng nhập
+									</button>
+									<button type="reset" class="btn btn-warning">Xóa</button>
+									<input name="next" type="hidden" value=""/>
+                                </div>
+								</form>
+								<ul style="margin-top: 20px;">
+									<li class="nav"><a  class="btn btn-danger" th:href="@{/account/create}">Đăng ký Tài khoản mới</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<script>
+				$(document).ready(function(){
+					$('input.form-control').keyup(function() {
+						var e = $(this);
+						var label = e.closest('.form-group').find('label');
+						label.removeClass('animated fadeInLeft fadeOutLeft');
+						if (e.val()) {
+							label.css('visibility', 'visible').addClass('animated fadeInLeft');
+						} else{
+							label.addClass('animated fadeOutLeft');
+							setTimeout(function(){
+								label.css('visibility', 'hidden');
+							}, 500);
+						}
+					});
+
+					$('button[type=reset]').click(function(){
+						var label = $('label');
+						label.removeClass('animated fadeInLeft fadeOutLeft').addClass('animated fadeOutLeft');
+						setTimeout(function(){
+							label.css('visibility', 'hidden');
+						}, 500);
+					});
+
+					$('button[type=submit]').button('reset').removeAttr('disabled');
+					$('form').submit(function(){
+						var form = $(this);
+						form.find('button[type=reset]').attr('disabled', 'disabled');
+						form.find('button[type=submit]').button('loading');
+					});
+				});
+			</script>
+		</div>
+	</div>
+</div>
+<div th:replace="fragments/app-index :: footer"></div>
+
+<script>(function(d,s,a,i,j,r,l,m,t){try{l=d.getElementsByTagName('a');t=d.createElement('textarea');for(i=0;l.length-i;i++){try{a=l[i].href;s=a.indexOf('/cdn-cgi/l/email-protection');m=a.length;if(a&&s>-1&&m>28){j=28+s;s='';if(j<m){r='0x'+a.substr(j,2)|0;for(j+=2;j<m&&a.charAt(j)!='X';j+=2)s+='%'+('0'+('0x'+a.substr(j,2)^r).toString(16)).slice(-2);j++;s=decodeURIComponent(s)+a.substr(j,m-j)}t.innerHTML=s.replace(/</g,'&lt;').replace(/\>/g,'&gt;');l[i].href='mailto:'+t.value}}catch(e){}}}catch(e){}})(document);/* ]]> */</script></body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Story List</h1>
+<div>
+    <ul>
+        <li th:each="storyItem : ${listStory}">
+            <a th:href="@{'/story/' + ${storyItem.id}}"><span th:text="${storyItem.title}"></span></a>
+            <img th:src="${storyItem.thubnail_file}" alt="12212">
+        </li>
+
+    </ul>
+</div>
+</body>
+</html>

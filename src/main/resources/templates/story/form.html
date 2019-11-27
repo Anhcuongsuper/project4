@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Thêm truyện cùng TruyệnYY</title>
+    <link th:href="@{../css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{../css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{../css/bootstrap-responsive.css}" rel="stylesheet">
+    <link th:href="@{../css/yamm.css}" rel="stylesheet">
+    <link th:href="@{../css/style.css}" rel="stylesheet">
+    <link th:href="@{../css/chosen.css}" rel="stylesheet">
+    <link rel="icon" type="image/png" th:href="@{../img/favicon.png}"/>
+    <link href="https://plus.google.com/103281900225927837176/" rel="author">
+    <script th:src="@{../js/jquery-1.12.4.js}"></script>
+    <script th:src="@{../js/chosen.jquery.js}"></script>
+    <script th:src="@{../js/bootstrap.min.js}"></script>
+    <script type="text/javascript" th:src="@{../js/csrf.js}"></script>
+    <style>
+        body {
+            margin-left: 100px;
+            padding-top: 60px;
+            padding-bottom: 40px;
+            height: auto;
+        }
+        .margin-label{
+            margin-left: 20px;
+            font-size: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<h3>Thông tin truyện mà bạn muốn thêm</h3>
+<form th:action="@{/story/create}" method="post" th:object="${storyCreate}">
+    <div class="form-group row" >
+        <label for="storyTitle" class="col-sm-2 col-form-label margin-label margin-label">Tên truyện</label>
+        <div class="col-sm-10" style="padding-left: 20px ">
+            <input  type="text" class="form-control-plaintext" id="storyTitle" th:field="*{title}" placeholder="Mời nhập tên truyện">
+            <span class="error" th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Title
+            Error</span>
+        </div>
+
+
+        <label for="storyDescription" class="col-sm-2 col-form-label margin-label" >Giới thiệu</label>
+        <div class="col-sm-10" style="padding-left: 20px ">
+                <textarea rows="5" cols="20" class="form-control-plaintext" id="storyDescription" placeholder="Giới thiệu truyện" th:field="*{description}"
+                          type="text"></textarea>
+            <span class="error" th:if="${#fields.hasErrors('description')}" th:errors="*{description}">Description
+                Error</span>
+        </div>
+
+
+
+        <label for="storyTitle" class="col-sm-2 col-form-label margin-label">Diễn viên</label>
+        <div class="col-sm-10" style="padding-left: 20px">
+            <input  type="text" class="form-control-plaintext" id="storyTitle" th:field="*{actor}" placeholder="Mời nhập tên truyện">
+            <span class="error" th:if="${#fields.hasErrors('actor')}" th:errors="*{actor}">
+            Error</span>
+        </div>
+
+
+
+        <label for="storyDirector" class="col-sm-2 col-form-label margin-label">Tác giả</label>
+        <div class="col-sm-10" style="padding-left: 20px">
+            <input type="text" class="form-control-plaintext" id="storyDirector" th:field="*{director}" placeholder="Tác giả">
+            <span class="error" th:if="${#fields.hasErrors('director')}" th:errors="*{director}">Director
+                Error</span>
+        </div>
+
+        <label for="storyDirector" class="col-sm-2 col-form-label margin-label">The loai</label>
+        <div class="form-control" style="padding-left: 20px">
+            <select  type="text" class="form-control-plaintext" id="storyDirector" th:field="*{categories}"    placeholder="The loai">
+                <option th:each="i : ${categories}"th:value="${i.id}"   th:text="${i.name}"></option>
+            </select>
+        </div>
+
+
+
+        <label for="storyDirector" class="col-sm-2 col-form-label margin-label" >Avatar</label>
+        <div class="col-sm-10" style="padding-left: 20px">
+            <input type="text" class="form-control-plaintext" id="storyThubnail" th:field="*{thubnail_file}" placeholder="Link ảnh đại diện">
+            <span class="error" th:if="${#fields.hasErrors('thubnail_file')}" th:errors="*{thubnail_file}">Director
+                    Error</span>
+        </div>
+
+
+        <label for="storyDirector" class="col-sm-2 col-form-label margin-label" >Tag</label>
+        <div class="col-sm-10" style="padding-left: 20px">
+            <input type="text" class="form-control-plaintext" id="tag" th:field="*{tags}" placeholder="Tags">
+            <span class="error" th:if="${#fields.hasErrors('tags')}" th:errors="*{tags}">Tags
+                Error</span>
+        </div>
+    </div>
+    <div style="margin-top: 10px;">
+        <input class="btn btn-success" type="submit" value="Thêm truyện"/>
+    </div>
+</form>
+</body>
+</html>
