@@ -25,6 +25,7 @@ public class AccountService {
 
     public Account register(Account account){
         account.setPassword(passwordEncoder.encode(account.getPassword()));
+        account.setRole("user");
         return accountRepository.save(account);
     }
 

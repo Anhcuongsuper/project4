@@ -6,6 +6,8 @@ import com.project_sem4.fe.reponsitory.StoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.BitSet;
@@ -113,5 +115,7 @@ public class StoryService {
         return storyOptional.get();
     }
 
-
+    public Page<Story> findAllWithSpe(Specification specification, Pageable pageable){
+        return storyRepository.findAll(specification, pageable);
+    }
 }

@@ -7,8 +7,12 @@ import com.project_sem4.fe.reponsitory.StoryRepository;
 import com.project_sem4.fe.service.CategoryService;
 import com.project_sem4.fe.service.ChapterService;
 import com.project_sem4.fe.service.StoryService;
+import com.project_sem4.fe.specification.SearchCriteria;
+import com.project_sem4.fe.specification.StorySpecification;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -38,8 +42,39 @@ public class StoryController {
 
 
     @RequestMapping(method = RequestMethod.GET, value = "/list")
-    public String getAll(Model model) {
-        model.addAttribute("listStory", storyService.getAll());
+    public String getAll( @RequestParam(name = "categoryId", required = false) Long categoryId,
+                          @RequestParam(value = "keyword", required = false) String keyword,
+                          @RequestParam(name = "page", defaultValue = "1") int page,
+                          @RequestParam(name = "limit", defaultValue = "5") int limit,
+                          @RequestParam(name = "story_id", required = false, defaultValue = "") Long story_id,
+                          Model model) {
+//        model.addAttribute("listStory", storyService.getAll());
+        // khoi tao specification khi all param null
+        Specification specification = Specification.where(null);
+        if (categoryId != null && categoryId > 0) {
+            specification = specification
+                    .and(new StorySpecification(new SearchCriteria("categoryId", "joinCategory", categoryId)));
+            model.addAttribute("categoryId", categoryId);
+        }
+        if (keyword != null && keyword.length() > 0) {
+            specification = specification
+                    .and(new StorySpecification(new SearchCriteria("keyword", "join", keyword)));
+            model.addAttribute("keyword", keyword);
+        }
+        Page<Story> storyPage = storyService.findAllWithSpe(specification, PageRequest.of(page - 1, limit));
+
+        model.addAttribute("keyword", keyword);
+        model.addAttribute("listStory", storyPage.getContent());
+        model.addAttribute("currentPage", storyPage.getPageable().getPageNumber() + 1);
+        model.addAttribute("limit", storyPage.getPageable().getPageSize());
+        model.addAttribute("totalPage", storyPage.getTotalPages());
+        model.addAttribute("categories", categoryService.getAllCategory());
+        // tung
+//        Story story = storyService.getDetail(story_id);
+//        Set<Category> categorySet = story.getCategories();
+//        model.addAttribute("story", story);
+//        model.addAttribute("categorySet", categorySet);
+
         return "story/list";
     }
 

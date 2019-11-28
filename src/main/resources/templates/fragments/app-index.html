@@ -87,14 +87,16 @@
             <a href="/" class="site-logo"><img src="https://yycdn.truyenyy.com/static/desktop/img/TruyenYY-Web-Logo.svg"
                                                alt="TruyenYY Logo"></a>
             <div id="react-root_desktop-search" class="search" style="margin-right: -10px;">
-                <form class="YYSearchBox" action="/tim-kiem/nang-cao/"><input type="hidden" name="q" value="">
+                <form class="YYSearchBox" th:action="@{/story/list}">
                     <div class="input-group">
                         <div class="rbt" tabindex="-1" style="outline: none; position: relative;">
-                            <div style="display: flex; flex: 1 1 0%; height: 100%; position: relative;"><input
-                                    autocomplete="off" placeholder="Tìm tên truyện, tác giả..." type="text"
-                                    aria-autocomplete="both" aria-label="Ô tìm kiếm truyện" aria-expanded="false"
-                                    aria-haspopup="listbox" role="combobox" class="rbt-input-main form-control rbt-input"
-                                    value="">
+                            <div style="display: flex; flex: 1 1 0%; height: 100%; position: relative;">
+                                <input
+                                        th:value="${keyword}" name="keyword"
+                                        autocomplete="off" placeholder="Tìm tên truyện, tác giả..." type="text"
+                                        aria-autocomplete="both" aria-label="Ô tìm kiếm truyện" aria-expanded="false"
+                                        aria-haspopup="listbox" role="combobox" class="rbt-input-main form-control rbt-input"
+                                        value="">
                                 <input aria-hidden="true" class="rbt-input-hint" readonly="" tabindex="-1"
                                        value=""
                                        style="background-color: transparent; border-color: transparent; box-shadow: none; color: rgba(0, 0, 0, 0.35); left: 0px; pointer-events: none; position: absolute; top: 0px; width: 100%; border-style: solid; border-width: 1px; font-size: 16px; line-height: 24px; margin: 0px; padding: 6px 12px;">
