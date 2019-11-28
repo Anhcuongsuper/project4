@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:include="layout/header :: head"></head>
+<head th:include="fragments/app-index :: head"></head>
 <body>
 <div th:replace="fragments/app-index ::top"></div>
 
@@ -328,7 +328,7 @@
 
 <!--FOOTER-->
 
-<div th:replace="layout/footer :: footer"></div>
+<div th:replace="fragments/app-index ::footer"></div>
 
 <!--END FOOTER-->
 </body>
