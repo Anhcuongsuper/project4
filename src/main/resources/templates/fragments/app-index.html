@@ -117,9 +117,9 @@
                         </a>
                         <a th:href="@{/create}" class="btn mr-1" aria-label="Thông Báo"><i class="iconfont icon-logout icon-24"></i>
                         </a>
+                    </div>
                 </div>
             </div>
-        </div>
     </header>
 </div>
 <div th:fragment="menu">
@@ -404,6 +404,36 @@
         </h3>
         <div class="row">
             <div class="col-6" th:each="storyItem : ${listStory}">
+                <div class="novel-item">
+                    <a th:href="@{/story/{id}(id=${storyItem.id})}" class="cover book-shadow"
+                       aria-label="Đấu Phá Thương Khung">
+                        <picture>
+                            <img th:src="${storyItem.thubnail_file}"
+                                 data-sizes="auto" alt="" width="80" height="120" class="lazy zoom-me loaded"
+                                 sizes="auto">
+                        </picture>
+                    </a>
+                    <div class="info">
+                        <a th:href="@{/story/{id}(id=${storyItem.id})}"><h4 th:text="${storyItem.title}"></h4></a>
+                        <div>
+                            <a href="/tac-gia/thien-tam-tho-dau/" class="author">Thể loại</a>
+                            <i class="iconfont icon-full icon-24 text-info ml-1"></i>
+                        </div>
+                        <span th:text="${storyItem.director}" class="stat text-danger"></span>
+                        <!--                            <span class="stat text-primary">4,206,839 <small>Đọc</small></span>-->
+                        <blockquote th:text="${storyItem.description}" class="desc">
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:fragment="suggest2">
+    <div class="card card-home">
+        <div class="row">
+            <div class="col-6" th:each="storyItem : ${listStoryHot}">
                 <div class="novel-item">
                     <a th:href="@{/story/{id}(id=${storyItem.id})}" class="cover book-shadow"
                        aria-label="Đấu Phá Thương Khung">
@@ -1065,17 +1095,17 @@
     </style>
 </div>
 <div th:fragment="menu-left">
-<div class="sidebar-col mr-4">
-    <div class="nav flex-column nav-pills nav-tables" aria-orientation="vertical" id="sidebar_nav" style="z-index: 999;">
-        <a class="nav-link active" th:href="@{/story/story_new}">Truyện Mới Cập Nhật</a>
-        <a class="nav-link " th:href="@{/category/2}">
-            <span class="mr-1">Kiếm hiệp tuyển chọn</span>
-            <img data-src="https://yycdn.truyenyy.com/static/svg/quality.svg" alt="" width="24" height="24" class="lazy align-middle loaded" src="https://yycdn.truyenyy.com/static/svg/quality.svg" data-was-processed="true">
-        </a>
-        <a class="nav-link " th:href="@{/category/4}">Truyện Ngôn Tình</a>
-        <a class="nav-link " th:href="@{/category/6}">Có Thể Bạn Muốn Đọc</a>
+    <div class="sidebar-col mr-4">
+        <div class="nav flex-column nav-pills nav-tables" aria-orientation="vertical" id="sidebar_nav" style="z-index: 999;">
+            <a class="nav-link active" th:href="@{/story/story_new}">Truyện Mới Cập Nhật</a>
+            <a class="nav-link " th:href="@{/category/2}">
+                <span class="mr-1">Kiếm hiệp tuyển chọn</span>
+                <img data-src="https://yycdn.truyenyy.com/static/svg/quality.svg" alt="" width="24" height="24" class="lazy align-middle loaded" src="https://yycdn.truyenyy.com/static/svg/quality.svg" data-was-processed="true">
+            </a>
+            <a class="nav-link " th:href="@{/category/4}">Truyện Ngôn Tình</a>
+            <a class="nav-link " th:href="@{/category/6}">Có Thể Bạn Muốn Đọc</a>
+        </div>
+        <div>
+        </div>
     </div>
-    <div>
-    </div>
-</div>
 </div>

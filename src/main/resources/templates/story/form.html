@@ -6,6 +6,7 @@
     <link th:href="@{../css/bootstrap.min.css}" rel="stylesheet">
     <link th:href="@{../css/bootstrap.min.css}" rel="stylesheet">
     <link th:href="@{../css/bootstrap-responsive.css}" rel="stylesheet">
+    <link th:href="@{../css/custom-checkbox-radio.css}" rel="stylesheet">
     <link th:href="@{../css/yamm.css}" rel="stylesheet">
     <link th:href="@{../css/style.css}" rel="stylesheet">
     <link th:href="@{../css/chosen.css}" rel="stylesheet">
@@ -15,6 +16,10 @@
     <script th:src="@{../js/chosen.jquery.js}"></script>
     <script th:src="@{../js/bootstrap.min.js}"></script>
     <script type="text/javascript" th:src="@{../js/csrf.js}"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretty-checkbox@3.0/dist/pretty-checkbox.min.css
+">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
     <style>
         body {
             margin-left: 100px;
@@ -25,8 +30,7 @@
         .margin-label{
             margin-left: 20px;
             font-size: 15px;
-            font-weight: bold;
-        }
+            font-weight: bold;}
     </style>
 </head>
 <body>
@@ -67,13 +71,14 @@
                 Error</span>
         </div>
 
-        <label for="storyDirector" class="col-sm-2 col-form-label margin-label">The loai</label>
-        <div class="form-control" style="padding-left: 20px">
-            <select  type="text" class="form-control-plaintext" id="storyDirector" th:field="*{categories}"    placeholder="The loai">
-                <option th:each="i : ${categories}"th:value="${i.id}"   th:text="${i.name}"></option>
-            </select>
+        <label for="storyDirector" class="col-sm-2 col-form-label margin-label" >The loai</label>
+        <div  th:each="category : ${categories}" class="custom-control">
+                <input id="" class="form-group" type="checkbox" th:field="*{categories}"
+                       th:value="${category.id}"/>
+            <label class="custom-control-label" th:text="${category.name}"></label>
+                <span class="error" th:if="${#fields.hasErrors('director')}" th:errors="*{director}">Director
+                Error</span>
         </div>
-
 
 
         <label for="storyDirector" class="col-sm-2 col-form-label margin-label" >Avatar</label>
@@ -95,5 +100,6 @@
         <input class="btn btn-success" type="submit" value="Thêm truyện"/>
     </div>
 </form>
+
 </body>
 </html>

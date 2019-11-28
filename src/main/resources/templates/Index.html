@@ -174,6 +174,9 @@
 
 <!--        Pre-->
 
+
+
+
 <div class="container headline-ranking mt-3">
     <div class="row">
         <div class="col-3 mb-3">
@@ -258,6 +261,8 @@
     </div>
 </div>
 
+
+
 <!--        3 END PRE-->
 
 <!--        4 de cu-->
@@ -269,57 +274,17 @@
         <div class="col-9">
             <div class="card card-home">
                 <h3 class="card-header">
-                    Top Đề Cử Gần Đây
-                </h3>
+                    </h3>Top Đề Cử Gần Đây
+
                 <div class="row">
+                    <div th:replace="fragments/app-index :: suggest2"></div>
                     <div class="col-6">
-                        <div class="novel-item" th:each="ii : ${listStoryHot}">
-                            <a th:href="@{/story/{id}(id=${ii.id})}" class="cover" target="_blank"
-                               aria-label="Long Vương Truyền Thuyết">
-                                <picture>
-                                    <img
-                                     th:src="${ii.thubnail_file}"
-                                         data-sizes="auto" alt="" width="80" height="120" class="lazy zoom-me loaded"
-                                         sizes="auto"
-                                         data-was-processed="true">
-                                </picture>
-                            </a>
-                            <div class="info">
-                                <h4 th:text="${ii.title}"><a th:href="@{/story/{id}(id=${ii.id})}" target="_blank"></a></h4>
-                                <div>
-                                    <a th:href="@{/story/{id}(id=${ii.id})}"  th:text="${ii.author}" class="author" target="_blank"></a>
-                                    <i class="iconfont icon-full icon-24 text-info ml-1"></i>
-                                </div>
-                                <a th:href="@{/story/{id}(id=${ii.id})}" target="_blank" class="username"><b th:text="${ii.author}"></b></a></span>
-                                <blockquote th:text="${ii.description}" class="desc">
-                                </blockquote>
-                            </div>
-                        </div>
                     </div>
             </div>
         </div>
         </div>
         <div class="col-3">
-            <div class="card card-home card-bg-dark">
-                <h3 class="card-header">
-                    Đề Cử Mới Đăng
-                    <a th:href="@{/story/story_new}" title="Danh Sách Đầy Đủ" target="_blank" class="card-more"><i
-                            class="iconfont icon-arrow-right icon-14"></i></a>
-                </h3>
-                <ul class="list-unstyled heading-list">
-                    <li th:each="storyItem : ${listStoryNew}">
-                        <div class="d-flex">
-                            <a th:text="${storyItem.title}" th:href="@{/story/{id}(id=${storyItem.id})}" class="name"
-                               target="_blank">Siêu Cấp Tiểu Bạch Long (Dịch)</a>
-                        </div>
-                        <div class="d-flex mt-1">
-                            <a th:href="@{/story/{id}(id=${storyItem.id})}" class="genre">
-                                <i th:text="${storyItem.actor}" class="iconfont icon-user icon-14"></i>
-                            </a>
-                        </div>
-                    </li>
-                </ul>
-            </div>
+            <div th:replace="fragments/app-index :: list-new"></div>
         </div>
     </div>
 </div>
