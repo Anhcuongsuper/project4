@@ -32,7 +32,7 @@ public class ChapterService {
     public Page<Chapter> getAllChapterByStory(long storyId) {
         pageModel.setSIZE(8);
         pageModel.initPageAndSize();
-        return chapterRepository.findAllByStoryId(storyId, PageRequest.of(pageModel.getPAGE(), pageModel.getSIZE()));
+        return chapterRepository.findAllByStoryIdOrderByIdDesc(storyId, PageRequest.of(pageModel.getPAGE(), pageModel.getSIZE()));
     }
 
     public List<Chapter> getAllChapter() {

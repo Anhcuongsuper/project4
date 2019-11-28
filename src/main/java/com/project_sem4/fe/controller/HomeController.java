@@ -65,18 +65,6 @@ CategoryService categoryService;
 
         return "contact";
     }
-    //    @RequestMapping(method = RequestMethod.GET, value = "/rate")
-//    public String getListRate(Model model,
-//                              @RequestParam(name = "page", required = false, defaultValue = "1") int page,
-//                              @RequestParam(name = ",limit", required = false, defaultValue = "12") int limit
-//    ) {
-//        Page<Story> storyPage = storyService.getListRate(page, limit);
-//        model.addAttribute("listStoryRate", storyPage.getContent());
-//        model.addAttribute("totalPage", storyPage.getTotalPages());
-//        model.addAttribute("totalElement", storyPage.getTotalElements());
-//        model.addAttribute("page", page);
-//        model.addAttribute("limit", limit);
-//        return "story/list_rate";
-//    }
+
 
 }

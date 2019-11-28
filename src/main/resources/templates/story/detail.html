@@ -988,105 +988,11 @@ body{
 </head>
 <body style="font-family: Verdana, "Times New Roman", sans-serif;
 ">
-<header class="container mt-3 site-header">
-    <div class="d-flex">
-        <a href="/" class="site-logo"><img src="https://yycdn.truyenyy.com/static/desktop/img/TruyenYY-Web-Logo.svg"
-                                           alt="TruyenYY Logo"></a>
-        <div id="react-root_desktop-search" class="search" style="margin-right: -10px;">
-            <form class="YYSearchBox" action="/tim-kiem/nang-cao/"><input type="hidden" name="q" value="">
-                <div class="input-group">
-                    <div class="rbt" tabindex="-1" style="outline: none; position: relative;">
-                        <div style="display: flex; flex: 1 1 0%; height: 100%; position: relative;"><input
-                                autocomplete="off" placeholder="Tìm tên truyện, tác giả..." type="text"
-                                aria-autocomplete="both" aria-label="Ô tìm kiếm truyện" aria-expanded="false"
-                                aria-haspopup="listbox" role="combobox" class="rbt-input-main form-control rbt-input"
-                                value=""><input aria-hidden="true" class="rbt-input-hint" readonly="" tabindex="-1"
-                                                value=""
-                                                style="background-color: transparent; border-color: transparent; box-shadow: none; color: rgba(0, 0, 0, 0.35); left: 0px; pointer-events: none; position: absolute; top: 0px; width: 100%; border-style: solid; border-width: 1px; font-size: 16px; line-height: 24px; margin: 0px; padding: 6px 12px;">
-                        </div>
-                    </div>
-                    <div class="input-group-append">
-                        <button type="submit" class="btn btn-primary" aria-label="Tìm Kiếm"><i
-                                class="iconfont icon-search"></i></button>
-                    </div>
-                </div>
-            </form>
-        </div>
-        <div id="react-root_desktop-top-nav" style="width: 260px; display: flex; justify-content: flex-end;">
-            <div class="desktopTopNav">
-                <div class="Toastify"></div>
-                <div class="buttons">
-                    <button class="btn mr-1" aria-label="Lời Nhắn"><i class="iconfont icon-user1 icon-24"></i>
-                    </button>
-                    <button class="btn mr-1" aria-label="Thông Báo"><i class="iconfont icon-notification icon-24"></i>
-                    </button>
-                    <a class="btn" href="/account/#/bookmarks" role="button" aria-label="Tủ Sách"><i
-                            class="iconfont icon-books1 icon-24"></i></a></div>
-            </div>
-        </div>
-    </div>
-</header>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-main navbar-fancy mt-3" id="site_main_nav"
-     style="z-index: 10000;">
-    <div class="container">
-        <ul class="navbar-nav nav-fancy mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link px-3" href="/" title="Trang Chủ"><i class="iconfont icon-home"></i></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/kim-thanh-bang/">Kim Thánh Bảng</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link position-relative" href="/tap-chi/">
-                    <span>YY Tạp Chí</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/truyen-moi-cap-nhat/" title="Truyện Mới Cập Nhật">Mới Cập Nhật</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/truyen-sang-tac/" title="Truyện Sáng Tác">Truyện Sáng Tác</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/truyen-dich-yy/" title="Truyện Dịch">YY-Dịch</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/truyen-convert-yy/" title="Truyện Convert">YY-Convert</a>
-            </li>
-            <li class="nav-divider"></li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                   aria-haspopup="true" aria-expanded="false" aria-label="Thêm">
-                    <i class="iconfont icon-list"></i>
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="/truyen-full/">Truyện Hoàn Thành</a>
-                    <a class="dropdown-item" href="/tieu-thuyet-chon-loc/">Truyện Chất Lượng Cao</a>
-                    <a class="dropdown-item" href="/truyen-moi-dang/">Truyện Mới Đăng</a>
-                    <a class="dropdown-item" href="/truyen-de-xuat/">Truyện Đề Xuất</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="/tim-kiem/">Danh Sách Thể Loại</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="/user/bxh-cao-thu/">Cao Thủ Bảng</a>
-                    <a class="dropdown-item" href="/user/bxh-phu-ho/">Phú Hộ Bảng</a>
-                    <a class="dropdown-item" href="/account/top-donors/">Top Thành Viên Ủng Hộ</a>
-                    <a class="dropdown-item" href="/mon-phai/mon-phai-bang/">Danh Sách Môn Phái</a>
-                    <a class="dropdown-item" href="/yy-chap-su/">Danh Sách Chấp Sự</a>
-                </div>
-            </li>
-        </ul>
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="/page/huong-dan-su-dung/" target="_blank"><i class="iconfont icon-help"></i>
-                    Hướng Dẫn</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/manager/" target="_blank"><i class="iconfont icon-upload"></i> Đăng
-                    Truyện</a>
-            </li>
-        </ul>
-    </div>
-</nav>
+<div th:replace="fragments/app-index ::top"></div>
+
+<!--end search-->
+<!--menu-->
+<div th:replace="fragments/app-index ::menu"></div>
 
 <div class="container">
     <div class="row">
@@ -1193,16 +1099,18 @@ body{
                             <th:block th:each="chapter : ${chapters}">
                                 <li  class="ip5">
                                     <a th:href="${'/story/' + {story.id} + '/chapter/' + {chapter.id}}"><i  th:text="${chapter.title} + ' - ' +             ${chapter.name} "></i></a>
-                                </li>
-                            </th:block>
-
-                        </ul>
-                    </div>
-                    <div class="clearfix"></div>
-                    <hr style="margin: 0; border-bottom: 1px solid #eee;">
-                    <div class="chaplist" id="dschuong">
+                                </li></ul>
+                            </div>
+                            <div class="clearfix"></div>
+                            <hr style="margin: 0; border-bottom: 1px solid #eee;">
+                            <div class="chaplist" id="dschuong">
+                                <h2>Danh sách chương truyện</h2>
+                                <div th:each="chapter : ${chapters}">
+                                    <a class="jblack" th:href="@{/}" target="_blank"><i class="icon-leaf"></i>
+                                        <p th:text="${chapter.title} + ' - ' + ${chapter.name}"></p>
+                                    </a>
+                                </div>
                         </th:block>
-
                         <div class="paging">
                             <form action="#" method="get" rel="nofollow">
                                 <span style="font-size: 14px">Truyền Tống đến Trang:</span>

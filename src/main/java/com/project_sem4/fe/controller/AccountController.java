@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping(value = "/account")
 public class AccountController {
 
     @Autowired
@@ -27,7 +26,7 @@ public class AccountController {
         if(bindingResult.hasErrors()){
             return "login";
         }
-        return "redirect:/";
+        return "index";
     }
     @RequestMapping(method = RequestMethod.GET, value = "/create")
     public String createAccount(Model model) {

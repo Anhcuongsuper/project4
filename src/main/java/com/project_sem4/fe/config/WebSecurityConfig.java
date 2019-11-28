@@ -42,14 +42,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
                 .authorizeRequests()
-                .antMatchers("/account/list*").hasAnyRole(String.format("%s",Account.Role.ADMIN.getValue()))
+                .antMatchers("/list*").hasAnyRole(String.format("%s",Account.Role.ADMIN.getValue()))
                 .antMatchers("/category/create*").hasAnyRole(String.format("%s",Account.Role.ADMIN.getValue()))
                 .antMatchers("/story/create*").hasAnyRole(String.format("%s",Account.Role.USER.getValue()))
                 .and()
                 .formLogin()
-                .loginPage("/account/login")
+                .loginPage("/login")
                 .permitAll()
-                .failureUrl("/account/login?error")
+                .failureUrl("/login?error")
                 .failureHandler(authenticationFailureHandler())
                 .and()
                 .logout()
