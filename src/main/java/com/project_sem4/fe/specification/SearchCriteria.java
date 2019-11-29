@@ -1,5 +1,7 @@
 package com.project_sem4.fe.specification;
 
+import org.springframework.lang.Nullable;
+
 public class SearchCriteria {
     private String key;
     private String operation;
@@ -9,7 +11,7 @@ public class SearchCriteria {
 
     }
 
-    public SearchCriteria(final String key, final String operation, final Object value) {
+    public SearchCriteria(final String key, @Nullable final String operation, final Object value) {
         super();
         this.key = key;
         this.operation = operation;

@@ -57,26 +57,49 @@
             </th:block>
 
             <div class="paging">
-                <form action="#" method="get" rel="nofollow">
+                <form action="" method="get" rel="nofollow">
                     <span style="font-size: 14px">Truyền Tống đến Trang:</span>
-                    <input name="page" type="text" value="" style="width:60px;height: 35px;margin: 10px; border-radius: 5px">
+                    <input name="page" type="text" value=""
+                           style="width:60px;height: 35px;margin: 10px; border-radius: 5px">
+                    <input name="limit" type="hidden" th:value="${limit}">
+                    <input name="keyword" type="hidden" th:value="${keyword}">
                     <button class="btn btn-warning"><i class=""></i> <span
                             class="jblack">Go</span></button>
                 </form>
+                <div class="pagination pagination-centered" th:if="${totalPage > 1}">
+                    <!--                                <nav aria-label="Page navigation example" th:if="${totalPage > 1}">-->
+                    <ul class="pagination float-right">
+                        <!--first-->
+                        <li class="page-item">
+                            <a class="page-link"
+                               th:href="@{/story/story_new(page=${1}, limit=${limit},storyId=${story.id})}">First</a>
+                        </li>
+                        <!--preview-->
+                        <li th:if="${currentPage > 1}" class="page-item">
+                            <a class="page-link"
+                               th:href="@{/story/story_new(page=${currentPage - 1}, limit=${limit},storyId=${story.id})}">Previous</a>
+                        </li>
 
-                <div class="pagination pagination-centered" >
-                    <ul style="display: flex; text-decoration: none; list-style-type: none; font-size: 20px">
-                        <li class="disabled" style="padding-right: 50px"><a href="javascript:">&larr;</a></li>
-                        <li style="padding-right: 50px" class="active"><a href="javascript:">1</a></li>
-                        <li style="padding-right: 50px"><a href="#">2</a></li>
-                        <li style="padding-right: 50px"><a href="#">3</a></li>
-                        <li style="padding-right: 50px"><a href="#">4</a></li>
-                        <li style="padding-right: 50px"><a href="#">5</a></li>
-                        <li style="padding-right: 50px"><a href="javascript:">...</a></li>
-                        <li style="padding-right: 50px"><a href="#">28</a></li>
-                        <li style="padding-right: 50px"><a href="">29</a></li>
-                        <li style="padding-right: 50px"><a href="#">30</a></li>
-                        <li style="padding-right: 50px"><a href="">&rarr;</a></li>
+                        <li th:if="${currentPage > 1}" class="page-item"><a class="page-link"
+                                                                            th:href="@{/story/story_new(page=${currentPage - 1}, limit=${limit},storyId=${story.id})}">[[${currentPage
+                            - 1}]]</a></li>
+                        <li class="page-item active"><a class="page-link" href="#">[[${currentPage}]]</a>
+                        </li>
+                        <li th:if="${currentPage < totalPage}" class="page-item">
+                            <a class="page-link"
+                               th:href="@{/story/story_new(page=${currentPage + 1}, limit=${limit},storyId=${story.id})}">[[${currentPage
+                                + 1}]]</a>
+                        </li>
+                        <!--                                        next-->
+                        <li th:if="${currentPage < totalPage}" class="page-item">
+                            <a class="page-link"
+                               th:href="@{/story/story_new(page=${currentPage + 1}, limit=${limit},storyId=${story.id})}">Next</a>
+                        </li>
+                        <!--                                        last-->
+                        <li class="page-item">
+                            <a class="page-link"
+                               th:href="@{/story/story_new(page=${totalPage}, limit=${limit},storyId=${story.id})}">Last</a>
+                        </li>
                     </ul>
                 </div>
             </div>

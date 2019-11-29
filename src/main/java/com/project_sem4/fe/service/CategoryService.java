@@ -36,8 +36,8 @@ public class CategoryService {
 
     public Category register(Category category) {
         category.setCreatedAt(Calendar.getInstance().getTimeInMillis());
-            category.setUpdatedAt(Calendar.getInstance().getTimeInMillis());
-            category.setStatus(1);
+        category.setUpdatedAt(Calendar.getInstance().getTimeInMillis());
+        category.setStatus(1);
         return categoryRepository.save(category);
     }
 
@@ -69,6 +69,10 @@ public class CategoryService {
 
     public Page<Category> getAllByCode(int code, int page, int limit) {
         return categoryRepository.findAllByCode(code, PageRequest.of(page - 1, limit));
+    }
+
+    public Page<Category> findAllWithSpeCate(Specification specification, Pageable pageable) {
+        return categoryRepository.findAll(specification, pageable);
     }
 
 }

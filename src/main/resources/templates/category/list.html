@@ -168,6 +168,9 @@
                     <i class="weui-icon-search"></i>
                     <input type="search"  th:value="${keyword}" name="keyword" class="weui-search-bar__input" id="search_input"
                            placeholder="Gõ tên truyện, tác giả..." required="" autofocus="autofocus">
+                    <input type="hidden" th:value="${limit}" name="limit">
+                    <input type="hidden" th:value="${currentPage}" name="page">
+
                     <a class="weui-icon-clear" id="searchClear"></a>
                 </div>
                 <label class="weui-search-bar__label" id="search_text">
@@ -187,6 +190,7 @@
             </button>
         </div>
     </form>
+
     <div class="weui-grids mb-4">
         <!--        <a th:href="@{/category/1}" class="weui-grid js_grid" data-id="button" title="Huyền Huyễn" style="height: 100px; overflow: hidden;">-->
         <!--            <div class="weui-grid__label">-->

@@ -10,11 +10,14 @@
 <div style="display: none; width: 1349px; height: 40px; float: none;"></div>
 <div class="novel-list mt-4">
     <div class="sidebar-col mr-4">
-        <div class="nav flex-column nav-pills nav-tables" aria-orientation="vertical" id="sidebar_nav" style="z-index: 999;">
+        <div class="nav flex-column nav-pills nav-tables" aria-orientation="vertical" id="sidebar_nav"
+             style="z-index: 999;">
             <a class="nav-link active" th:href="@{/story/story_new}">Truyện Mới Cập Nhật</a>
             <a class="nav-link " th:href="@{/category/2}">
                 <span class="mr-1">Kiếm hiệp tuyển chọn</span>
-                <img data-src="https://yycdn.truyenyy.com/static/svg/quality.svg" alt="" width="24" height="24" class="lazy align-middle loaded" src="https://yycdn.truyenyy.com/static/svg/quality.svg" data-was-processed="true">
+                <img data-src="https://yycdn.truyenyy.com/static/svg/quality.svg" alt="" width="24" height="24"
+                     class="lazy align-middle loaded" src="https://yycdn.truyenyy.com/static/svg/quality.svg"
+                     data-was-processed="true">
             </a>
             <a class="nav-link " th:href="@{/category/4}">Truyện Ngôn Tình</a>
             <a class="nav-link " th:href="@{/category/6}">Có Thể Bạn Muốn Đọc</a>
@@ -26,8 +29,10 @@
         <section class="section-grid">
             <ul class="books-list list-unstyled large-items">
                 <li class="with-border" th:each="storyItem : ${listStoryGood}">
-                    <a style="margin-top: 25px" th:href="@{'/story/' + ${storyItem.id}}" class="book-img position-relative" aria-label="Đi đến truyện Siêu Cấp Thần Y Tại Đô Thị (Dịch)">
-                        <img th:src="${storyItem.thubnail_file}" width="100" height="140" class="lazy zoom-me loaded" sizes="auto"  data-was-processed="true">
+                    <a style="margin-top: 25px" th:href="@{'/story/' + ${storyItem.id}}"
+                       class="book-img position-relative" aria-label="Đi đến truyện Siêu Cấp Thần Y Tại Đô Thị (Dịch)">
+                        <img th:src="${storyItem.thubnail_file}" width="100" height="140" class="lazy zoom-me loaded"
+                             sizes="auto" data-was-processed="true">
                     </a>
                     <div class="flex-primary">
                         <h3 th:text="${storyItem.actor}" class="book-title">
@@ -35,17 +40,25 @@
                         </h3>
                         <div class="book-desc line-clamp line-clamp-2" th:text="${storyItem.description}"></div>
                         <div class="small">
-                            <a href="/tac-gia/lam-phong-2/"  class="book-author mr-auto" target="_blank"><i th:text="${storyItem.director}" class="iconfont iconwrite  icon18"></i></a>
+                            <a href="/tac-gia/lam-phong-2/" class="book-author mr-auto" target="_blank"><i
+                                    th:text="${storyItem.director}" class="iconfont iconwrite  icon18"></i></a>
                         </div>
                         <ul class="tag-list tag-small list-unstyled mt-2">
                             <li th:each="i : ${category1}" class="tag red">
                                 <a th:text="${i.name}" th:href="@{/category/1}"></a></li>
-                            <li  th:each="i : ${category11}" class="tag red"><a th:text="${i.name}" th:href="@{/category/11}" th:title="${i.name}"></a></li>
-                            <li  th:each="i : ${category12}" class="tag green"><a th:text="${i.name}" th:href="@{/category/12}" th:title="${i.name}"></a></li>
-                            <li   th:each="i : ${category13}" class="tag green"><a th:text="${i.name}" th:href="@{/category/13}" th:title="${i.name}"></a></li>
+                            <li th:each="i : ${category11}" class="tag red"><a th:text="${i.name}"
+                                                                               th:href="@{/category/11}"
+                                                                               th:title="${i.name}"></a></li>
+                            <li th:each="i : ${category12}" class="tag green"><a th:text="${i.name}"
+                                                                                 th:href="@{/category/12}"
+                                                                                 th:title="${i.name}"></a></li>
+                            <li th:each="i : ${category13}" class="tag green"><a th:text="${i.name}"
+                                                                                 th:href="@{/category/13}"
+                                                                                 th:title="${i.name}"></a></li>
                         </ul>
                         <ul class="tag-list tag-small list-unstyled">
-                            <li th:each="i : ${category15}" class="tag gray"><a th:text="${i.name}" th:href="@{/category/15}"></a></li>
+                            <li th:each="i : ${category15}" class="tag gray"><a th:text="${i.name}"
+                                                                                th:href="@{/category/15}"></a></li>
                         </ul>
                     </div>
                 </li>
@@ -57,26 +70,49 @@
             </th:block>
 
             <div class="paging">
-                <form action="#" method="get" rel="nofollow">
+                <form action="" method="get" rel="nofollow">
                     <span style="font-size: 14px">Truyền Tống đến Trang:</span>
-                    <input name="page" type="text" value="" style="width:60px;height: 35px;margin: 10px; border-radius: 5px">
+                    <input name="page" type="text" value=""
+                           style="width:60px;height: 35px;margin: 10px; border-radius: 5px">
+                    <input name="limit" type="hidden" th:value="${limit}">
+                    <input name="keyword" type="hidden" th:value="${keyword}">
                     <button class="btn btn-warning"><i class=""></i> <span
                             class="jblack">Go</span></button>
                 </form>
+                <div class="pagination pagination-centered" th:if="${totalPage > 1}">
+                    <!--                                <nav aria-label="Page navigation example" th:if="${totalPage > 1}">-->
+                    <ul class="pagination float-right">
+                        <!--first-->
+                        <li class="page-item">
+                            <a class="page-link"
+                               th:href="@{/story/story_good(page=${1}, limit=${limit},storyId=${story.id})}">First</a>
+                        </li>
+                        <!--preview-->
+                        <li th:if="${currentPage > 1}" class="page-item">
+                            <a class="page-link"
+                               th:href="@{/story/story_good(page=${currentPage - 1}, limit=${limit},storyId=${story.id})}">Previous</a>
+                        </li>
 
-                <div class="pagination pagination-centered" >
-                    <ul style="display: flex; text-decoration: none; list-style-type: none; font-size: 20px">
-                        <li class="disabled" style="padding-right: 50px"><a href="javascript:">&larr;</a></li>
-                        <li style="padding-right: 50px" class="active"><a href="javascript:">1</a></li>
-                        <li style="padding-right: 50px"><a href="#">2</a></li>
-                        <li style="padding-right: 50px"><a href="#">3</a></li>
-                        <li style="padding-right: 50px"><a href="#">4</a></li>
-                        <li style="padding-right: 50px"><a href="#">5</a></li>
-                        <li style="padding-right: 50px"><a href="javascript:">...</a></li>
-                        <li style="padding-right: 50px"><a href="#">28</a></li>
-                        <li style="padding-right: 50px"><a href="">29</a></li>
-                        <li style="padding-right: 50px"><a href="#">30</a></li>
-                        <li style="padding-right: 50px"><a href="">&rarr;</a></li>
+                        <li th:if="${currentPage > 1}" class="page-item"><a class="page-link"
+                                                                            th:href="@{/story/story_good(page=${currentPage - 1}, limit=${limit},storyId=${story.id})}">[[${currentPage
+                            - 1}]]</a></li>
+                        <li class="page-item active"><a class="page-link" href="#">[[${currentPage}]]</a>
+                        </li>
+                        <li th:if="${currentPage < totalPage}" class="page-item">
+                            <a class="page-link"
+                               th:href="@{/story/story_good(page=${currentPage + 1}, limit=${limit},storyId=${story.id})}">[[${currentPage
+                                + 1}]]</a>
+                        </li>
+                        <!--                                        next-->
+                        <li th:if="${currentPage < totalPage}" class="page-item">
+                            <a class="page-link"
+                               th:href="@{/story/story_good(page=${currentPage + 1}, limit=${limit},storyId=${story.id})}">Next</a>
+                        </li>
+                        <!--                                        last-->
+                        <li class="page-item">
+                            <a class="page-link"
+                               th:href="@{/story/story_good(page=${totalPage}, limit=${limit},storyId=${story.id})}">Last</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -85,8 +121,121 @@
 </div>
 </div>
 <div th:replace="fragments/app-index ::footer"></div>
-<script type="text/javascript">(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');ga('create','UA-18601183-19','auto');ga('send','pageview');</script>
-<script type="text/javascript">$(document).ready(function(){var sidebarEle=$('#sidebar_nav');sidebarEle.scrollToFixed({marginTop:50,limit:$('.site-footer').offset().top-sidebarEle.outerHeight()-15,zIndex:999,});});</script>
-<div id="react-root_desktop-feedback"><div tabindex="-1"><div class="desktopFeedback"><div class="Toastify"></div><button class="btn btn-secondary feedbackButton"><i class="iconfont icon-flag"></i><span> Phản Hồi</span></button><div class="react-reveal feedbackContainer " style="opacity: 0;"><button class="close" aria-label="Đóng"><i class="iconfont icon-close"></i></button><div class="p-4"><h2 class="h4">Phản Hồi Nhanh</h2><hr><p>Hãy cung cấp thông tin càng chi tiết càng tốt, để chúng tôi có thể hiểu rõ vấn đề bạn đang mắc phải một cách nhanh nhất. Đừng ngại chia sẻ với chúng tôi bất kỳ điều gì. Chúng tôi đang lắng nghe!</p><button type="button" class="btn-important btn btn-secondary btn-lg btn-block"><span>Ý Kiến - Đóng Góp - Liên Hệ </span><i class="iconfont icon-arrow-right"></i></button><button type="button" class="mt-4 btn-important btn btn-secondary btn-lg btn-block"><span>Báo Cáo Vấn Đề </span><i class="iconfont icon-arrow-right"></i></button><button type="button" class="mt-4 btn-important btn btn-secondary btn-lg btn-block"><span>Đề Xuất Truyện Mới </span><i class="iconfont icon-arrow-right"></i></button><a href="https://m.me/TruyenYY" class="mt-4 btn-important btn btn-secondary btn-lg btn-block"><span class="mr-auto">Gửi Tin Nhắn Tức Thời Tới Messenger </span><span class="float-right"><svg viewBox="0 0 512 512" data-icon="messender" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M256,0C114.624,0,0,106.112,0,237.024c0,74.592,37.216,141.12,95.392,184.576V512l87.168-47.84c23.264,6.432,47.904,9.92,73.44,9.92c141.376,0,256-106.112,256-237.024C512,106.112,397.376,0,256,0z" style="fill: rgb(30, 136, 229);"></path><polygon points="281.44,319.2 216.256,249.664 89.056,319.2 228.96,170.656 295.744,240.192 421.376,170.656" style="fill: rgb(250, 250, 250);"></polygon></svg></span></a><div class="feedbackContact mt-5"><div class="media"><div class="media-left"><svg viewBox="64 64 896 896" class="" data-icon="facebook" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zm-32 736H663.9V602.2h104l15.6-120.7H663.9v-77.1c0-35 9.7-58.8 59.8-58.8h63.9v-108c-11.1-1.5-49-4.8-93.2-4.8-92.2 0-155.3 56.3-155.3 159.6v89H434.9v120.7h104.3V848H176V176h672v672z"></path></svg></div><div class="media-body"><h4 class="media-heading">Facebook Fanpage</h4><div class="small"><a href="https://www.facebook.com/TruyenYY/" target="_blank" rel="noopener noreferrer">https://www.facebook.com/TruyenYY/</a></div><div class="small">Hỗ trợ nhanh, giải đáp mọi thắc mắc của bạn về TruyenYY. Khả dụng mọi thời điểm trong ngày kể cả cuối tuần hoặc ngày lễ.</div></div></div><div class="media"><div class="media-left"><svg viewBox="64 64 896 896" class="" data-icon="mobile" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M744 62H280c-35.3 0-64 28.7-64 64v768c0 35.3 28.7 64 64 64h464c35.3 0 64-28.7 64-64V126c0-35.3-28.7-64-64-64zm-8 824H288V134h448v752zM472 784a40 40 0 1 0 80 0 40 40 0 1 0-80 0z"></path></svg></div><div class="media-body"><h4 class="media-heading">Hotline</h4><div class="small"><a href="tel:0975976964">097 597 69 64</a></div><div class="small">Giải quyết các vấn đề về TLT, thông báo các lỗi nghiêm trọng. Giờ làm việc: 8.00 sáng - 18.30 tối hàng ngày.</div></div></div><div class="media"><div class="media-left"><svg viewBox="64 64 896 896" class="" data-icon="mail" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M928 160H96c-17.7 0-32 14.3-32 32v640c0 17.7 14.3 32 32 32h832c17.7 0 32-14.3 32-32V192c0-17.7-14.3-32-32-32zm-40 110.8V792H136V270.8l-27.6-21.5 39.3-50.5 42.8 33.3h643.1l42.8-33.3 39.3 50.5-27.7 21.5zM833.6 232L512 482 190.4 232l-42.8-33.3-39.3 50.5 27.6 21.5 341.6 265.6a55.99 55.99 0 0 0 68.7 0L888 270.8l27.6-21.5-39.3-50.5-42.7 33.2z"></path></svg></div><div class="media-body"><h4 class="media-heading">Email Chăm Sóc Khách Hàng</h4><div class="small"><a href="mailto:contact@codeprime.net">contact@codeprime.net</a></div><div class="small">Khả dụng mọi thời điểm trong ngày kể cả cuối tuần hoặc ngày lễ. Chúng tôi thường trả lời nhanh hơn trong giờ hành chính.</div></div></div><div class="media"><div class="media-left"><svg viewBox="64 64 896 896" class="" data-icon="twitter" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M928 254.3c-30.6 13.2-63.9 22.7-98.2 26.4a170.1 170.1 0 0 0 75-94 336.64 336.64 0 0 1-108.2 41.2A170.1 170.1 0 0 0 672 174c-94.5 0-170.5 76.6-170.5 170.6 0 13.2 1.6 26.4 4.2 39.1-141.5-7.4-267.7-75-351.6-178.5a169.32 169.32 0 0 0-23.2 86.1c0 59.2 30.1 111.4 76 142.1a172 172 0 0 1-77.1-21.7v2.1c0 82.9 58.6 151.6 136.7 167.4a180.6 180.6 0 0 1-44.9 5.8c-11.1 0-21.6-1.1-32.2-2.6C211 652 273.9 701.1 348.8 702.7c-58.6 45.9-132 72.9-211.7 72.9-14.3 0-27.5-.5-41.2-2.1C171.5 822 261.2 850 357.8 850 671.4 850 843 590.2 843 364.7c0-7.4 0-14.8-.5-22.2 33.2-24.3 62.3-54.4 85.5-88.2z"></path></svg></div><div class="media-body"><h4 class="media-heading">Hỗ Trợ Kỹ Thuật</h4><div class="small"><a href="https://twitter.com/TruyenYY/" target="_blank" rel="noopener noreferrer">https://twitter.com/TruyenYY/</a></div><div class="small">Khả dụng mọi thời điểm trong ngày kể cả cuối tuần hoặc ngày lễ. Chúng tôi thường trả lời nhanh hơn trong giờ hành chính.</div></div></div></div></div></div></div></div></div>
+<script type="text/javascript">(function (i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function () {
+        (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+})(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+ga('create', 'UA-18601183-19', 'auto');
+ga('send', 'pageview');</script>
+<script type="text/javascript">$(document).ready(function () {
+    var sidebarEle = $('#sidebar_nav');
+    sidebarEle.scrollToFixed({
+        marginTop: 50,
+        limit: $('.site-footer').offset().top - sidebarEle.outerHeight() - 15,
+        zIndex: 999,
+    });
+});</script>
+<div id="react-root_desktop-feedback">
+    <div tabindex="-1">
+        <div class="desktopFeedback">
+            <div class="Toastify"></div>
+            <button class="btn btn-secondary feedbackButton"><i class="iconfont icon-flag"></i><span> Phản Hồi</span>
+            </button>
+            <div class="react-reveal feedbackContainer " style="opacity: 0;">
+                <button class="close" aria-label="Đóng"><i class="iconfont icon-close"></i></button>
+                <div class="p-4"><h2 class="h4">Phản Hồi Nhanh</h2>
+                    <hr>
+                    <p>Hãy cung cấp thông tin càng chi tiết càng tốt, để chúng tôi có thể hiểu rõ vấn đề bạn đang mắc
+                        phải một cách nhanh nhất. Đừng ngại chia sẻ với chúng tôi bất kỳ điều gì. Chúng tôi đang lắng
+                        nghe!</p>
+                    <button type="button" class="btn-important btn btn-secondary btn-lg btn-block"><span>Ý Kiến - Đóng Góp - Liên Hệ </span><i
+                            class="iconfont icon-arrow-right"></i></button>
+                    <button type="button" class="mt-4 btn-important btn btn-secondary btn-lg btn-block"><span>Báo Cáo Vấn Đề </span><i
+                            class="iconfont icon-arrow-right"></i></button>
+                    <button type="button" class="mt-4 btn-important btn btn-secondary btn-lg btn-block"><span>Đề Xuất Truyện Mới </span><i
+                            class="iconfont icon-arrow-right"></i></button>
+                    <a href="https://m.me/TruyenYY" class="mt-4 btn-important btn btn-secondary btn-lg btn-block"><span
+                            class="mr-auto">Gửi Tin Nhắn Tức Thời Tới Messenger </span><span class="float-right"><svg
+                            viewBox="0 0 512 512" data-icon="messender" width="1em" height="1em" fill="currentColor"
+                            aria-hidden="true"><path
+                            d="M256,0C114.624,0,0,106.112,0,237.024c0,74.592,37.216,141.12,95.392,184.576V512l87.168-47.84c23.264,6.432,47.904,9.92,73.44,9.92c141.376,0,256-106.112,256-237.024C512,106.112,397.376,0,256,0z"
+                            style="fill: rgb(30, 136, 229);"></path><polygon
+                            points="281.44,319.2 216.256,249.664 89.056,319.2 228.96,170.656 295.744,240.192 421.376,170.656"
+                            style="fill: rgb(250, 250, 250);"></polygon></svg></span></a>
+                    <div class="feedbackContact mt-5">
+                        <div class="media">
+                            <div class="media-left">
+                                <svg viewBox="64 64 896 896" class="" data-icon="facebook" width="1em" height="1em"
+                                     fill="currentColor" aria-hidden="true">
+                                    <path d="M880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zm-32 736H663.9V602.2h104l15.6-120.7H663.9v-77.1c0-35 9.7-58.8 59.8-58.8h63.9v-108c-11.1-1.5-49-4.8-93.2-4.8-92.2 0-155.3 56.3-155.3 159.6v89H434.9v120.7h104.3V848H176V176h672v672z"></path>
+                                </svg>
+                            </div>
+                            <div class="media-body"><h4 class="media-heading">Facebook Fanpage</h4>
+                                <div class="small"><a href="https://www.facebook.com/TruyenYY/" target="_blank"
+                                                      rel="noopener noreferrer">https://www.facebook.com/TruyenYY/</a>
+                                </div>
+                                <div class="small">Hỗ trợ nhanh, giải đáp mọi thắc mắc của bạn về TruyenYY. Khả dụng mọi
+                                    thời điểm trong ngày kể cả cuối tuần hoặc ngày lễ.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="media">
+                            <div class="media-left">
+                                <svg viewBox="64 64 896 896" class="" data-icon="mobile" width="1em" height="1em"
+                                     fill="currentColor" aria-hidden="true">
+                                    <path d="M744 62H280c-35.3 0-64 28.7-64 64v768c0 35.3 28.7 64 64 64h464c35.3 0 64-28.7 64-64V126c0-35.3-28.7-64-64-64zm-8 824H288V134h448v752zM472 784a40 40 0 1 0 80 0 40 40 0 1 0-80 0z"></path>
+                                </svg>
+                            </div>
+                            <div class="media-body"><h4 class="media-heading">Hotline</h4>
+                                <div class="small"><a href="tel:0975976964">097 597 69 64</a></div>
+                                <div class="small">Giải quyết các vấn đề về TLT, thông báo các lỗi nghiêm trọng. Giờ làm
+                                    việc: 8.00 sáng - 18.30 tối hàng ngày.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="media">
+                            <div class="media-left">
+                                <svg viewBox="64 64 896 896" class="" data-icon="mail" width="1em" height="1em"
+                                     fill="currentColor" aria-hidden="true">
+                                    <path d="M928 160H96c-17.7 0-32 14.3-32 32v640c0 17.7 14.3 32 32 32h832c17.7 0 32-14.3 32-32V192c0-17.7-14.3-32-32-32zm-40 110.8V792H136V270.8l-27.6-21.5 39.3-50.5 42.8 33.3h643.1l42.8-33.3 39.3 50.5-27.7 21.5zM833.6 232L512 482 190.4 232l-42.8-33.3-39.3 50.5 27.6 21.5 341.6 265.6a55.99 55.99 0 0 0 68.7 0L888 270.8l27.6-21.5-39.3-50.5-42.7 33.2z"></path>
+                                </svg>
+                            </div>
+                            <div class="media-body"><h4 class="media-heading">Email Chăm Sóc Khách Hàng</h4>
+                                <div class="small"><a href="mailto:contact@codeprime.net">contact@codeprime.net</a>
+                                </div>
+                                <div class="small">Khả dụng mọi thời điểm trong ngày kể cả cuối tuần hoặc ngày lễ. Chúng
+                                    tôi thường trả lời nhanh hơn trong giờ hành chính.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="media">
+                            <div class="media-left">
+                                <svg viewBox="64 64 896 896" class="" data-icon="twitter" width="1em" height="1em"
+                                     fill="currentColor" aria-hidden="true">
+                                    <path d="M928 254.3c-30.6 13.2-63.9 22.7-98.2 26.4a170.1 170.1 0 0 0 75-94 336.64 336.64 0 0 1-108.2 41.2A170.1 170.1 0 0 0 672 174c-94.5 0-170.5 76.6-170.5 170.6 0 13.2 1.6 26.4 4.2 39.1-141.5-7.4-267.7-75-351.6-178.5a169.32 169.32 0 0 0-23.2 86.1c0 59.2 30.1 111.4 76 142.1a172 172 0 0 1-77.1-21.7v2.1c0 82.9 58.6 151.6 136.7 167.4a180.6 180.6 0 0 1-44.9 5.8c-11.1 0-21.6-1.1-32.2-2.6C211 652 273.9 701.1 348.8 702.7c-58.6 45.9-132 72.9-211.7 72.9-14.3 0-27.5-.5-41.2-2.1C171.5 822 261.2 850 357.8 850 671.4 850 843 590.2 843 364.7c0-7.4 0-14.8-.5-22.2 33.2-24.3 62.3-54.4 85.5-88.2z"></path>
+                                </svg>
+                            </div>
+                            <div class="media-body"><h4 class="media-heading">Hỗ Trợ Kỹ Thuật</h4>
+                                <div class="small"><a href="https://twitter.com/TruyenYY/" target="_blank"
+                                                      rel="noopener noreferrer">https://twitter.com/TruyenYY/</a></div>
+                                <div class="small">Khả dụng mọi thời điểm trong ngày kể cả cuối tuần hoặc ngày lễ. Chúng
+                                    tôi thường trả lời nhanh hơn trong giờ hành chính.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-<script type="text/javascript" src="/pagespeed_static/js_defer.I4cHjq6EEP.js"></script></body></html>
+<script type="text/javascript" src="/pagespeed_static/js_defer.I4cHjq6EEP.js"></script>
+</body>
+</html>

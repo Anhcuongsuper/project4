@@ -4,8 +4,12 @@ import com.project_sem4.fe.entity.Category;
 import com.project_sem4.fe.entity.Story;
 import com.project_sem4.fe.service.CategoryService;
 import com.project_sem4.fe.service.StoryService;
+import com.project_sem4.fe.specification.CategorySpecification;
+import com.project_sem4.fe.specification.SearchCriteria;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -43,8 +47,23 @@ public class CategoryController {
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/list")
-    public String showListCategory(Model model) {
-        model.addAttribute("listCategory", categoryService.getAllCategory());
+    public String showListCategory(Model model,
+                                   @RequestParam(name = "keyword", required = false) String keyword,
+                                   @RequestParam(name = "page", defaultValue = "1") int page,
+                                   @RequestParam(name = "limit", defaultValue = "100") int limit) {
+        Specification specification = Specification.where(null);
+
+        if (keyword != null && keyword.length() > 0) {
+            specification = specification
+                    .and(new CategorySpecification(new SearchCriteria("keyword", "join", keyword)));
+            model.addAttribute("keyword", keyword);
+        }
+        Page<Category> categoryPage = categoryService.findAllWithSpeCate(specification, PageRequest.of(page - 1, limit));
+        model.addAttribute("listCategory", categoryPage.getContent());
+        model.addAttribute("currentPage", categoryPage.getPageable().getPageNumber() + 1);
+        model.addAttribute("limit", categoryPage.getPageable().getPageSize());
+        model.addAttribute("totalPage", categoryPage.getTotalPages());
+//        model.addAttribute("listCategory", categoryService.getAllCategory());
         return "category/list";
 
     }

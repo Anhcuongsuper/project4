@@ -43,7 +43,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
                 .authorizeRequests()
-                .antMatchers("/list*").hasAnyRole(String.format("%s", Account.Role.ADMIN.getValue()))
+                .antMatchers("/list*").hasAnyRole(String.format("%s", Account.Role.USER.getValue()))
                 .antMatchers("/category/create*").hasAnyRole(String.format("%s", Account.Role.USER.getValue()))
                 .antMatchers("/story/create*").hasAnyRole(String.format("%s", Account.Role.USER.getValue()))
                 .antMatchers("/story/create*").hasAnyRole(String.format("%s", Account.Role.USER.getValue()))
