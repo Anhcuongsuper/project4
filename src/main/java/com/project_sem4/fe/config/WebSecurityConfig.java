@@ -45,6 +45,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/list*").hasAnyRole(String.format("%s",Account.Role.ADMIN.getValue()))
                 .antMatchers("/category/create*").hasAnyRole(String.format("%s",Account.Role.ADMIN.getValue()))
                 .antMatchers("/story/create*").hasAnyRole(String.format("%s",Account.Role.USER.getValue()))
+                .antMatchers("/story/create*").hasAnyRole(String.format("%s",Account.Role.ADMIN.getValue()))
                 .and()
                 .formLogin()
                 .loginPage("/login")

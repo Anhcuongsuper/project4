@@ -14,9 +14,14 @@ public class Chapter {
     @Column(name = "chapter_id" ,nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @NotEmpty
+    @NotEmpty(message = "Vui lòng điền vào trường này")
+
     private String title;
+    @NotEmpty(message = "Vui lòng điền vào trường này")
+
     private String name;
+    @NotEmpty(message = "Vui lòng điền vào trường này")
+
     private String content;
 
     // chapter-story

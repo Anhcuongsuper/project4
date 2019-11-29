@@ -27,49 +27,10 @@
 
 </style>
 <body>
-<header class="container mt-3 site-header">
-	<div class="d-flex">
-		<a href="/" class="site-logo"><img src="https://yycdn.truyenyy.com/static/desktop/img/TruyenYY-Web-Logo.svg"
-										   alt="TruyenYY Logo"></a>
-		<div id="react-root_desktop-search" class="search" style="margin-right: -10px;">
-			<form class="YYSearchBox" action="/tim-kiem/nang-cao/"><input type="hidden" name="q" value="">
-				<div class="input-group">
-					<div class="rbt" tabindex="-1" style="outline: none; position: relative;">
-						<div style="display: flex; flex: 1 1 0%; height: 100%; position: relative;"><input
-								autocomplete="off" placeholder="Tìm tên truyện, tác giả..." type="text"
-								aria-autocomplete="both" aria-label="Ô tìm kiếm truyện" aria-expanded="false"
-								aria-haspopup="listbox" role="combobox" class="rbt-input-main form-control rbt-input"
-								value="">
-							<input aria-hidden="true" class="rbt-input-hint" readonly="" tabindex="-1"
-								   value=""
-								   style="background-color: transparent; border-color: transparent; box-shadow: none; color: rgba(0, 0, 0, 0.35); left: 0px; pointer-events: none; position: absolute; top: 0px; width: 100%; border-style: solid; border-width: 1px; font-size: 16px; line-height: 24px; margin: 0px; padding: 6px 12px;">
-						</div>
-					</div>
-					<div class="input-group-append">
-						<button type="submit" class="btn btn-primary" aria-label="Tìm Kiếm"><i
-								class="iconfont icon-search1"></i></button>
-					</div>
-				</div>
-			</form>
-		</div>
-		<div id="react-root_desktop-top-nav" style="width: 260px; display: flex; justify-content: flex-end;">
-			<div class="desktopTopNav">
-				<div class="Toastify"></div>
-				<div class="buttons">
-					<button class="btn mr-1" aria-label="Login">
-						<a th:href="@{/login}">
-							<i  class="iconfont icon-user icon-24"></i></a>
-					</button>
-					<a class="btn" th:href="@{/logout}" role="button" aria-label="Logout"><i
-							class="iconfont icon-logout icon-24"></i></a></div>
-			</div>
-		</div>
-	</div>
-</header>
 <!--end search-->
 
 <!--menu-->
-
+<div th:replace="fragments/app-index ::top"></div>
 <div th:replace="fragments/app-index ::menu"></div>
 
 <div class="container">
@@ -78,7 +39,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="span12 auth">
-						<h1 class="page-header">Đăng Ký Thành Viên</h1>
+						<h1 class="page-header"style="padding: 20px">Đăng Ký Thành Viên</h1>
 						<div class="alert alert-info">
 							<p><b>Chú ý:</b> Các bạn trước đây đã đăng nhập bằng Facebook không cần đăng ký mới, các bạn có thể đăng nhập với thông tin như sau:</p>
 							<p><b>Username:</b> Địa chỉ Email dùng để đăng nhập Facebook của các bạn. Ví dụ: <a class="__cf_email__" href="email-protection.htm" tppabs="http://truyenyy.com/cdn-cgi/l/email-protection" data-cfemail="c6a2afa3b3aaafa8aef7f486a1aba7afaae8a5a9ab">[email&#160;protected]</a><script data-cfhash='f9e31' type="text/javascript">/* <![CDATA[ */!function(t,e,r,n,c,a,p){try{t=document.currentScript||function(){for(t=document.getElementsByTagName('script'),e=t.length;e--;)if(t[e].getAttribute('data-cfhash'))return t[e]}();if(t&&(c=t.previousSibling)){p=t.parentNode;if(a=c.getAttribute('data-cfemail')){for(e='',r='0x'+a.substr(0,2)|0,n=2;a.length-n;n+=2)e+='%'+('0'+('0x'+a.substr(n,2)^r).toString(16)).slice(-2);p.replaceChild(document.createTextNode(decodeURIComponent(e)),c)}p.removeChild(t)}}catch(u){}}()/* ]]> */</script></p>
@@ -97,11 +58,11 @@
 										<div class="input-cors"><input name="password" placeholder="Mật khẩu" required="required" type="password" class="input-fielder" id="id_password"/></div>
 									</div>
 									<div id="div_id_username" class="control-group required">
-										<label for="id_username" class="control-label requiredField">Tên tài khoản<span class="asteriskField">*</span></label>
+										<label for="id_username" class="control-label requiredField">Tên người dùng<span class="asteriskField">*</span></label>
 										<div class="input-cors"><input name="fullname"  maxlength= "30" type="text" required="required" placeholder="Tên tài khoản" class=" input-fielder" id="id_username"/>
 									</div>
 										<div id="div_id_address" class="control-group required">
-											<label for="id_username" class="control-label requiredField">Dia chi<span class="asteriskField">*</span></label>
+											<label for="id_username" class="control-label requiredField">Địa chỉ<span class="asteriskField">*</span></label>
 											<div class="input-cors"><input name="address" maxlength= "30" type="text" required="required" placeholder="Tên tài khoản" class=" input-fielder" id="id_username"/>
 											</div>
 									</div>
@@ -122,42 +83,9 @@
 					</div>
 				</div>
 			</div>
-			<script>
-				$(document).ready(function(){
-					$('input.form-control').keyup(function() {
-						var e = $(this);
-						var label = e.closest('.form-group').find('label');
-						label.removeClass('animated fadeInLeft fadeOutLeft');
-						if (e.val()) {
-							label.css('visibility', 'visible').addClass('animated fadeInLeft');
-						} else{
-							label.addClass('animated fadeOutLeft');
-							setTimeout(function(){
-								label.css('visibility', 'hidden');
-							}, 500);
-						}
-					});
-
-					$('button[type=reset]').click(function(){
-						var label = $('label');
-						label.removeClass('animated fadeInLeft fadeOutLeft').addClass('animated fadeOutLeft');
-						setTimeout(function(){
-							label.css('visibility', 'hidden');
-						}, 500);
-						return true;
-					});
-
-					$('button[type=submit]').button('reset').removeAttr('disabled');
-					$('form').submit(function(){
-						var form = $(this);
-						form.find('button[type=reset]').attr('disabled', 'disabled');
-						form.find('button[type=submit]').button('loading');
-					});
-				});
-			</script>
 		</div>
 	</div>
 </div>
 <div th:replace="fragments/app-index ::footer"></div>
-<script>(function(d,s,a,i,j,r,l,m,t){try{l=d.getElementsByTagName('a');t=d.createElement('textarea');for(i=0;l.length-i;i++){try{a=l[i].href;s=a.indexOf('/cdn-cgi/l/email-protection');m=a.length;if(a&&s>-1&&m>28){j=28+s;s='';if(j<m){r='0x'+a.substr(j,2)|0;for(j+=2;j<m&&a.charAt(j)!='X';j+=2)s+='%'+('0'+('0x'+a.substr(j,2)^r).toString(16)).slice(-2);j++;s=decodeURIComponent(s)+a.substr(j,m-j)}t.innerHTML=s.replace(/</g,'&lt;').replace(/\>/g,'&gt;');l[i].href='mailto:'+t.value}}catch(e){}}}catch(e){}})(document);/* ]]> */</script></body>
+</body>
 </html>

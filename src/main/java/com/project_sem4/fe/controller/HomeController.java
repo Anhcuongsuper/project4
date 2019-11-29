@@ -5,10 +5,8 @@ import com.project_sem4.fe.entity.Story;
 import com.project_sem4.fe.service.CategoryService;
 import com.project_sem4.fe.service.StoryService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -59,6 +57,11 @@ CategoryService categoryService;
     public String rules() {
 
         return "rules";
+    }
+    @RequestMapping(method = RequestMethod.GET, value = "/sus")
+    public String sus() {
+
+        return "successLg";
     }
     @RequestMapping(method = RequestMethod.GET, value = "/contact")
     public String contact() {

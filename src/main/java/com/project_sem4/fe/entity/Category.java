@@ -1,4 +1,5 @@
 package com.project_sem4.fe.entity;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.util.Set;
@@ -10,11 +11,19 @@ public class Category {
     @Column(name = "cat_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-    @NotEmpty
+    @NotEmpty(message = "Vui lòng điền vào trường này")
     private String icon;
+    @NotEmpty(message = "Vui lòng điền vào trường này")
+
     private String name;
+    @NotEmpty(message = "Vui lòng điền vào trường này")
+
     private String description;
+    @NotEmpty(message = "Vui lòng điền vào trường này")
+
     private int code;
+    @NotEmpty(message = "Vui lòng điền vào trường này")
+
     private long createdAt;
     private long updatedAt;
     private long deletedAt;

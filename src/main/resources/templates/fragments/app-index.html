@@ -174,8 +174,6 @@
         </div>
     </nav>
 </div>
-
-
 <div th:fragment="footer">
     <footer class="site-footer">
         <div class="more-search">
@@ -366,8 +364,6 @@
         </div>
     </footer>
 </div>
-
-
 <div th:fragment="list-new">
     <div class="card card-home card-bg-dark">
         <h3 class="card-header">
@@ -378,6 +374,34 @@
         </h3>
         <ul class="list-unstyled heading-list">
             <li id="lastUpdateNovel-24902" th:each="storyItem : ${listStoryNew}">
+                <div class="d-flex">
+                    <a th:href="@{/story/{id}(id=${storyItem.id})}" class="name mr-1"
+                       th:text="${storyItem.title}"></a>
+                    <a href="/truyen-sac-hiep/" class="genre">Sắc Hiệp</a>
+                </div>
+                <div class="d-flex">
+                    <a class="author" href="/"
+                       th:text="${storyItem.director}"></a>
+                </div>
+            </li>
+        </ul>
+        <div class="card-body py-0 px-3 mb-2 mt-auto">
+            <a href="/story/story_new" class="small">
+                Xem Thêm <i class="iconfont icon-arrow-right icon-8"></i>
+            </a>
+        </div>
+    </div>
+</div>
+<div th:fragment="list-hot">
+    <div class="card card-home card-bg-dark">
+        <h3 class="card-header">
+            <strong>Truyện Mới Cập Nhật</strong>
+            <a href="/story/story_new" title="Danh Sách Đầy Đủ" class="card-more">
+                <i class="iconfont icon-arrow-right"></i>
+            </a>
+        </h3>
+        <ul class="list-unstyled heading-list">
+            <li id="lastUpdateNovel-24902" th:each="storyItem : ${listStoryHot}">
                 <div class="d-flex">
                     <a th:href="@{/story/{id}(id=${storyItem.id})}" class="name mr-1"
                        th:text="${storyItem.title}"></a>
@@ -396,7 +420,6 @@
         </div>
     </div>
 </div>
-
 <div th:fragment="suggest">
     <div class="card card-home">
         <h3 class="card-header">
@@ -429,7 +452,6 @@
         </div>
     </div>
 </div>
-
 <div th:fragment="suggest2">
     <div class="card card-home">
         <div class="row">
@@ -459,7 +481,6 @@
         </div>
     </div>
 </div>
-
 <div th:fragment="head-category">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -1108,4 +1129,58 @@
         <div>
         </div>
     </div>
+</div>
+
+<div th:fragment="top-page" xmlns:th="http://www.thymeleaf.org">
+    <header class="container mt-3 site-header">
+        <div class="d-flex">
+            <a href="/" class="site-logo"><img src="https://yycdn.truyenyy.com/static/desktop/img/TruyenYY-Web-Logo.svg"
+                                               alt="TruyenYY Logo"></a>
+            <div id="react-root_desktop-search" class="search" style="margin-right: -10px;">
+            </div>
+            <div id="react-root_desktop-top-nav" style="width: 260px; display: flex; justify-content: flex-end;">
+                <div class="desktopTopNav">
+                    <div class="Toastify"></div>
+                    <div class="buttons">
+                        <a th:href="@{/login}" class="btn mr-1" aria-label="Lời Nhắn"><i class="iconfont icon-user icon-24"></i>
+                        </a>
+                        <a th:href="@{/create}" class="btn mr-1" aria-label="Thông Báo"><i class="iconfont icon-logout icon-24"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+    </header>
+</div>
+<div th:fragment="menu-page">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-main navbar-fancy mt-3" id="site_main_nav"
+         style="z-index: 10000; font-size: 20px">
+        <div class="container">
+            <ul class="navbar-nav nav-fancy mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link px-3" href="/" title="Trang Chủ"><i class="iconfont icon-home"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/story/story_new}" title="Truyện Mới Cập Nhật">Giới thiệu</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link position-relative" th:href="@{/category/32}">
+                        <span>Trợ giúp</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/category/33}" title="Truyện Sáng Tác">Liên hệ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/category/34}" title="Truyện Dịch">Quy định chung</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/category/list}" target="_blank"><i
+                            class="iconfont icon-help"></i>
+                        Danh sách Thể loại</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 </div>

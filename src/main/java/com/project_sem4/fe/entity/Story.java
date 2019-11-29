@@ -22,20 +22,29 @@ public class Story {
     @Column(name = "story_id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotEmpty
+    @NotEmpty(message = "Vui lòng điền vào trường này")
     private String title;
+    @NotEmpty(message = "Vui lòng điền vào trường này")
     private String description;
+    @NotEmpty(message = "Vui lòng điền vào trường này")
     private long createdAt;
     private long updatedAt;
     private long deletedAt;
     private int format;
     private int public_year;
     private int public_country;
+    @NotEmpty(message = "Vui lòng điền vào trường này")
     private String actor;
+    @NotEmpty(message = "Vui lòng điền vào trường này")
+
     private String director;
     private int cp_id;
+    @NotEmpty(message = "Vui lòng điền vào trường này")
+
     private String thubnail_file;
     private int status;
+    @NotEmpty(message = "Vui lòng điền vào trường này")
+
     private String tags;
     private int code;
     private int view;

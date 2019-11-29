@@ -2,18 +2,28 @@ package com.project_sem4.fe.entity;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 @Entity
 public class Account {
     @Id
     @Email
-    @NotNull(message = "Can not empty")
+    @NotEmpty(message = "Can not empty")
     private String email;
+    @NotEmpty(message = "Can not empty")
     private String password;
+    @NotEmpty(message = "Can not empty")
+
     private String fullname;
+    @NotEmpty(message = "Can not empty")
+
     private String address;
+    @NotEmpty(message = "Can not empty")
+
     private String role;
+    @NotEmpty(message = "Can not empty")
+
     public enum Role {
         ADMIN("admin"), USER("user");
 

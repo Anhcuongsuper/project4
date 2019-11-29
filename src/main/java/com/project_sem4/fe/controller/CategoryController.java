@@ -39,7 +39,7 @@ public class CategoryController {
             return "category/form";
         }
         categoryService.register(category);
-        return "category/success";
+        return "success";
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/list")
