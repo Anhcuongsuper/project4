@@ -165,10 +165,10 @@
 
         <label for="storyDirector" class="col-sm-2 col-form-label margin-label">Thể loại</label>
         <div class="form-row">
-            <div class="page__toggle form-group col-md-4" th:each="category : ${categories}" th:field="*{categories}"
-                 th:value="${category.id}">
+            <div class="page__toggle form-group col-md-4" th:each="category : ${categories}" >
                 <label class="toggle">
-                    <input class="toggle__input form-group" type="checkbox">
+                    <input class="toggle__input form-group" type="checkbox" th:field="*{categories}"
+                           th:value="${category.id}">
                     <span class="toggle__label">
                 <span th:text="${category.name}" class="toggle__text"></span>
             </span>
