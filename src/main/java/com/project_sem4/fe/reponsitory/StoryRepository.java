@@ -20,8 +20,8 @@ public interface StoryRepository extends JpaRepository<Story, Long> {
 
     List<Story> getStoryByView(int view);
 
-    Page<Story> findAllByOrderByCreatedAtDesc(Pageable pageable);
-    Page<Story> findAllByOrderByRateDescActor(Pageable pageable);
+    Page<Story> findAllByStatusOrderByCreatedAtDesc(int status,Pageable pageable);
+    Page<Story> findAllByStatusOrderByRateDescActor(int status,Pageable pageable);
 
 
     Page<Story> findAllByOrderByRateDesc(Pageable pageable);

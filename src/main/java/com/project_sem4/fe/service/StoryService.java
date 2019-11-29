@@ -25,9 +25,10 @@ public class StoryService {
 
     // list
 
-        public  List<Story>getAll(){
+    public List<Story> getAll() {
         return storyRepository.findAll();
-        }
+    }
+
     public List<Story> getByStoryHotView(int view) {
 
         return storyRepository.getStoryByView(view);
@@ -89,21 +90,23 @@ public class StoryService {
 
     public Page<Story> getListCreatedAt(int page, int limit) {
 
-        return storyRepository.findAllByOrderByCreatedAtDesc(  PageRequest.of(page - 1, limit));
+        return storyRepository.findAllByStatusOrderByCreatedAtDesc(1, PageRequest.of(page - 1, limit));
 
     }
 
     public Page<Story> getListCreatedAtIndex(int page, int limit) {
 
-        return storyRepository.findAllByOrderByCreatedAtDesc(PageRequest.of(page - 1, limit));
+        return storyRepository.findAllByStatusOrderByCreatedAtDesc(1, PageRequest.of(page - 1, limit));
 
     }
+
     public Page<Story> getAllStory(int page, int limit) {
 
-        return storyRepository.findAll(PageRequest.of(page -1, limit));
+        return storyRepository.findAll(PageRequest.of(page - 1, limit));
     }
-    public Page<Story> getListRate(int page, int limit){
-        return storyRepository.findAllByOrderByRateDescActor(PageRequest.of(page -1, limit));
+
+    public Page<Story> getListRate(int page, int limit) {
+        return storyRepository.findAllByStatusOrderByCreatedAtDesc(1,PageRequest.of(page - 1, limit));
     }
 
     public Story findById(Long storyId) {
@@ -114,7 +117,7 @@ public class StoryService {
         return storyOptional.get();
     }
 
-    public Page<Story> findAllWithSpe(Specification specification, Pageable pageable){
+    public Page<Story> findAllWithSpe(Specification specification, Pageable pageable) {
         return storyRepository.findAll(specification, pageable);
     }
 }

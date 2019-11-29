@@ -67,7 +67,7 @@ public class StoryController {
         Page<Story> storyPage = storyService.findAllWithSpe(specification, PageRequest.of(page - 1, limit));
         model.addAttribute("keyword", keyword);
         model.addAttribute("listStory", storyPage.getContent());
-        model.addAttribute("currentPag  e", storyPage.getPageable().getPageNumber() + 1);
+        model.addAttribute("currentPage", storyPage.getPageable().getPageNumber() + 1);
 //        model.addAttribute("currentPage", storyPage.getPageable().getPageNumber() + 1);
         model.addAttribute("limit", storyPage.getPageable().getPageSize());
         model.addAttribute("totalPage", storyPage.getTotalPages());
@@ -140,9 +140,10 @@ public class StoryController {
                                      @RequestParam(name = "page", defaultValue = "1") int page,
                                      @RequestParam(name = "limit", defaultValue = "8") int limit
     ) {
-        Optional<Story> storys = storyRepository.findById(storyId);
-        model.addAttribute("story", storys.get());
-        model.addAttribute("chapters", chapterService.getAllChapterByStory(storyId, PageRequest.of(page - 1, limit)));
+//        Optional<Story> story = storyRepository.findById(storyId);
+        Optional<Story> story = storyRepository.findById(storyId);
+        model.addAttribute("story", story.get());
+//        model.addAttribute("chapters", chapterService.getAllChapterByStory(storyId, PageRequest.of(page - 1, limit)));
         Page<Chapter> chapterPage = chapterService.getAllChapterByStory(storyId, PageRequest.of(page - 1, limit));
 //        model.addAttribute("chapters", chapterService.getAllChapterByStory(storyId));
         model.addAttribute("pageChapter", chapterPage.getContent());
@@ -155,18 +156,18 @@ public class StoryController {
 
     // create chapterby storyId
     // create chapter
-    @RequestMapping(value = "/{storyId}/list_chapter/create")
+    @RequestMapping(value = "/{storyId}/chapter/create")
     public String createChapterByStoryId(Model model, @PathVariable("storyId") long storyId) {
         model.addAttribute("storyIdss", storyId);
         model.addAttribute("chapter", new Chapter());
         return "uploadform";
     }
 
-    @RequestMapping(value = "/{storyId}/list_chapter/create", method = RequestMethod.POST)
+    @RequestMapping(value = "/{storyId}/chapter/create", method = RequestMethod.POST)
     public String createChapterByStoryId(@PathVariable("storyId") long storyId,
-                                         @RequestParam(name = "title", required = true) String title,
-                                         @RequestParam(name = "content", required = true) String content,
-                                         @RequestParam(name = "images", required = true) String[] images,
+                                         @RequestParam(name = "title", required = false) String title,
+                                         @RequestParam(name = "content", required = false) String content,
+                                         @RequestParam(name = "images", required = false) String[] images,
                                          Model model
     ) {
         Story story = storyService.findById(storyId);
@@ -178,13 +179,13 @@ public class StoryController {
         chapter.setTitle(title);
         chapter.setContent(content);
         chapter.setCode(1);
-        chapter.setEpisode(1);
-        if (images != null && images.length > 0) {
-            for (int i = 0; i < images.length; i++) {
-                String link = images[i];
-                chapter.addUploadFile(new UploadFile(link));
-            }
-        }
+//        chapter.setEpisode(1);
+//        if (images != null && images.length > 0) {
+//            for (int i = 0; i < images.length; i++) {
+//                String link = images[i];
+//                chapter.addUploadFile(new UploadFile(link));
+//            }
+//        }
         chapterService.createChapterByStoryId(storyId, chapter);
 //        long id = categoryService.create(category);
         return "redirect:/story/{storyId}/list_chapter";
@@ -196,6 +197,9 @@ public class StoryController {
         Optional<Story> story = storyRepository.findById(storyId);
         model.addAttribute("story", story.get());
         model.addAttribute("chapters", chapterService.findByIdAndStoryId(chapterId, storyId));
+
+        Chapter chapter = chapterService.getDetail(chapterId);
+        model.addAttribute("episode", chapter.getEpisode());
         return "story/chapter/detail";
     }
 
@@ -220,6 +224,8 @@ public class StoryController {
         model.addAttribute("category13", category13);
         Category category15 = categoryService.getDetail(15);
         model.addAttribute("category15", category15);
+
+
         return "story/list_new";
     }
 
@@ -265,7 +271,8 @@ public class StoryController {
         model.addAttribute("story", story.get());
         Page<Chapter> chapters = chapterService.getAllChapterByStory(storyId, PageRequest.of(page - 1, limit));
 //        model.addAttribute("chapters", chapterService.getAllChapterByStory(storyId));
-        model.addAttribute("pageChaper", chapters.getPageable().getPageNumber() + 1);
+        model.addAttribute("pageChapter", chapters.getContent());
+        model.addAttribute("currentPage", chapters.getPageable().getPageNumber() + 1);
         model.addAttribute("limit", chapters.getPageable().getPageSize());
         model.addAttribute("totalPage", chapters.getTotalPages());
         return "story/list_chapter";

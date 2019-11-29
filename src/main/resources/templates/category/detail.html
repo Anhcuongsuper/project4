@@ -124,7 +124,7 @@
                     </div>
                 </li>
             </ul>
-            <a th:href="@{/category/2}" class="btn btn-outline-primary btn-sm float-right">
+            <a th:href="@{/category/{categoryId}/list_story(categoryId=${category.id})}" class="btn btn-outline-primary btn-sm float-right">
                 Danh Sách Đầy Đủ
             </a>
         </section>

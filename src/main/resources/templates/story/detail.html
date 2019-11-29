@@ -23265,8 +23265,13 @@
     <div class="row">
         <div class="span12">
             <ul class="breadcrumb">
-                <li class="active"><strong th:text="${story.title}"
-                                           style="font-size: 20px; color:#0e90d2; padding-left: 5px;"></strong></li>
+                <li class="active">
+                    <!--                    <strong th:text="${story.title}"-->
+                    <!--                                           style="font-size: 20px; color:#0e90d2; padding-left: 5px;"></strong>-->
+                </li>
+                <!--                <th:block th:each="i : ${categorySet}">&ndash;&gt;-->
+                <!--                                                <span itemprop="title"><a href="@{/category/{categoryId}(categoryId=${i.id})}" itemprop="url" th:text="${i.name}"></a></span>-->
+                <!--                                            </th:block>-->
             </ul>
             <div>
                 <div class="rightbar hide-s"
@@ -23325,8 +23330,9 @@
                                                target="_blank">${story.director}</a></span>
                             </p>
                             <p>
-                                <span class="xleft">Lượt Đọc:</span>
-                                <span th:text="${story.view}"></span>
+                                <span class="xleft">Lượt Đọc: </span>
+                                <!--                                <span th:text="${story.view}"></span>-->
+                                <span th:text=" 1404"></span>
                             </p>
                             <p>
                                 <span class="xleft">Trạng Thái:</span>
@@ -23362,17 +23368,16 @@
                             &nbsp;<div class="g-plusone" data-size="medium" data-href="index-15.htm"></div>
                             <p style="float: right;"><em>(Nguồn: <span th:text="${story.director}"></span>)</em></p>
                         </div>
-                        <div class="showmore"><a href="javascript:void(0)" class="btn btn-info btn-mini"
-                                                 onclick="$('#desc_story').css('height','auto');$('.showmore').hide()">Xem
-                            thêm »</a></div>
-                        <span style="font-size: 20px;"><em>Danh sách chương truyện mới nhất</em></span>
-                        <ul style="margin: 0 0 10px 0; font-size: 15px; padding: 5px    ">
-                            <th:block th:each="chapter : ${chapters}">
-                                <li class="ip5">
-                                    <a th:href="${'/story/' + {story.id} + '/chapter/' + {chapter.id}}"><i
-                                            th:text="${chapter.title} + ' - ' +             ${chapter.name} "></i></a>
-                                </li>
-                        </ul>
+                        <!--                        <span style="font-size: 20px;"><em>Danh sách chương truyện mới nhất</em></span>-->
+                        <!--                        <ul style="margin: 0 0 10px 0; font-size: 15px; padding: 5px    ">-->
+                        <!--                            <th:block th:each="chapter : ${chapters}">-->
+                        <!--                                <li class="ip5">-->
+                        <!--                                    <a th:href="${'/story/' + {story.id} + '/chapter/' + {chapter.id}}"><i-->
+                        <!--                                            th:text="${chapter.title} + ' - ' +             ${chapter.name} "></i></a>-->
+                        <!--                                </li>-->
+                        <!--                            </th:block>-->
+                        <!--                        </ul>-->
+
                     </div>
                     <div class="clearfix"></div>
                     <hr style="margin: 0; border-bottom: 1px solid #eee;">
@@ -23382,7 +23387,7 @@
                         <div th:each="chapter : ${pageChapter}">
                             <a class="jblack" th:href="${'/story/' + {story.id} + '/chapter/' + {chapter.id}}"
                                target="_blank"><i class="icon-leaf"></i>
-                                <p th:text="${chapter.title} + ' - ' + ${chapter.name}"></p>
+                                <h6 th:text="${chapter.name} + ' - ' +             ${chapter.title} "></h6>
                             </a>
                         </div>
                         </th:block>
@@ -23397,37 +23402,40 @@
                                         class="jblack">Go</span></button>
                             </form>
                             <div class="pagination pagination-centered" th:if="${totalPage > 1}">
-<!--                                <nav aria-label="Page navigation example" th:if="${totalPage > 1}">-->
-                                    <ul class="pagination float-right">
-                                        <!--first-->
-                                        <li class="page-item">
-                                            <a class="page-link"
-                                               th:href="@{/story/{storyId}(page=${1}, limit=${limit},storyId=${story.id})}">First</a>
-                                        </li>
-                                        <!--preview-->
-                                        <li th:if="${currentPage > 1}" class="page-item">
-                                            <a class="page-link" th:href="@{/story/{storyId}(page=${currentPage - 1}, limit=${limit},storyId=${story.id})}">Previous</a>
-                                        </li>
+                                <!--                                <nav aria-label="Page navigation example" th:if="${totalPage > 1}">-->
+                                <ul class="pagination float-right">
+                                    <!--first-->
+                                    <li class="page-item">
+                                        <a class="page-link"
+                                           th:href="@{/story/{storyId}(page=${1}, limit=${limit},storyId=${story.id})}">First</a>
+                                    </li>
+                                    <!--preview-->
+                                    <li th:if="${currentPage > 1}" class="page-item">
+                                        <a class="page-link"
+                                           th:href="@{/story/{storyId}(page=${currentPage - 1}, limit=${limit},storyId=${story.id})}">Previous</a>
+                                    </li>
 
-                                        <li th:if="${currentPage > 1}" class="page-item"><a class="page-link"
-                                                                                            th:href="@{/story/{storyId}(page=${currentPage - 1}, limit=${limit},storyId=${story.id})}">[[${currentPage
-                                            - 1}]]</a></li>
-                                        <li class="page-item active"><a class="page-link" href="#">[[${currentPage}]]</a>
-                                        </li>
-                                        <li th:if="${currentPage < totalPage}" class="page-item">
-                                            <a class="page-link"
-                                               th:href="@{/story/{storyId}(page=${currentPage + 1}, limit=${limit},storyId=${story.id})}">[[${currentPage
+                                    <li th:if="${currentPage > 1}" class="page-item"><a class="page-link"
+                                                                                        th:href="@{/story/{storyId}(page=${currentPage - 1}, limit=${limit},storyId=${story.id})}">[[${currentPage
+                                        - 1}]]</a></li>
+                                    <li class="page-item active"><a class="page-link" href="#">[[${currentPage}]]</a>
+                                    </li>
+                                    <li th:if="${currentPage < totalPage}" class="page-item">
+                                        <a class="page-link"
+                                           th:href="@{/story/{storyId}(page=${currentPage + 1}, limit=${limit},storyId=${story.id})}">[[${currentPage
                                             + 1}]]</a>
-                                        </li>
-<!--                                        next-->
-                                        <li th:if="${currentPage < totalPage}" class="page-item">
-                                            <a class="page-link" th:href="@{/story/{storyId}(page=${currentPage + 1}, limit=${limit},storyId=${story.id})}">Next</a>
-                                        </li>
-<!--                                        last-->
-                                        <li class="page-item">
-                                            <a class="page-link" th:href="@{/story/{storyId}(page=${totalPage}, limit=${limit},storyId=${story.id})}">Last</a>
-                                        </li>
-                                    </ul>
+                                    </li>
+                                    <!--                                        next-->
+                                    <li th:if="${currentPage < totalPage}" class="page-item">
+                                        <a class="page-link"
+                                           th:href="@{/story/{storyId}(page=${currentPage + 1}, limit=${limit},storyId=${story.id})}">Next</a>
+                                    </li>
+                                    <!--                                        last-->
+                                    <li class="page-item">
+                                        <a class="page-link"
+                                           th:href="@{/story/{storyId}(page=${totalPage}, limit=${limit},storyId=${story.id})}">Last</a>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>

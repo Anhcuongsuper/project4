@@ -23,10 +23,10 @@ public class HomeController {
     CategoryService categoryService;
 
 
-    @RequestMapping(value = "/")
-    public String HomePage() {
-        return "Index";
-    }
+//    @RequestMapping(value = "/")
+//    public String HomePage() {
+//        return "Index";
+//    }
 
     @RequestMapping(method = RequestMethod.GET)
     public String home(Model model,

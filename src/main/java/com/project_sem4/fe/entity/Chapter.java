@@ -25,41 +25,49 @@ public class Chapter {
     @JoinColumn(name = "story_id")
     private Story story;
     // chapter-uploadFile
-    @OneToMany(mappedBy = "chapter", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Set<UploadFile> upload_file;
     private int code;
     private int episode;
+    private String name;
     private int status;
     private long createdAt;
     private long updatedAt;
     private long deletedAt;
 
     public Chapter() {
-      this.initial();
-   }
+        this.initial();
+    }
 
     private void initial() {
         this.status = 1;
         this.createdAt = Calendar.getInstance().getTimeInMillis();
-       this.updatedAt = Calendar.getInstance().getTimeInMillis();
-   }
-public enum Status {
-    ACTIVE(1), DEACTIVE(0), DELETED(-1);
-
-    private int value;
-
-    Status(int value) {
-        this.value = value;
+        this.updatedAt = Calendar.getInstance().getTimeInMillis();
     }
 
-    public int getValue() {
-        return value;
+    public enum Status {
+        ACTIVE(1), DEACTIVE(0), DELETED(-1);
+
+        private int value;
+
+        Status(int value) {
+            this.value = value;
+        }
+
+        public int getValue() {
+            return value;
+        }
+
+        public void setValue(int value) {
+            this.value = value;
+        }
     }
 
-    public void setValue(int value) {
-        this.value = value;
+    public String getName() {
+        return name;
     }
-}
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public long getId() {
         return id;
@@ -93,13 +101,6 @@ public enum Status {
         this.story = story;
     }
 
-    public Set<UploadFile> getUpload_file() {
-        return upload_file;
-    }
-
-    public void setUpload_file(Set<UploadFile> upload_file) {
-        this.upload_file = upload_file;
-    }
 
     public int getCode() {
         return code;
@@ -149,11 +150,11 @@ public enum Status {
         this.deletedAt = deletedAt;
     }
 
-    public void addUploadFile(UploadFile uploadFile) {
-        if (this.upload_file == null) {
-            this.upload_file = new HashSet<>();
-        }
-        this.upload_file.add(uploadFile);
-        uploadFile.setChapter(this);
-    }
+//    public void addUploadFile(UploadFile uploadFile) {
+//        if (this.upload_file == null) {
+//            this.upload_file = new HashSet<>();
+//        }
+//        this.upload_file.add(uploadFile);
+//        uploadFile.setChapter(this);
+//    }
 }

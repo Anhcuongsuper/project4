@@ -89,4 +89,12 @@ public class ChapterService {
         chapter.setStory(story);
         return chapterRepository.findById(chapterId).orElse(null);
     }
+
+    public Chapter findByEpisodeAndStoryId(long storyId, int episode, long chapterId) {
+        Story story = storyService.findById(storyId);
+        Chapter chapter = getDetail(chapterId);
+        chapter.setStory(story);
+        return chapterRepository.findByEpisodeAndStoryId(episode, storyId).orElse(null);
+    }
+
 }

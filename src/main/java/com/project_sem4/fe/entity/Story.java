@@ -39,6 +39,7 @@ public class Story {
     private String tags;
     private int code;
     private int view;
+    private int author_id;
     private int rate;
 
     @ManyToMany(fetch = FetchType.LAZY)
@@ -57,6 +58,7 @@ public class Story {
     public Story() {
 
     }
+
     public enum Status {
 
         ACTIVE(1), DEACTIVE(0), DELETED(-1);
@@ -74,6 +76,14 @@ public class Story {
         public void setValue(int value) {
             this.value = value;
         }
+    }
+
+    public int getAuthor_id() {
+        return author_id;
+    }
+
+    public void setAuthor_id(int author_id) {
+        this.author_id = author_id;
     }
 
     public Account getAccount() {

@@ -40,9 +40,10 @@
                              sizes="auto" data-was-processed="true">
                     </a>
                     <div class="flex-primary">
-                        <h3 th:text="${storyItem.actor}" class="book-title">
-                            <a href="/truyen/sieu-cap-than-y-tai-do-thi-truy-thu-bang-dich/"></a>
+                        <a th:href="@{/story/{storyId}(storyId=${storyItem.id})}">
+                        <h3 th:text="${storyItem.title}" class="book-title">
                         </h3>
+                        </a>
                         <div class="book-desc line-clamp line-clamp-2" th:text="${storyItem.description}"></div>
                         <div class="small">
                             <a href="/tac-gia/lam-phong-2/" class="book-author mr-auto" target="_blank"><i

@@ -95,8 +95,6 @@
     </div>
 </div>
 
-
-
 <div class="container">
     <div class="row">
         <div class="span12">
@@ -136,19 +134,20 @@
             <div class="container-fluid chap_content">
                 <div id="noidungtruyen">
                     <h1 th:text="${chapters.title}" style="text-align: center;text-transform: uppercase;"></h1>
-                    <h1 th:text="${chapters.name}" style="text-align: center;text-transform: uppercase;"></h1>
+<!--                    <h1 th:text="${chapters.name}" style="text-align: center;text-transform: uppercase;"></h1>-->
                     <hr class="start-chap">
                     <div class="text-truyen" id="id_noidung_chuong" style="margin:50px;">
-                        <p th:text="${chapters.title}"></p>
+<!--                        <p th:text="${chapters.title}"></p>-->
                         <p th:text="${chapters.content}"></p>
                     </div>
                 </div>
             </div>
+            <h2 th:text="${episode}"></h2>
             <div>
                 <div style="width:300px;float: left;margin: 25px 0 0 35px;">
                 </div>
                 <div class="chapfoot" style="float:left;">
-                    <h2 th:text="${storyService.title}"></h2>
+                    <h2 th:text="${story.title}"></h2>
                     <hr class="end-chap">
 
                     <div style="width: 220px;margin: auto;text-align:center;">
@@ -157,12 +156,13 @@
                         <div class="g-plusone" data-size="medium" data-href="#"></div>
                     </div>
                     <div class="mobi-chuyentrang">
-                        <a href="#" class="btn btn-small btn-warning">
+
+                        <a th:href="@{/story/{storyId}/chapter/{chapterId}(storyId=${story.id}, chapterId=${chapters.id-1})}" class="btn btn-small btn-warning">
                             <i class="icon-arrow-left icon-white"></i> Trước
                         </a>
                         <a data-toggle="modal" href="#chap_jump" class="btn btn-small btn-warning"><i class="icon-move icon-white"></i></a>
-                        <a href="#" class="btn btn-small btn-warning">
-                            <i class="icon-arrow-right icon-white"></i> Sau
+                        <a th:href="@{/story/{storyId}/chapter/{chapterId}(storyId=${story.id}, chapterId=${chapters.id+1})}" class="btn btn-small btn-warning">
+                            <i class="icon-arrow-left icon-white"></i> Sau
                         </a>
                     </div>
                 </div>
