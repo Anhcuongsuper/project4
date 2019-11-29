@@ -14,6 +14,6 @@ import java.util.Optional;
 public interface ChapterRepository extends JpaRepository<Chapter, Long> {
         Optional<Chapter> findById(long chapId);
         Optional<Chapter> findByIdAndStoryId(long chapId, long storyId);
-       Page<Chapter> findAllByStoryIdOrderByIdDesc(long storyId, Pageable pageable);
+        Page<Chapter> findAllByStoryIdOrderByIdDesc(long storyId, Pageable pageable);
 
 }

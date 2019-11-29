@@ -161,12 +161,12 @@
 </div>
 <div class="yy-subnav-overlay"></div>
 <main class="content">
-    <form method="get" action="/category/search">
+    <form method="get" action="/category/list">
         <div class="weui-search-bar " id="search_bar">
             <div class="weui-search-bar__form">
                 <div class="weui-search-bar__box">
                     <i class="weui-icon-search"></i>
-                    <input type="search" name="q" class="weui-search-bar__input" id="search_input"
+                    <input type="search"  th:value="${keyword}" name="keyword" class="weui-search-bar__input" id="search_input"
                            placeholder="Gõ tên truyện, tác giả..." required="" autofocus="autofocus">
                     <a class="weui-icon-clear" id="searchClear"></a>
                 </div>

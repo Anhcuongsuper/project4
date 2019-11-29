@@ -18,7 +18,7 @@ import org.springframework.security.web.authentication.AuthenticationFailureHand
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
-    PasswordEncoder passwordEncoder(){
+    PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
@@ -29,7 +29,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
-    AuthenticationFailureHandler authenticationFailureHandler(){
+    AuthenticationFailureHandler authenticationFailureHandler() {
 
         return new MyAuthenticationFailureHandler();
     }
@@ -38,13 +38,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService()).passwordEncoder(passwordEncoder());
     }
+
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
                 .authorizeRequests()
-                .antMatchers("/list*").hasAnyRole(String.format("%s",Account.Role.ADMIN.getValue()))
-                .antMatchers("/category/create*").hasAnyRole(String.format("%s",Account.Role.ADMIN.getValue()))
-                .antMatchers("/story/create*").hasAnyRole(String.format("%s",Account.Role.USER.getValue()))
+                .antMatchers("/list*").hasAnyRole(String.format("%s", Account.Role.ADMIN.getValue()))
+                .antMatchers("/category/create*").hasAnyRole(String.format("%s", Account.Role.USER.getValue()))
+                .antMatchers("/story/create*").hasAnyRole(String.format("%s", Account.Role.USER.getValue()))
+                .antMatchers("/story/create*").hasAnyRole(String.format("%s", Account.Role.USER.getValue()))
                 .and()
                 .formLogin()
                 .loginPage("/login")

@@ -3,6 +3,10 @@ package com.project_sem4.fe.entity;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import java.util.Calendar;
+
 @Entity
 @Table(name = "upload_file")
 public class UploadFile {
@@ -25,6 +29,17 @@ public class UploadFile {
 
     public UploadFile() {
 
+    }
+
+    public UploadFile(String link) {
+        this.link = link;
+        this.initial();
+    }
+
+    private void initial() {
+        this.createdAt = Calendar.getInstance().getTimeInMillis();
+        this.updatedAt = Calendar.getInstance().getTimeInMillis();
+        this.status = 1;
     }
 
     public Long getId() {

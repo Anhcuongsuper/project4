@@ -1,10 +1,13 @@
 package com.project_sem4.fe.service;
 
 import com.project_sem4.fe.entity.Category;
+import com.project_sem4.fe.entity.Story;
 import com.project_sem4.fe.reponsitory.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.Calendar;
@@ -33,8 +36,8 @@ public class CategoryService {
 
     public Category register(Category category) {
         category.setCreatedAt(Calendar.getInstance().getTimeInMillis());
-        category.setUpdatedAt(Calendar.getInstance().getTimeInMillis());
-        category.setStatus(1);
+            category.setUpdatedAt(Calendar.getInstance().getTimeInMillis());
+            category.setStatus(1);
         return categoryRepository.save(category);
     }
 
@@ -59,10 +62,13 @@ public class CategoryService {
         categoryRepository.delete(existCategory);
         return true;
     }
+
     public List<Category> search(String name) {
         return categoryRepository.findByName(name);
     }
-    public Page<Category> getAllByCode(int code, int page, int limit){
-        return categoryRepository.findAllByCode(code,PageRequest.of(page - 1, limit));
+
+    public Page<Category> getAllByCode(int code, int page, int limit) {
+        return categoryRepository.findAllByCode(code, PageRequest.of(page - 1, limit));
     }
+
 }

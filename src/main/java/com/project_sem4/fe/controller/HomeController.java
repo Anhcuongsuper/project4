@@ -19,15 +19,21 @@ import java.util.Set;
 public class HomeController {
     @Autowired
     StoryService storyService;
-@Autowired
-CategoryService categoryService;
+    @Autowired
+    CategoryService categoryService;
 
 
-    @RequestMapping(method = RequestMethod.GET, value = "/")
+    @RequestMapping(value = "/")
+    public String HomePage() {
+        return "Index";
+    }
+
+    @RequestMapping(method = RequestMethod.GET)
     public String home(Model model,
                        @RequestParam(name = "page", required = false, defaultValue = "1") int page,
                        @RequestParam(name = "limit", required = false, defaultValue = "10") int limit
     ) {
+        model.addAttribute("pageStory", storyService.getPage(1, 10));
         model.addAttribute("listStoryNew", storyService.getListCreatedAtIndex(1, 10));
         model.addAttribute("listStory", storyService.getAllStory(1, 8));
         model.addAttribute("listCategory", categoryService.getAllCategory());
@@ -60,6 +66,7 @@ CategoryService categoryService;
 
         return "rules";
     }
+
     @RequestMapping(method = RequestMethod.GET, value = "/contact")
     public String contact() {
 

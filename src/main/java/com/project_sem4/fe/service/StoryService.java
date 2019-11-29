@@ -35,7 +35,6 @@ public class StoryService {
 
     // page
     public Page<Story> getPage(int page, int limit) {
-
         return storyRepository.findAll(PageRequest.of(page - 1, limit));
     }
 
@@ -56,7 +55,7 @@ public class StoryService {
         story.setCreatedAt(Calendar.getInstance().getTimeInMillis());
         story.setUpdatedAt(Calendar.getInstance().getTimeInMillis());
         story.setDeletedAt(0);
-        story.setStatus(1);
+        story.setStatus(-1);
         return storyRepository.save(story);
     }
 

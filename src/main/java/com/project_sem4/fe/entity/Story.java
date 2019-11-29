@@ -50,20 +50,38 @@ public class Story {
     @OneToMany(mappedBy = "story", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Chapter> chapters;
 
-    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
-    @JoinColumn(name = "author_id")
-    private Author author;
+    @ManyToOne
+    @JoinColumn(name = "account_id", referencedColumnName = "account_id", nullable = false)
+    private Account account;
 
     public Story() {
 
     }
+    public enum Status {
 
-    public Author getAuthor() {
-        return author;
+        ACTIVE(1), DEACTIVE(0), DELETED(-1);
+
+        private int value;
+
+        Status(int value) {
+            this.value = value;
+        }
+
+        public int getValue() {
+            return value;
+        }
+
+        public void setValue(int value) {
+            this.value = value;
+        }
     }
 
-    public void setAuthor(Author author) {
-        this.author = author;
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
     }
 
     public Long getId() {

@@ -8,6 +8,7 @@ import com.project_sem4.fe.reponsitory.StoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.Calendar;
@@ -29,10 +30,10 @@ public class ChapterService {
     PageModel pageModel;
 
 
-    public Page<Chapter> getAllChapterByStory(long storyId) {
-        pageModel.setSIZE(8);
-        pageModel.initPageAndSize();
-        return chapterRepository.findAllByStoryIdOrderByIdDesc(storyId, PageRequest.of(pageModel.getPAGE(), pageModel.getSIZE()));
+    public Page<Chapter> getAllChapterByStory(long storyId, Pageable pageable) {
+//        pageModel.setSIZE(8);
+//        pageModel.initPageAndSize();
+        return chapterRepository.findAllByStoryIdOrderByIdDesc(storyId, pageable);
     }
 
     public List<Chapter> getAllChapter() {

@@ -1,105 +1,208 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Thêm truyện cùng TruyệnYY</title>
-    <link th:href="@{../css/bootstrap.min.css}" rel="stylesheet">
-    <link th:href="@{../css/bootstrap.min.css}" rel="stylesheet">
-    <link th:href="@{../css/bootstrap-responsive.css}" rel="stylesheet">
-    <link th:href="@{../css/custom-checkbox-radio.css}" rel="stylesheet">
-    <link th:href="@{../css/yamm.css}" rel="stylesheet">
-    <link th:href="@{../css/style.css}" rel="stylesheet">
-    <link th:href="@{../css/chosen.css}" rel="stylesheet">
-    <link rel="icon" type="image/png" th:href="@{../img/favicon.png}"/>
-    <link href="https://plus.google.com/103281900225927837176/" rel="author">
-    <script th:src="@{../js/jquery-1.12.4.js}"></script>
-    <script th:src="@{../js/chosen.jquery.js}"></script>
-    <script th:src="@{../js/bootstrap.min.js}"></script>
-    <script type="text/javascript" th:src="@{../js/csrf.js}"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretty-checkbox@3.0/dist/pretty-checkbox.min.css
-">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-    <style>
-        body {
-            margin-left: 100px;
-            padding-top: 60px;
-            padding-bottom: 40px;
-            height: auto;
-        }
-        .margin-label{
-            margin-left: 20px;
-            font-size: 15px;
-            font-weight: bold;}
-    </style>
+<meta charset="UTF-8">
+<title>Thêm truyện cùng TruyệnYY</title>
+<link th:href="@{../css/desktop-base.11d940c6.css}" rel="stylesheet">
 </head>
+
+<style>
+    body {
+        margin-left: 100px;
+        padding-bottom: 40px;
+        height: auto;
+    }
+
+    .margin-label {
+        margin-left: 20px;
+        font-size: 15px;
+        font-weight: bold;
+    }
+
+    .toggle {
+        --uiToggleSize: var(--toggleSize, 20px);
+        --uiToggleIndent: var(--toggleIndent, 1.4em);
+        --uiToggleBorderWidth: var(--toggleBorderWidth, 2px);
+        --uiToggleColor: var(--toggleColor, #d3b1b1);
+        --uiToggleDisabledColor: var(--toggleDisabledColor, #868e96);
+        --uiToggleBgColor: var(--toggleBgColor, #fff);
+        --uiToggleArrowWidth: var(--toggleArrowWidth, 2px);
+        --uiToggleArrowColor: var(--toggleArrowColor, #fff);
+
+        display: inline-block;
+        position: relative;
+    }
+
+    .toggle__input {
+        position: absolute;
+        left: -99999px;
+    }
+
+    .toggle__label {
+        display: inline-flex;
+        cursor: pointer;
+        min-height: var(--uiToggleSize);
+        padding-left: calc(var(--uiToggleSize) + var(--uiToggleIndent));
+    }
+
+    .toggle__label:before, .toggle__label:after {
+        content: "";
+        box-sizing: border-box;
+        width: 1em;
+        height: 1em;
+        font-size: var(--uiToggleSize);
+
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+
+    .toggle__label:before {
+        border: var(--uiToggleBorderWidth) solid var(--uiToggleColor);
+        z-index: 2;
+    }
+
+    .toggle__input:disabled ~ .toggle__label:before {
+        border-color: var(--uiToggleDisabledColor);
+    }
+
+    .toggle__input:focus ~ .toggle__label:before {
+        box-shadow: 0 0 0 2px var(--uiToggleBgColor), 0 0 0px 4px var(--uiToggleColor);
+    }
+
+    .toggle__input:not(:disabled):checked:focus ~ .toggle__label:after {
+        box-shadow: 0 0 0 2px var(--uiToggleBgColor), 0 0 0px 4px var(--uiToggleColor);
+    }
+
+    .toggle__input:not(:disabled) ~ .toggle__label:after {
+        background-color: var(--uiToggleColor);
+        opacity: 0;
+    }
+
+    .toggle__input:not(:disabled):checked ~ .toggle__label:after {
+        opacity: 1;
+    }
+
+    .toggle__text {
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+
+    /*
+    The arrow size and position depends from sizes of square because I needed an arrow correct positioning from the top left corner of the element toggle
+    */
+
+    .toggle__text:before {
+        content: "";
+        box-sizing: border-box;
+        width: 0;
+        height: 0;
+        font-size: var(--uiToggleSize);
+
+        border-left-width: 0;
+        border-bottom-width: 0;
+        border-left-style: solid;
+        border-bottom-style: solid;
+        border-color: var(--uiToggleArrowColor);
+
+        position: absolute;
+        top: .5428em;
+        left: .2em;
+        z-index: 3;
+
+        transform-origin: left top;
+        transform: rotate(-40deg) skew(10deg);
+    }
+
+    .toggle__input:not(:disabled):checked ~ .toggle__label .toggle__text:before {
+        width: .5em;
+        height: .25em;
+        border-left-width: var(--uiToggleArrowWidth);
+        border-bottom-width: var(--uiToggleArrowWidth);
+        will-change: width, height;
+        transition: width .1s ease-out .2s, height .2s ease-out;
+    }
+</style>
 <body>
-<h3>Thông tin truyện mà bạn muốn thêm</h3>
+<div th:replace="fragments/app-index ::top"></div>
+<div th:replace="fragments/app-index ::menu"></div>
+<h3 style="padding: 30px">Thông tin truyện mà bạn muốn thêm</h3>
 <form th:action="@{/story/create}" method="post" th:object="${storyCreate}">
-    <div class="form-group row" >
+    <input type="hidden" th:field="*{id}">
+    <div class="form-group row">
         <label for="storyTitle" class="col-sm-2 col-form-label margin-label margin-label">Tên truyện</label>
         <div class="col-sm-10" style="padding-left: 20px ">
-            <input  type="text" class="form-control-plaintext" id="storyTitle" th:field="*{title}" placeholder="Mời nhập tên truyện">
+            <input type="text" class="form-control" id="storyTitle" th:field="*{title}"
+                   placeholder="Mời nhập tên truyện">
             <span class="error" th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Title
             Error</span>
         </div>
 
-
-        <label for="storyDescription" class="col-sm-2 col-form-label margin-label" >Giới thiệu</label>
+        <label for="storyDescription" class="col-sm-2 col-form-label margin-label">Giới thiệu</label>
         <div class="col-sm-10" style="padding-left: 20px ">
-                <textarea rows="5" cols="20" class="form-control-plaintext" id="storyDescription" placeholder="Giới thiệu truyện" th:field="*{description}"
+                <textarea rows="5" cols="20" class="form-control" id="storyDescription"
+                          placeholder="Giới thiệu truyện" th:field="*{description}"
                           type="text"></textarea>
             <span class="error" th:if="${#fields.hasErrors('description')}" th:errors="*{description}">Description
                 Error</span>
         </div>
 
-
-
-        <label for="storyTitle" class="col-sm-2 col-form-label margin-label">Diễn viên</label>
+        <label for="storyActor" class="col-sm-2 col-form-label margin-label">Nhân vật</label>
         <div class="col-sm-10" style="padding-left: 20px">
-            <input  type="text" class="form-control-plaintext" id="storyTitle" th:field="*{actor}" placeholder="Mời nhập tên truyện">
+            <input type="text" class="form-control" id="storyActor" th:field="*{actor}"
+                   placeholder="Mời nhập tên truyện">
             <span class="error" th:if="${#fields.hasErrors('actor')}" th:errors="*{actor}">
             Error</span>
         </div>
 
 
-
         <label for="storyDirector" class="col-sm-2 col-form-label margin-label">Tác giả</label>
         <div class="col-sm-10" style="padding-left: 20px">
-            <input type="text" class="form-control-plaintext" id="storyDirector" th:field="*{director}" placeholder="Tác giả">
+            <input type="text" class="form-control" id="storyDirector" th:field="*{director}"
+                   placeholder="Tác giả">
             <span class="error" th:if="${#fields.hasErrors('director')}" th:errors="*{director}">Director
                 Error</span>
         </div>
 
-        <label for="storyDirector" class="col-sm-2 col-form-label margin-label" >The loai</label>
-        <div  th:each="category : ${categories}" class="custom-control">
-                <input id="" class="form-group" type="checkbox" th:field="*{categories}"
-                       th:value="${category.id}"/>
-            <label class="custom-control-label" th:text="${category.name}"></label>
+        <label for="storyDirector" class="col-sm-2 col-form-label margin-label">Thể loại</label>
+        <div class="form-row">
+            <div class="page__toggle form-group col-md-4" th:each="category : ${categories}" th:field="*{categories}"
+                 th:value="${category.id}">
+                <label class="toggle">
+                    <input class="toggle__input form-group" type="checkbox">
+                    <span class="toggle__label">
+                <span th:text="${category.name}" class="toggle__text"></span>
+            </span>
+                </label>
                 <span class="error" th:if="${#fields.hasErrors('director')}" th:errors="*{director}">Director
                 Error</span>
+            </div>
         </div>
 
 
-        <label for="storyDirector" class="col-sm-2 col-form-label margin-label" >Avatar</label>
+
+        <label for="storyDirector" class="col-sm-2 col-form-label margin-label">Avatar</label>
         <div class="col-sm-10" style="padding-left: 20px">
-            <input type="text" class="form-control-plaintext" id="storyThubnail" th:field="*{thubnail_file}" placeholder="Link ảnh đại diện">
+            <input type="text" class="form-control" id="storyThubnail" th:field="*{thubnail_file}"
+                   placeholder="Link ảnh đại diện">
             <span class="error" th:if="${#fields.hasErrors('thubnail_file')}" th:errors="*{thubnail_file}">Director
                     Error</span>
         </div>
 
 
-        <label for="storyDirector" class="col-sm-2 col-form-label margin-label" >Tag</label>
+        <label for="storyDirector" class="col-sm-2 col-form-label margin-label">Tag</label>
         <div class="col-sm-10" style="padding-left: 20px">
-            <input type="text" class="form-control-plaintext" id="tag" th:field="*{tags}" placeholder="Tags">
+            <input type="text" class="form-control" id="tag" th:field="*{tags}" placeholder="Tags">
             <span class="error" th:if="${#fields.hasErrors('tags')}" th:errors="*{tags}">Tags
                 Error</span>
         </div>
+        <input type="hidden" class="form-control" id="account" th:field="*{account}" placeholder="account">
     </div>
     <div style="margin-top: 10px;">
         <input class="btn btn-success" type="submit" value="Thêm truyện"/>
+        <input class="btn btn-danger" type="reset" value="Thêm truyện"/>
     </div>
 </form>
-
+<a style="margin: 10px 0px 0px 30px;" th:href="@{/}" class="btn btn-primary">Về trang chủ</a>
+<div th:replace="fragments/app-index ::footer"></div>
 </body>
 </html>

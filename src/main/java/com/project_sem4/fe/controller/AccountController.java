@@ -1,4 +1,5 @@
 package com.project_sem4.fe.controller;
+
 import com.project_sem4.fe.entity.Account;
 import com.project_sem4.fe.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
 import javax.validation.Valid;
 
 @Controller
@@ -23,11 +25,12 @@ public class AccountController {
 
     @RequestMapping(method = RequestMethod.GET, value = "/login")
     public String showLoginPage(@Valid Account account, BindingResult bindingResult) {
-        if(bindingResult.hasErrors()){
+        if (bindingResult.hasErrors()) {
             return "login";
         }
-        return "index";
+        return "successLg";
     }
+
     @RequestMapping(method = RequestMethod.GET, value = "/create")
     public String createAccount(Model model) {
         model.addAttribute("account", new Account());
@@ -35,20 +38,32 @@ public class AccountController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/create")
-    public String storeAccount(@Valid Account account, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            return "register";
+    public String storeAccount(@Valid Account account, BindingResult bindingResult, Model model) {
+        if (accountService.findByEmail(account.getEmail()).isPresent()) {
+            bindingResult
+                    .rejectValue("email", "error.account",
+                            "There is already a user registered with the email provided");
         }
-        accountService.register(account);
-        return "index";
+        if (accountService.findByFullname(account.getFullname()).isPresent()) {
+            bindingResult
+                    .rejectValue("fullname", "error.account",
+                            "There is already a user registered with the username provided");
+        }
+
+        if (!bindingResult.hasErrors()) {
+            accountService.register(account);
+            model.addAttribute("successMessage", "User has been registered successfully");
+            model.addAttribute("account", new Account());
+        }
+        return "success";
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/{email}")
-    public ResponseEntity<Account>detail(@PathVariable String email){
+    public ResponseEntity<Account> detail(@PathVariable String email) {
         Account account = accountService.getByEmail(email);
-        if (account == null){
+        if (account == null) {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
-        }else {
+        } else {
             return new ResponseEntity<>(account, HttpStatus.OK);
         }
     }

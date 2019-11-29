@@ -2,83 +2,50 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Thêm chương truyện</title>
-    <link th:href="@{../css/bootstrap.min.css}" rel="stylesheet">
-    <link th:href="@{../css/bootstrap.min.css}" rel="stylesheet">
-    <link th:href="@{../css/bootstrap-responsive.css}" rel="stylesheet">
-    <link th:href="@{../css/yamm.css}" rel="stylesheet">
-    <link th:href="@{../css/style.css}" rel="stylesheet">
-    <link th:href="@{../css/chosen.css}" rel="stylesheet">
-    <link rel="icon" type="image/png" th:href="@{../img/favicon.png}"/>
-    <link href="https://plus.google.com/103281900225927837176/" rel="author">
-    <script th:src="@{../js/jquery-1.12.4.js}"></script>
-    <script th:src="@{../js/chosen.jquery.js}"></script>
-    <script th:src="@{../js/bootstrap.min.js}"></script>
-    <script type="text/javascript" th:src="@{../js/csrf.js}"></script>
+    <link th:href="@{../css/desktop-base.11d940c6.css}" rel="stylesheet">
     <style>
         body {
             margin-left: 100px;
-            padding-top: 60px;
             padding-bottom: 40px;
             height: auto;
         }
     </style>
 </head>
 <body>
-<h1>Thông tin chương truyện</h1>
-    <form th:object="${createChapter}" th:action="@{/chapter/create}"
-      th:method="post">
-<!--        th:action="@{/story/{storyId}/list_chapter/add(storyId=${storyIdss}-->
-    <div class="form-group row">
-                <label for="chapterTitle" class="col-sm-2 col-form-label">Tiêu đề chương</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control-plaintext" id="chapterTitle" th:field="*{title}" placeholder="Mời nhập tên chương">
-                    <span class="error" th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Title
-                    Error</span>
-                </div>
-                    <label for="chapterContent" class="col-sm-2 col-form-label">Tên chương</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control-plaintext" id="chapterContent" th:field="*{name}" placeholder="Mời nhập tên chương">
-                        <span class="error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Title
-                    Error</span>
-                    </div>
+<div th:replace="fragments/app-index ::top-page"></div>
+<div th:replace="fragments/app-index ::menu-page"></div>
 
-                        <label for="chapterContent" class="col-sm-2 col-form-label">Nội dung chương</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control-plaintext" id="chapterContent" th:field="*{content}" placeholder="Mời nhập tên chương">
-                            <span class="error" th:if="${#fields.hasErrors('content')}" th:errors="*{content}">Title
+
+<h1>Thông tin chương truyện</h1>
+<form th:object="${createChapter}" th:action="@{/chapter/create}"
+      th:method="post">
+    <!--        th:action="@{/story/{storyId}/list_chapter/add(storyId=${storyIdss}-->
+    <div class="form-group row">
+        <label for="chapterTitle" class="col-sm-3 col-form-label">Tiêu đề chương</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="chapterTitle" th:field="*{title}" placeholder="Mời nhập tên chương">
+            <span class="error" th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Title
+                                Error</span>
+        </div>
+        <label for="chapterContent" class="col-sm-3 col-form-label">Nội dung chương</label>
+        <div class="col-sm-10">
+                            <textarea rows="15" cols="1140" type="text" class="form-control" id="chapterContent" th:field="*{content}" placeholder="Mời nhập tên chương">
+                            </textarea>
+            <span class="error" th:if="${#fields.hasErrors('content')}" th:errors="*{content}">Title
                                     Error</span>
-                        </div>
-                    <label for="storyDirector" class="col-sm-2 col-form-label">Chọn truyện theo chương</label>
-                    <div class="col-sm-10">
-                        <select  type="text" class="form-control-plaintext" id="storyDirector" th:field="*{story}"    placeholder="The loai">
-                            <option th:each="i : ${listStory}"th:value="${i.id}"   th:text="${i.title}"></option>
-                        </select>
-                    </div>
-                <div>
-                    <input class="btn-danger" type="submit" value="Thêm chương"/>
-                </div>
+        </div>
+        <label for="storyDirector" class="col-sm-3 col-form-label">Chọn truyện theo chương</label>
+        <div class="col-sm-10">
+            <select  type="text" class="form-control" id="storyDirector" th:field="*{story}"    placeholder="The loai">
+                <option th:each="i : ${listStory}"th:value="${i.id}"   th:text="${i.title}"></option>
+            </select>
+        </div>
+        <div class="col-sm-4" style="margin-top: 20px">
+            <input class="btn btn-success" type="submit" value="Thêm chương"/>
+        </div>
     </div>
 </form>
-<!--<div class="card" xmlns:th="http://www.w3.org/1999/xhtml">-->
-<!--    <div class="content">-->
-<!--        <form th:object="${chapter}" th:action="@{/story/{storyId}/list_chapter/add(storyId=${storyIdss})}"-->
-<!--              th:method="post">-->
-<!--            <div class="form-group">-->
-<!--                <input type="hidden" class="form-control" th:field="*{id}"/>-->
-<!--            </div>-->
-<!--            <div class="form-group">-->
-<!--                <label for="title">Title </label>-->
-<!--                <input type="text" class="form-control" id="title" aria-describedby="title" th:field="*{title}"-->
-<!--                       playeholder="Title">-->
-<!--            </div>-->
-<!--            <div class="form-group">-->
-<!--                <label for="author">Content</label>-->
-<!--                <input type="text" class="form-control" id="author" aria-describedby="author" th:field="*{content}"-->
-<!--                       playeholder="Content"/>-->
-<!--            </div>-->
-<!--            <button type="submit" class="btn btn-primary">Save</button>-->
-<!--        </form>-->
-<!--    </div>-->
-<!--</div>-->
+<a th:href="@{/}" class="btn btn-primary">Về trang chủ</a>
+<div th:replace="fragments/app-index ::footer"></div>
 </body>
 </html>

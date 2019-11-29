@@ -19,48 +19,57 @@ public class AccountService {
     @Autowired
     PasswordEncoder passwordEncoder;
 
-    public Account getDetail(String email){
-        return accountRepository.findById(email).orElse(null);
+    public Account getDetail(String email) {
+        return accountRepository.findByEmail(email).orElse(null);
     }
 
-    public Account register(Account account){
+    public Account register(Account account) {
         account.setPassword(passwordEncoder.encode(account.getPassword()));
         account.setRole("user");
         return accountRepository.save(account);
     }
 
-    public Account login(String email, String password){
+    public Account login(String email, String password) {
         // find user
-        Optional<Account> optionalAccoun = accountRepository.findById(email);
-        if (optionalAccoun.isPresent()){
+        Optional<Account> optionalAccount = accountRepository.findByEmail(email);
+        if (optionalAccount.isPresent()) {
             // so sanh pass co kem ma hoa
-            Account account = optionalAccoun.get();
-            if (account.getPassword().equals(password)){
+            Account account = optionalAccount.get();
+            if (account.getPassword().equals(password)) {
                 return account;
             }
         }
         return null;
     }
 
-    public Account update(String email, Account updateAccount){
+    public Account update(String email, Account updateAccount) {
         // tim tai khoan xem co ton tai
-        Optional<Account> optionalAccount = accountRepository.findById(email);
-        if (optionalAccount.isPresent()){
-                Account existAccount = optionalAccount.get();
-                existAccount.setFullname(updateAccount.getFullname());
-                existAccount.setAddress(updateAccount.getAddress());
-                return  accountRepository.save(updateAccount);
+        Optional<Account> optionalAccount = accountRepository.findByEmail(email);
+        if (optionalAccount.isPresent()) {
+            Account existAccount = optionalAccount.get();
+            existAccount.setFullname(updateAccount.getFullname());
+            existAccount.setAddress(updateAccount.getAddress());
+            return accountRepository.save(updateAccount);
         }
         return null;
 
     }
+
     public Account getByEmail(String email) {
 
-        return accountRepository.findById(email).orElse(null);
+        return accountRepository.findByEmail(email).orElse(null);
     }
 
-    public Page<Account> getList(int page, int limit){
-        return   accountRepository.findAll(PageRequest.of(page -1, limit));
+    public Optional<Account> findByEmail(String email) {
+        return accountRepository.findByEmail(email);
+    }
+
+    public Optional<Account> findByFullname(String fullname) {
+        return accountRepository.findByFullname(fullname);
+    }
+
+    public Page<Account> getList(int page, int limit) {
+        return accountRepository.findAll(PageRequest.of(page - 1, limit));
 
     }
 }

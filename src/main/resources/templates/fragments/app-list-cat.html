@@ -1,0 +1,231 @@
+<div th:fragment="list-good-container">
+    <div class="novel-list mt-4">
+        <div class="sidebar-col mr-4">
+            <div class="nav flex-column nav-pills nav-tables" aria-orientation="vertical" id="sidebar_nav" style="z-index: 999;">
+                <a class="nav-link active" th:href="@{/story/story_new}">Truyện Mới Cập Nhật</a>
+                <a class="nav-link " th:href="@{/category/2}">
+                    <span class="mr-1">Kiếm hiệp tuyển chọn</span>
+                    <img data-src="https://yycdn.truyenyy.com/static/svg/quality.svg" alt="" width="24" height="24" class="lazy align-middle loaded" src="https://yycdn.truyenyy.com/static/svg/quality.svg" data-was-processed="true">
+                </a>
+                <a class="nav-link " th:href="@{/category/4}">Truyện Ngôn Tình</a>
+                <a class="nav-link " th:href="@{/category/6}">Có Thể Bạn Muốn Đọc</a>
+            </div>
+            <div>
+            </div>
+        </div>
+        <div class="main-col mr-0">
+            <section class="section-grid">
+                <ul class="books-list list-unstyled large-items">
+                    <li class="with-border" th:each="storyItem : ${listStoryGood}">
+                        <a style="margin-top: 25px" th:href="@{'/story/' + ${storyItem.id}}" class="book-img position-relative" aria-label="Đi đến truyện Siêu Cấp Thần Y Tại Đô Thị (Dịch)">
+                            <img th:src="${storyItem.thubnail_file}" width="100" height="140" class="lazy zoom-me loaded" sizes="auto"  data-was-processed="true">
+                        </a>
+                        <div class="flex-primary">
+                            <h3 th:text="${storyItem.actor}" class="book-title">
+                                <a href="/truyen/sieu-cap-than-y-tai-do-thi-truy-thu-bang-dich/"></a>
+                            </h3>
+                            <div class="book-desc line-clamp line-clamp-2" th:text="${storyItem.description}"></div>
+                            <div class="small">
+                                <a href="/tac-gia/lam-phong-2/"  class="book-author mr-auto" target="_blank"><i th:text="${storyItem.director}" class="iconfont iconwrite  icon18"></i></a>
+                            </div>
+                            <ul class="tag-list tag-small list-unstyled mt-2">
+                                <li th:each="i : ${category1}" class="tag red">
+                                    <a th:text="${i.name}" th:href="@{/category/1}"></a></li>
+                                <li  th:each="i : ${category11}" class="tag red"><a th:text="${i.name}" th:href="@{/category/11}" th:title="${i.name}"></a></li>
+                                <li  th:each="i : ${category12}" class="tag green"><a th:text="${i.name}" th:href="@{/category/12}" th:title="${i.name}"></a></li>
+                                <li   th:each="i : ${category13}" class="tag green"><a th:text="${i.name}" th:href="@{/category/13}" th:title="${i.name}"></a></li>
+                            </ul>
+                            <ul class="tag-list tag-small list-unstyled">
+                                <li th:each="i : ${category15}" class="tag gray"><a th:text="${i.name}" th:href="@{/category/15}"></a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+            <div class="clearfix"></div>
+            <hr style="margin: 0; border-bottom: 1px solid #eee;">
+            <div class="chaplist" id="dschuong">
+                </th:block>
+
+                <div class="paging">
+                    <form action="#" method="get" rel="nofollow">
+                        <span style="font-size: 14px">Truyền Tống đến Trang:</span>
+                        <input name="page" type="text" value="" style="width:60px;height: 35px;margin: 10px; border-radius: 5px">
+                        <button class="btn btn-warning"><i class=""></i> <span
+                                class="jblack">Go</span></button>
+                    </form>
+
+                    <div class="pagination pagination-centered" >
+                        <ul style="display: flex; text-decoration: none; list-style-type: none; font-size: 20px">
+                            <li class="disabled" style="padding-right: 50px"><a href="javascript:">&larr;</a></li>
+                            <li style="padding-right: 50px" class="active"><a href="javascript:">1</a></li>
+                            <li style="padding-right: 50px"><a href="#">2</a></li>
+                            <li style="padding-right: 50px"><a href="#">3</a></li>
+                            <li style="padding-right: 50px"><a href="#">4</a></li>
+                            <li style="padding-right: 50px"><a href="#">5</a></li>
+                            <li style="padding-right: 50px"><a href="javascript:">...</a></li>
+                            <li style="padding-right: 50px"><a href="#">28</a></li>
+                            <li style="padding-right: 50px"><a href="">29</a></li>
+                            <li style="padding-right: 50px"><a href="#">30</a></li>
+                            <li style="padding-right: 50px"><a href="">&rarr;</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:fragment="list-new-container">
+    <div class="novel-list mt-4">
+        <div class="sidebar-col mr-4">
+            <div class="nav flex-column nav-pills nav-tables" aria-orientation="vertical" id="sidebar_nav" style="z-index: 999;">
+                <a class="nav-link active" th:href="@{/story/story_new}">Truyện Mới Cập Nhật</a>
+                <a class="nav-link " th:href="@{/category/2}">
+                    <span class="mr-1">Kiếm hiệp tuyển chọn</span>
+                    <img data-src="https://yycdn.truyenyy.com/static/svg/quality.svg" alt="" width="24" height="24" class="lazy align-middle loaded" src="https://yycdn.truyenyy.com/static/svg/quality.svg" data-was-processed="true">
+                </a>
+                <a class="nav-link " th:href="@{/category/4}">Truyện Ngôn Tình</a>
+                <a class="nav-link " th:href="@{/category/6}">Có Thể Bạn Muốn Đọc</a>
+            </div>
+            <div>
+            </div>
+        </div>
+        <div class="main-col mr-0">
+            <section class="section-grid">
+                <ul class="books-list list-unstyled large-items">
+                    <li class="with-border" th:each="storyItem : ${listStoryNew}">
+                        <a style="margin-top: 25px" th:href="@{'/story/' + ${storyItem.id}}" class="book-img position-relative" aria-label="Đi đến truyện Siêu Cấp Thần Y Tại Đô Thị (Dịch)">
+                            <img th:src="${storyItem.thubnail_file}" width="100" height="140" class="lazy zoom-me loaded" sizes="auto"  data-was-processed="true">
+                        </a>
+                        <div class="flex-primary">
+                            <h3 th:text="${storyItem.actor}" class="book-title">
+                                <a href="/truyen/sieu-cap-than-y-tai-do-thi-truy-thu-bang-dich/"></a>
+                            </h3>
+                            <div class="book-desc line-clamp line-clamp-2" th:text="${storyItem.description}"></div>
+                            <div class="small">
+                                <a href="/tac-gia/lam-phong-2/"  class="book-author mr-auto" target="_blank"><i th:text="${storyItem.director}" class="iconfont iconwrite  icon18"></i></a>
+                            </div>
+                            <ul class="tag-list tag-small list-unstyled mt-2">
+                                <li th:each="i : ${category1}" class="tag red">
+                                    <a th:text="${i.name}" th:href="@{/category/1}"></a></li>
+                                <li  th:each="i : ${category11}" class="tag red"><a th:text="${i.name}" th:href="@{/category/11}" th:title="${i.name}"></a></li>
+                                <li  th:each="i : ${category12}" class="tag green"><a th:text="${i.name}" th:href="@{/category/12}" th:title="${i.name}"></a></li>
+                                <li   th:each="i : ${category13}" class="tag green"><a th:text="${i.name}" th:href="@{/category/13}" th:title="${i.name}"></a></li>
+                            </ul>
+                            <ul class="tag-list tag-small list-unstyled">
+                                <li th:each="i : ${category15}" class="tag gray"><a th:text="${i.name}" th:href="@{/category/15}"></a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+            <div class="clearfix"></div>
+            <hr style="margin: 0; border-bottom: 1px solid #eee;">
+            <div class="chaplist" id="dschuong">
+                </th:block>
+
+                <div class="paging">
+                    <form action="#" method="get" rel="nofollow">
+                        <span style="font-size: 14px">Truyền Tống đến Trang:</span>
+                        <input name="page" type="text" value="" style="width:60px;height: 35px;margin: 10px; border-radius: 5px">
+                        <button class="btn btn-warning"><i class=""></i> <span
+                                class="jblack">Go</span></button>
+                    </form>
+
+                    <div class="pagination pagination-centered" >
+                        <ul style="display: flex; text-decoration: none; list-style-type: none; font-size: 20px">
+                            <li class="disabled" style="padding-right: 50px"><a href="javascript:">&larr;</a></li>
+                            <li style="padding-right: 50px" class="active"><a href="javascript:">1</a></li>
+                            <li style="padding-right: 50px"><a href="#">2</a></li>
+                            <li style="padding-right: 50px"><a href="#">3</a></li>
+                            <li style="padding-right: 50px"><a href="#">4</a></li>
+                            <li style="padding-right: 50px"><a href="#">5</a></li>
+                            <li style="padding-right: 50px"><a href="javascript:">...</a></li>
+                            <li style="padding-right: 50px"><a href="#">28</a></li>
+                            <li style="padding-right: 50px"><a href="">29</a></li>
+                            <li style="padding-right: 50px"><a href="#">30</a></li>
+                            <li style="padding-right: 50px"><a href="">&rarr;</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:fragment="list-hot-container">
+    <div class="novel-list mt-4">
+        <div class="sidebar-col mr-4">
+            <div class="nav flex-column nav-pills nav-tables" aria-orientation="vertical" id="sidebar_nav" style="z-index: 999;">
+                <a class="nav-link active" th:href="@{/story/story_new}">Truyện Mới Cập Nhật</a>
+                <a class="nav-link " th:href="@{/category/2}">
+                    <span class="mr-1">Kiếm hiệp tuyển chọn</span>
+                    <img data-src="https://yycdn.truyenyy.com/static/svg/quality.svg" alt="" width="24" height="24" class="lazy align-middle loaded" src="https://yycdn.truyenyy.com/static/svg/quality.svg" data-was-processed="true">
+                </a>
+                <a class="nav-link " th:href="@{/category/4}">Truyện Ngôn Tình</a>
+                <a class="nav-link " th:href="@{/category/6}">Có Thể Bạn Muốn Đọc</a>
+            </div>
+            <div>
+            </div>
+        </div>
+        <div class="main-col mr-0">
+            <section class="section-grid">
+                <ul class="books-list list-unstyled large-items">
+                    <li class="with-border" th:each="storyItem : ${listStoryHot}">
+                        <a style="margin-top: 25px" th:href="@{'/story/' + ${storyItem.id}}" class="book-img position-relative" aria-label="Đi đến truyện Siêu Cấp Thần Y Tại Đô Thị (Dịch)">
+                            <img th:src="${storyItem.thubnail_file}" width="100" height="140" class="lazy zoom-me loaded" sizes="auto"  data-was-processed="true">
+                        </a>
+                        <div class="flex-primary">
+                            <h3 th:text="${storyItem.actor}" class="book-title">
+                                <a href="/truyen/sieu-cap-than-y-tai-do-thi-truy-thu-bang-dich/"></a>
+                            </h3>
+                            <div class="book-desc line-clamp line-clamp-2" th:text="${storyItem.description}"></div>
+                            <div class="small">
+                                <a href="/tac-gia/lam-phong-2/"  class="book-author mr-auto" target="_blank"><i th:text="${storyItem.director}" class="iconfont iconwrite  icon18"></i></a>
+                            </div>
+                            <ul class="tag-list tag-small list-unstyled mt-2">
+                                <li th:each="i : ${category1}" class="tag red">
+                                    <a th:text="${i.name}" th:href="@{/category/1}"></a></li>
+                                <li  th:each="i : ${category11}" class="tag red"><a th:text="${i.name}" th:href="@{/category/11}" th:title="${i.name}"></a></li>
+                                <li  th:each="i : ${category12}" class="tag green"><a th:text="${i.name}" th:href="@{/category/12}" th:title="${i.name}"></a></li>
+                                <li   th:each="i : ${category13}" class="tag green"><a th:text="${i.name}" th:href="@{/category/13}" th:title="${i.name}"></a></li>
+                            </ul>
+                            <ul class="tag-list tag-small list-unstyled">
+                                <li th:each="i : ${category15}" class="tag gray"><a th:text="${i.name}" th:href="@{/category/15}"></a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+            <div class="clearfix"></div>
+            <hr style="margin: 0; border-bottom: 1px solid #eee;">
+            <div class="chaplist" id="dschuong">
+                </th:block>
+
+                <div class="paging">
+                    <form action="#" method="get" rel="nofollow">
+                        <span style="font-size: 14px">Truyền Tống đến Trang:</span>
+                        <input name="page" type="text" value="" style="width:60px;height: 35px;margin: 10px; border-radius: 5px">
+                        <button class="btn btn-warning"><i class=""></i> <span
+                                class="jblack">Go</span></button>
+                    </form>
+
+                    <div class="pagination pagination-centered" >
+                        <ul style="display: flex; text-decoration: none; list-style-type: none; font-size: 20px">
+                            <li class="disabled" style="padding-right: 50px"><a href="javascript:">&larr;</a></li>
+                            <li style="padding-right: 50px" class="active"><a href="javascript:">1</a></li>
+                            <li style="padding-right: 50px"><a href="#">2</a></li>
+                            <li style="padding-right: 50px"><a href="#">3</a></li>
+                            <li style="padding-right: 50px"><a href="#">4</a></li>
+                            <li style="padding-right: 50px"><a href="#">5</a></li>
+                            <li style="padding-right: 50px"><a href="javascript:">...</a></li>
+                            <li style="padding-right: 50px"><a href="#">28</a></li>
+                            <li style="padding-right: 50px"><a href="">29</a></li>
+                            <li style="padding-right: 50px"><a href="#">30</a></li>
+                            <li style="padding-right: 50px"><a href="">&rarr;</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

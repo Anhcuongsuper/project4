@@ -46,18 +46,7 @@
     <script th:src="@{../js/bootstrap.min.js}"></script>
     <script type="text/javascript" th:src="@{../js/csrf.js}"></script>
     <script id="desktopBaseJS" type="text/javascript" src="https://yycdn.truyenyy.com/static/desktop/js/desktop-base.90e96f8d.js"></script>
-
-    <!--    <script type="text/javascript">if ('serviceWorker' in navigator) {-->
-    <!--        navigator.serviceWorker.register('/sw-desktop.js', {scope: '/'}).then(function (registration) {-->
-    <!--            console.log('truyenyy-desktop-pwa: ServiceWorker registration successful with scope: ', registration.scope);-->
-    <!--        }, function (err) {-->
-    <!--            console.log('truyenyy-desktop-pwa: ServiceWorker registration failed: ', err);-->
-    <!--        });-->
-    <!--    }</script>-->
     <link rel="shortcut icon" type="image/x-icon" href="https://yycdn.truyenyy.com/static/v2018/img/icon-v2018-32.png">
-
-    <!--    <script id="desktopBaseJS" type="text/javascript"-->
-    <!--            src="https://yycdn.truyenyy.com/static/desktop/js/desktop-base.90e96f8d.js"></script>-->
     <script type="text/javascript">vex.defaultOptions.className = 'vex-theme-default'</script>
     <script type="text/javascript">$(function () {
         $('[data-toggle=tooltip]').tooltip();
@@ -175,15 +164,14 @@
     </nav>
 </div>
 
-
 <div th:fragment="footer">
     <footer class="site-footer">
         <div class="more-search">
             <div class="container">
                 <form class="form-inline" action="/tim-kiem/nang-cao/">
                     <small class="mr-2">Vẫn chưa tìm được truyện ưng ý?</small>
-                    <label for="inlineFormGenre">
-                        <select class="form-control mb-2 mr-sm-2 mb-sm-0" id="inlineFormGenre" name="genre"
+                    <label for="categorySearch">
+                        <select class="form-control mb-2 mr-sm-2 mb-sm-0" id="categorySearch" name="category"
                                 aria-label="Lựa chọn thể loại">
                             <option selected="" value="">Thể Loại</option>
                             <th:block th:each="categoryItem : ${listCategory}">
@@ -191,37 +179,13 @@
                             </th:block>
                         </select>
                     </label>
-                    <label for="inlineFormStatus">
-                        <select class="form-control mb-2 mr-sm-2 mb-sm-0" id="inlineFormStatus" name="status"
-                                aria-label="Lựa chọn trạng thái của truyện">
-                            <option selected="" value="C">Còn Tiếp</option>
-                            <option value="F">Hoàn Thành</option>
-                            <option value="D">Chưa Hoàn</option>
-                        </select>
-                    </label>
-                    <label for="inlineFormPrice">
-                        <select class="form-control mb-2 mr-sm-2 mb-sm-0" id="inlineFormPrice" name="vip"
-                                aria-label="Có thu phí hay không?">
-                            <option selected="" value="no">Miễn Phí</option>
-                            <option value="yes">Thu Phí</option>
-                        </select>
-                    </label>
-                    <label for="inlineFormWordCount">
-                        <select class="form-control mb-2 mr-sm-2 mb-sm-0" id="inlineFormWordCount" name="wordcount"
-                                aria-label="Lựa chọn số chữ">
-                            <option selected="" value="">Số Chữ</option>
-                            <option value="2M">Trên 2 triệu chữ</option>
-                            <option value="1M">1 triệu - 2 triệu</option>
-                            <option value="200K">20 vạn - 1 triệu</option>
-                            <option value="50K">5 vạn - 20 vạn</option>
-                        </select>
-                    </label>
-                    <label for="inlineFormTranslation">
-                        <select class="form-control mb-2 mr-sm-2 mb-sm-0" id="inlineFormTranslation" name="translated"
-                                aria-label="Lựa chọn kiểu thích thuật">
-                            <option selected="" value="">Dịch Thuật</option>
-                            <option value="✓">Dịch Thuần Việt</option>
-                            <option>Gồm Cả Convert</option>
+                    <label for="authorSearch">
+                        <select class="form-control mb-2 mr-sm-2 mb-sm-0" id="authorSearch" name="author"
+                                aria-label="Lựa chọn thể loại">
+                            <option selected="" value="">Tác giả</option>
+                            <th:block th:each="categoryItem : ${listCategory}">
+                                <option value="${categoryItem.id}" th:text="${categoryItem.name}"></option>
+                            </th:block>
                         </select>
                     </label>
                     <button type="submit" class="btn btn-primary">Tìm Kiếm</button>
@@ -313,53 +277,9 @@
                     <div class="copyright small font-weight-bold text-center text-md-left">
                         © 2012-2019 CodePrime. All Rights Reserved.
                     </div>
-                    <div class="mt-2">
-                        <a href="https://codeprime.net"><img
-                                data-src="https://yycdn.truyenyy.com/static/img/CodePrime.svg"
-                                alt="CodePrime" height="20" width="123" class="lazy"></a>
-                    </div>
                 </div>
                 <div class="col-6">
                     <ul class="nav justify-content-center justify-content-md-end mt-3 mt-md-0">
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://www.facebook.com/TruyenYY/" target="_blank"
-                               data-toggle="tooltip" title="" rel="noreferrer" data-original-title="Facebook Fanpage">
-                                <img data-src="https://yycdn.truyenyy.com/static/social-icons/facebook.svg" class="lazy"
-                                     alt="Facebook" style="width: 24px; height: 24px;">
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://www.facebook.com/groups/YYHoi/" target="_blank"
-                               data-toggle="tooltip" title="" rel="noreferrer" data-original-title="YY Hội">
-                                <img data-src="https://yycdn.truyenyy.com/static/social-icons/group.svg" class="lazy"
-                                     alt="YY Hội" style="width: 24px; height: 24px;">
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://twitter.com/TruyenYY/" target="_blank"
-                               data-toggle="tooltip"
-                               title="" rel="noreferrer" data-original-title="TruyenYY tại Twitter">
-                                <img data-src="https://yycdn.truyenyy.com/static/social-icons/twitter.svg" class="lazy"
-                                     alt="Twitter" style="width: 24px; height: 24px;">
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="http://www.youtube.com/TruyenYYOfficial" target="_blank"
-                               data-toggle="tooltip" title="" rel="noreferrer"
-                               data-original-title="Kênh Youtube Chính Thức TruyenYY">
-                                <img data-src="https://yycdn.truyenyy.com/static/social-icons/youtube.svg" class="lazy"
-                                     alt="Youtube" style="width: 24px; height: 24px;">
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="http://www.soundcloud.com/TruyenYY" target="_blank"
-                               data-toggle="tooltip" title="" rel="noreferrer"
-                               data-original-title="Kênh SoundClound Chính Thức TruyenYY">
-                                <img data-src="https://yycdn.truyenyy.com/static/social-icons/soundcloud.svg"
-                                     class="lazy"
-                                     alt="SoundCloud" style="width: 24px; height: 24px;">
-                            </a>
-                        </li>
                     </ul>
                 </div>
             </div>
@@ -1108,4 +1028,58 @@
         <div>
         </div>
     </div>
+</div>
+
+<div th:fragment="top-page" xmlns:th="http://www.thymeleaf.org">
+    <header class="container mt-3 site-header">
+        <div class="d-flex">
+            <a href="/" class="site-logo"><img src="https://yycdn.truyenyy.com/static/desktop/img/TruyenYY-Web-Logo.svg"
+                                               alt="TruyenYY Logo"></a>
+            <div id="react-root_desktop-search" class="search" style="margin-right: -10px;">
+            </div>
+            <div id="react-root_desktop-top-nav" style="width: 260px; display: flex; justify-content: flex-end;">
+                <div class="desktopTopNav">
+                    <div class="Toastify"></div>
+                    <div class="buttons">
+                        <a th:href="@{/login}" class="btn mr-1" aria-label="Lời Nhắn"><i class="iconfont icon-user icon-24"></i>
+                        </a>
+                        <a th:href="@{/create}" class="btn mr-1" aria-label="Thông Báo"><i class="iconfont icon-logout icon-24"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+    </header>
+</div>
+<div th:fragment="menu-page">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-main navbar-fancy mt-3" id="site_main_nav"
+         style="z-index: 10000; font-size: 20px">
+        <div class="container">
+            <ul class="navbar-nav nav-fancy mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link px-3" href="/" title="Trang Chủ"><i class="iconfont icon-home"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/story/story_new}" title="Truyện Mới Cập Nhật">Giới thiệu</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link position-relative" th:href="@{/category/32}">
+                        <span>Trợ giúp</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/category/33}" title="Truyện Sáng Tác">Liên hệ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/category/34}" title="Truyện Dịch">Quy định chung</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/category/list}" target="_blank"><i
+                            class="iconfont icon-help"></i>
+                        Danh sách Thể loại</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 </div>

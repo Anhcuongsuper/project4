@@ -1,10 +1,18 @@
-<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Ok</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Danh mục đã được tạo</title>
 </head>
-<body>
-<h1>Success</h1>
-</body>
+<div class="jumbotron text-center">
+    <h1 class="display-3">Danh mục đã được tạo!</h1>
+    <span class="display-3">Danh mục của bạn đang được xử lí bởi quản trị viên!!!</span>
+    <p>
+        Liên hệ với chúng tôi <a th:href="@{/contact}">Contact</a>
+    </p>
+    <p class="lead">
+        <a class="btn btn-primary btn-sm" th:href="@{/}" role="button">Trỏ về trang chủ</a>
+    </p>
+</div>
 </html>
