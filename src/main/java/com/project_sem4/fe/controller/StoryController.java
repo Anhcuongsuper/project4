@@ -192,16 +192,28 @@ public class StoryController {
     }
 
     //get chapter
-    @RequestMapping(value = "/{storyId}/chapter/{chapterId}")
-    public String detailChapterByStoryId(Model model, @PathVariable("storyId") long storyId, @PathVariable("chapterId") long chapterId) {
+//    @RequestMapping(value = "/{storyId}/chapter/{chapterId}")
+//    public String detailChapterByStoryId(Model model, @PathVariable("storyId") long storyId, @PathVariable("chapterId") long chapterId) {
+//        Optional<Story> story = storyRepository.findById(storyId);
+//        model.addAttribute("story", story.get());
+//        model.addAttribute("chapters", chapterService.findByIdAndStoryId(chapterId, storyId));
+//        Chapter chapter = chapterService.getDetail(chapterId);
+//        model.addAttribute("episode", chapter.getEpisode());
+//        model.addAttribute("chaptertest", chapterService.findByEpisodeAndStoryId(storyId, 1));
+//        return "story/chapter/detail";
+//    }
+    @RequestMapping(value = "/{storyId}/chapter/{episode}")
+    public String detailChapterByStoryId(Model model, @PathVariable("storyId") long storyId, @PathVariable("episode") int episode) {
         Optional<Story> story = storyRepository.findById(storyId);
         model.addAttribute("story", story.get());
-        model.addAttribute("chapters", chapterService.findByIdAndStoryId(chapterId, storyId));
+        model.addAttribute("chapters", chapterService.findByEpisodeAndStoryId(storyId, episode));
+//        Chapter chapter = chapterService.getDetail(chapterId);
+//        model.addAttribute("episode", chapter.getEpisode());
+//        model.addAttribute("chaptertest", chapterService.findByEpisodeAndStoryId(storyId, 1));
 
-        Chapter chapter = chapterService.getDetail(chapterId);
-        model.addAttribute("episode", chapter.getEpisode());
         return "story/chapter/detail";
     }
+
 
     @RequestMapping(method = RequestMethod.GET, value = "story_new")
     public String getListNew(Model model,
@@ -263,6 +275,7 @@ public class StoryController {
     //list chapter
     @RequestMapping(method = RequestMethod.GET, value = "/{id}/list_chapter")
     public String getChaptersByStory(@PathVariable("id") Long storyId, Model model,
+                                     @RequestParam(value = "episode", required = false) int episode,
                                      @RequestParam(value = "keyword", required = false) String keyword,
                                      @RequestParam(name = "page", defaultValue = "1") int page,
                                      @RequestParam(name = "limit", defaultValue = "5") int limit

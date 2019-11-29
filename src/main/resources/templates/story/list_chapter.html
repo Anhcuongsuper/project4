@@ -1145,7 +1145,7 @@ Ba năm sau, Triệu Phong nhận ra thế ...">
                     <tbody>
                     <tr th:each="chapter : ${pageChapter}">
                         <th scope="row" class="text-muted"></th>
-                        <td ><a><h6 th:text="${chapter.name}"></h6>
+                        <td ><a th:href="@{/story/{storyId}/chapter/{episode}(page=${1}, limit=${limit},storyId=${story.id})}" ><h6 th:text="${chapter.name}"></h6>
                         </a></td>
                         <td th:text="${chapter.title}"><a href="/truyen/pokemon-the-gioi-di-den-hoi-ket/chuong-1.html" class="table-chap-title"></a></td>
                         <td>

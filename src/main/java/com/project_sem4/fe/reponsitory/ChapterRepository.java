@@ -1,6 +1,7 @@
 package com.project_sem4.fe.reponsitory;
 
 import com.project_sem4.fe.entity.Chapter;
+import com.project_sem4.fe.entity.Story;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -12,8 +13,11 @@ import java.util.Optional;
 
 @Repository
 public interface ChapterRepository extends JpaRepository<Chapter, Long> {
-        Optional<Chapter> findById(long chapId);
-        Optional<Chapter> findByIdAndStoryId(long chapId, long storyId);
-        Page<Chapter> findAllByStoryIdOrderByIdDesc(long storyId, Pageable pageable);
-        Optional<Chapter> findByEpisodeAndStoryId(int episode, long storyId);
+    Optional<Chapter> findById(long chapId);
+
+    Optional<Chapter> findByIdAndStoryId(long chapId, long storyId);
+
+    Page<Chapter> findAllByStoryIdOrderByIdDesc(long storyId, Pageable pageable);
+
+    Optional<Chapter> findByEpisodeAndStory(int episode, Story story);
 }

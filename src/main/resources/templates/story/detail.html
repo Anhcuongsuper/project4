@@ -23352,10 +23352,10 @@
                                tppabs="#-1464/">
                                 <i class="icon-fire icon-white"></i> Đọc chương mới nhất
                             </a>
-                            <a type="button" class="btn btn-mini btn-success"
-                               style="margin-top: 5px; border-radius: 5px"
-                               th:href="${'/story/' + {story.id} + '/list_chapter'}"><i
-                                    class="icon-leaf icon-white"></i> Danh sách chương</a>
+                            <!--                            <a type="button" class="btn btn-mini btn-success"-->
+                            <!--                               style="margin-top: 5px; border-radius: 5px"-->
+                            <!--                               th:href="${'/story/' + {story.id} + '/list_chapter'}"><i-->
+                            <!--                                    class="icon-leaf icon-white"></i> Danh sách chương</a>-->
                             <br><br>
 
                         </div>
@@ -23385,7 +23385,7 @@
                         <h2>Danh sách chương truyện :</h2>
                         <br/>
                         <div th:each="chapter : ${pageChapter}">
-                            <a class="jblack" th:href="${'/story/' + {story.id} + '/chapter/' + {chapter.id}}"
+                            <a class="jblack" th:href="${'/story/' + {story.id} + '/chapter/' + {chapter.episode}}"
                                target="_blank"><i class="icon-leaf"></i>
                                 <h6 th:text="${chapter.name} + ' - ' +             ${chapter.title} "></h6>
                             </a>
