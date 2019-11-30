@@ -94,9 +94,6 @@
         </div>
     </div>
 </div>
-
-
-
 <div class="container">
     <div class="row">
         <div class="span12">
@@ -111,7 +108,7 @@
                 <li><span class="divider">/</span></li>
                 <li>
                     <div itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
-                        <a href="#" itemprop="url" th:text="${story.title}"><span itemprop="title"></span></a> <span class="divider">/</span>
+                        <a href="#" itemprop="url" th:text="${storyService.title}"><span itemprop="title"></span></a> <span class="divider">/</span>
                     </div>
                 </li>
             </ul>
@@ -169,7 +166,7 @@
                 <div class="hide-x" style="width:300px; float: right;margin: 25px 35px 0 0;">
                 </div>
                 <div class="clearfix"></div>
-                <div style="text-align:center;font-weight:bold" class=""><a href="#" rel="nofollow" target="_blank">Báo Lỗi Truyện</a></div>
+                <div style="text-align:center;font-weight:bold" class=""><a th:href="${'/story/' + {storyService.id} + '/list_chapter'}" rel="nofollow" target="_blank">Về trang Chapter</a></div>
             </div>
 
             <div style='display:none'><input type='hidden' name='csrfmiddlewaretoken' value='ANzD3jUNexdNQDAsiDHPskQPrXsv1mty'/></div>

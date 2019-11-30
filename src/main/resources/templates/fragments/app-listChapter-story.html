@@ -1,0 +1,1168 @@
+<div th:fragment="head">
+    <head>
+        <style id="react-tooltip">.__react_component_tooltip {
+            border-radius: 3px;
+            display: inline-block;
+            font-size: 13px;
+            left: -999em;
+            opacity: 0;
+            padding: 8px 21px;
+            position: fixed;
+            pointer-events: none;
+            transition: opacity 0.3s ease-out;
+            top: -999em;
+            visibility: hidden;
+            z-index: 999
+        }
+
+        .__react_component_tooltip.allow_hover, .__react_component_tooltip.allow_click {
+            pointer-events: auto
+        }
+
+        .__react_component_tooltip:before, .__react_component_tooltip:after {
+            content: "";
+            width: 0;
+            height: 0;
+            position: absolute
+        }
+
+        .__react_component_tooltip.show {
+            opacity: 0.9;
+            margin-top: 0px;
+            margin-left: 0px;
+            visibility: visible
+        }
+
+        .__react_component_tooltip.type-dark {
+            color: #fff;
+            background-color: #222
+        }
+
+        .__react_component_tooltip.type-dark.place-top:after {
+            border-top-color: #222;
+            border-top-style: solid;
+            border-top-width: 6px
+        }
+
+        .__react_component_tooltip.type-dark.place-bottom:after {
+            border-bottom-color: #222;
+            border-bottom-style: solid;
+            border-bottom-width: 6px
+        }
+
+        .__react_component_tooltip.type-dark.place-left:after {
+            border-left-color: #222;
+            border-left-style: solid;
+            border-left-width: 6px
+        }
+
+        .__react_component_tooltip.type-dark.place-right:after {
+            border-right-color: #222;
+            border-right-style: solid;
+            border-right-width: 6px
+        }
+
+        .__react_component_tooltip.type-dark.border {
+            border: 1px solid #fff
+        }
+
+        .__react_component_tooltip.type-dark.border.place-top:before {
+            border-top: 8px solid #fff
+        }
+
+        .__react_component_tooltip.type-dark.border.place-bottom:before {
+            border-bottom: 8px solid #fff
+        }
+
+        .__react_component_tooltip.type-dark.border.place-left:before {
+            border-left: 8px solid #fff
+        }
+
+        .__react_component_tooltip.type-dark.border.place-right:before {
+            border-right: 8px solid #fff
+        }
+
+        .__react_component_tooltip.type-success {
+            color: #fff;
+            background-color: #8DC572
+        }
+
+        .__react_component_tooltip.type-success.place-top:after {
+            border-top-color: #8DC572;
+            border-top-style: solid;
+            border-top-width: 6px
+        }
+
+        .__react_component_tooltip.type-success.place-bottom:after {
+            border-bottom-color: #8DC572;
+            border-bottom-style: solid;
+            border-bottom-width: 6px
+        }
+
+        .__react_component_tooltip.type-success.place-left:after {
+            border-left-color: #8DC572;
+            border-left-style: solid;
+            border-left-width: 6px
+        }
+
+        .__react_component_tooltip.type-success.place-right:after {
+            border-right-color: #8DC572;
+            border-right-style: solid;
+            border-right-width: 6px
+        }
+
+        .__react_component_tooltip.type-success.border {
+            border: 1px solid #fff
+        }
+
+        .__react_component_tooltip.type-success.border.place-top:before {
+            border-top: 8px solid #fff
+        }
+
+        .__react_component_tooltip.type-success.border.place-bottom:before {
+            border-bottom: 8px solid #fff
+        }
+
+        .__react_component_tooltip.type-success.border.place-left:before {
+            border-left: 8px solid #fff
+        }
+
+        .__react_component_tooltip.type-success.border.place-right:before {
+            border-right: 8px solid #fff
+        }
+
+        .__react_component_tooltip.type-warning {
+            color: #fff;
+            background-color: #F0AD4E
+        }
+
+        .__react_component_tooltip.type-warning.place-top:after {
+            border-top-color: #F0AD4E;
+            border-top-style: solid;
+            border-top-width: 6px
+        }
+
+        .__react_component_tooltip.type-warning.place-bottom:after {
+            border-bottom-color: #F0AD4E;
+            border-bottom-style: solid;
+            border-bottom-width: 6px
+        }
+
+        .__react_component_tooltip.type-warning.place-left:after {
+            border-left-color: #F0AD4E;
+            border-left-style: solid;
+            border-left-width: 6px
+        }
+
+        .__react_component_tooltip.type-warning.place-right:after {
+            border-right-color: #F0AD4E;
+            border-right-style: solid;
+            border-right-width: 6px
+        }
+
+        .__react_component_tooltip.type-warning.border {
+            border: 1px solid #fff
+        }
+
+        .__react_component_tooltip.type-warning.border.place-top:before {
+            border-top: 8px solid #fff
+        }
+
+        .__react_component_tooltip.type-warning.border.place-bottom:before {
+            border-bottom: 8px solid #fff
+        }
+
+        .__react_component_tooltip.type-warning.border.place-left:before {
+            border-left: 8px solid #fff
+        }
+
+        .__react_component_tooltip.type-warning.border.place-right:before {
+            border-right: 8px solid #fff
+        }
+
+        .__react_component_tooltip.type-error {
+            color: #fff;
+            background-color: #BE6464
+        }
+
+        .__react_component_tooltip.type-error.place-top:after {
+            border-top-color: #BE6464;
+            border-top-style: solid;
+            border-top-width: 6px
+        }
+
+        .__react_component_tooltip.type-error.place-bottom:after {
+            border-bottom-color: #BE6464;
+            border-bottom-style: solid;
+            border-bottom-width: 6px
+        }
+
+        .__react_component_tooltip.type-error.place-left:after {
+            border-left-color: #BE6464;
+            border-left-style: solid;
+            border-left-width: 6px
+        }
+
+        .__react_component_tooltip.type-error.place-right:after {
+            border-right-color: #BE6464;
+            border-right-style: solid;
+            border-right-width: 6px
+        }
+
+        .__react_component_tooltip.type-error.border {
+            border: 1px solid #fff
+        }
+
+        .__react_component_tooltip.type-error.border.place-top:before {
+            border-top: 8px solid #fff
+        }
+
+        .__react_component_tooltip.type-error.border.place-bottom:before {
+            border-bottom: 8px solid #fff
+        }
+
+        .__react_component_tooltip.type-error.border.place-left:before {
+            border-left: 8px solid #fff
+        }
+
+        .__react_component_tooltip.type-error.border.place-right:before {
+            border-right: 8px solid #fff
+        }
+
+        .__react_component_tooltip.type-info {
+            color: #fff;
+            background-color: #337AB7
+        }
+
+        .__react_component_tooltip.type-info.place-top:after {
+            border-top-color: #337AB7;
+            border-top-style: solid;
+            border-top-width: 6px
+        }
+
+        .__react_component_tooltip.type-info.place-bottom:after {
+            border-bottom-color: #337AB7;
+            border-bottom-style: solid;
+            border-bottom-width: 6px
+        }
+
+        .__react_component_tooltip.type-info.place-left:after {
+            border-left-color: #337AB7;
+            border-left-style: solid;
+            border-left-width: 6px
+        }
+
+        .__react_component_tooltip.type-info.place-right:after {
+            border-right-color: #337AB7;
+            border-right-style: solid;
+            border-right-width: 6px
+        }
+
+        .__react_component_tooltip.type-info.border {
+            border: 1px solid #fff
+        }
+
+        .__react_component_tooltip.type-info.border.place-top:before {
+            border-top: 8px solid #fff
+        }
+
+        .__react_component_tooltip.type-info.border.place-bottom:before {
+            border-bottom: 8px solid #fff
+        }
+
+        .__react_component_tooltip.type-info.border.place-left:before {
+            border-left: 8px solid #fff
+        }
+
+        .__react_component_tooltip.type-info.border.place-right:before {
+            border-right: 8px solid #fff
+        }
+
+        .__react_component_tooltip.type-light {
+            color: #222;
+            background-color: #fff
+        }
+
+        .__react_component_tooltip.type-light.place-top:after {
+            border-top-color: #fff;
+            border-top-style: solid;
+            border-top-width: 6px
+        }
+
+        .__react_component_tooltip.type-light.place-bottom:after {
+            border-bottom-color: #fff;
+            border-bottom-style: solid;
+            border-bottom-width: 6px
+        }
+
+        .__react_component_tooltip.type-light.place-left:after {
+            border-left-color: #fff;
+            border-left-style: solid;
+            border-left-width: 6px
+        }
+
+        .__react_component_tooltip.type-light.place-right:after {
+            border-right-color: #fff;
+            border-right-style: solid;
+            border-right-width: 6px
+        }
+
+        .__react_component_tooltip.type-light.border {
+            border: 1px solid #222
+        }
+
+        .__react_component_tooltip.type-light.border.place-top:before {
+            border-top: 8px solid #222
+        }
+
+        .__react_component_tooltip.type-light.border.place-bottom:before {
+            border-bottom: 8px solid #222
+        }
+
+        .__react_component_tooltip.type-light.border.place-left:before {
+            border-left: 8px solid #222
+        }
+
+        .__react_component_tooltip.type-light.border.place-right:before {
+            border-right: 8px solid #222
+        }
+
+        .__react_component_tooltip.place-top {
+            margin-top: -10px
+        }
+
+        .__react_component_tooltip.place-top:before {
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            bottom: -8px;
+            left: 50%;
+            margin-left: -10px
+        }
+
+        .__react_component_tooltip.place-top:after {
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            bottom: -6px;
+            left: 50%;
+            margin-left: -8px
+        }
+
+        .__react_component_tooltip.place-bottom {
+            margin-top: 10px
+        }
+
+        .__react_component_tooltip.place-bottom:before {
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            top: -8px;
+            left: 50%;
+            margin-left: -10px
+        }
+
+        .__react_component_tooltip.place-bottom:after {
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            top: -6px;
+            left: 50%;
+            margin-left: -8px
+        }
+
+        .__react_component_tooltip.place-left {
+            margin-left: -10px
+        }
+
+        .__react_component_tooltip.place-left:before {
+            border-top: 6px solid transparent;
+            border-bottom: 6px solid transparent;
+            right: -8px;
+            top: 50%;
+            margin-top: -5px
+        }
+
+        .__react_component_tooltip.place-left:after {
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+            right: -6px;
+            top: 50%;
+            margin-top: -4px
+        }
+
+        .__react_component_tooltip.place-right {
+            margin-left: 10px
+        }
+
+        .__react_component_tooltip.place-right:before {
+            border-top: 6px solid transparent;
+            border-bottom: 6px solid transparent;
+            left: -8px;
+            top: 50%;
+            margin-top: -5px
+        }
+
+        .__react_component_tooltip.place-right:after {
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+            left: -6px;
+            top: 50%;
+            margin-top: -4px
+        }
+
+        .__react_component_tooltip .multi-line {
+            display: block;
+            padding: 2px 0px;
+            text-align: center
+        }</style>
+        <meta charset="UTF-8">
+        <title>Danh Sách Chương - Pokemon: Thế Giới Đi Đến Hồi Kết</title>
+        <meta name="description" content="
+    Danh sách đầy đủ những chương của truyện Pokemon: Thế Giới Đi Đến Hồi Kết
+    .
+    TruyenYY luôn cập nhật chương mới nhất một cách đầy đủ và nhanh chóng.
+">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta property="fb:app_id" content="376408899112473">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel="manifest" href="/manifest.json">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="application-name" content="TruyenYY Web">
+        <meta name="theme-color" content="#052c3e">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-title" content="TruyenYY Web">
+        <meta name="apple-mobile-web-app-status-bar-style" content="default">
+        <link rel="apple-touch-icon" href="https://cdnx.truyenyy.com/truyenyy/img/icon-144.png" sizes="">
+        <link rel="apple-touch-icon" href="https://cdnx.truyenyy.com/truyenyy/img/icon-192.png" sizes="">
+        <link rel="apple-touch-icon" href="https://cdnx.truyenyy.com/truyenyy/img/icon-512.png" sizes="">
+        <link rel="apple-touch-icon" href="https://cdnx.truyenyy.com/truyenyy/img/icon-1024.png" sizes="">
+        <link href="https://cdnx.truyenyy.com/truyenyy/splash/Splash-640x1136.png"
+              media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)"
+              rel="apple-touch-startup-image">
+        <link href="https://cdnx.truyenyy.com/truyenyy/splash/Splash-1242x2688.png"
+              media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)"
+              rel="apple-touch-startup-image">
+        <link href="https://cdnx.truyenyy.com/truyenyy/splash/Splash-2048x2732.png"
+              media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)"
+              rel="apple-touch-startup-image">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="msapplication-TileImage" content="https://cdnx.truyenyy.com/truyenyy/img/icon-1024.png">
+        <link rel="icon" sizes="" href="https://cdnx.truyenyy.com/truyenyy/img/icon-1024.png">
+        <script src="https://connect.facebook.net/vi_VN/sdk.js?hash=db38aff296802da8c88163d7bf2944c0&amp;ua=modern_es6"
+                async="" crossorigin="anonymous"></script>
+        <script async="" src="https://www.google-analytics.com/analytics.js"></script>
+        <script id="facebook-jssdk"
+                src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&amp;version=v2.11&amp;appId=376408899112473"></script>
+        <script type="text/javascript">if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw-desktop.js', {scope: '/'}).then(function (registration) {
+                console.log('truyenyy-desktop-pwa: ServiceWorker registration successful with scope: ', registration.scope);
+            }, function (err) {
+                console.log('truyenyy-desktop-pwa: ServiceWorker registration failed: ', err);
+            });
+        }</script>
+        <link rel="shortcut icon" type="image/x-icon" href="https://yycdn.truyenyy.com/static/v2018/img/icon-v2018-32.png">
+        <link rel="stylesheet" href="https://yycdn.truyenyy.com/static/desktop/css/desktop-base.11d940c5.css"
+              id="desktopBaseCSS">
+        <script id="desktopBaseJS" type="text/javascript"
+                src="https://yycdn.truyenyy.com/static/desktop/js/desktop-base.90e96f8d.js"></script>
+        <script type="text/javascript">vex.defaultOptions.className = 'vex-theme-default'</script>
+        <script type="text/javascript">$(function () {
+            $('[data-toggle=tooltip]').tooltip();
+            $('.back-top').click(function () {
+                $('body').scrollTo(0, 80);
+                return false;
+            });
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 300) {
+                    $('.back-top').fadeIn();
+                } else {
+                    $('.back-top').fadeOut();
+                }
+            });
+            $('#site_main_nav').scrollToFixed({
+                marginTop: 0, zIndex: 10000, preFixed: function () {
+                    $(this).removeClass('mt-3');
+                }, postFixed: function () {
+                    $(this).addClass('mt-3');
+                }
+            });
+        });</script>
+        <script type="text/javascript">DJANGO_SEARCH_URL = '/tim-kiem/nang-cao/';
+        DJANGO_SEARCH_NOVELS_URL = '/web-api/novel/search/';
+        DJANGO_SEARCH_HITS_SAVE_URL = '/web-api/novel/search-hits/save/';
+        DJANGO_TOP_SEARCH_HITS_URL = '/web-api/novel/search-hits/top/';
+        DJANGO_RECENT_USER_SEARCH_HITS_URL = '/web-api/novel/search-hits/recent-user/';
+        DJANGO_DESKTOP_HOME_SLIDERS_LIST_URL = "/web-api/desktop-home/get-novel-sliders/";
+        DJANGO_DESKTOP_HOME_TOPNAV_INFO_URL = "/web-api/desktop-home/get-top-nav-info/";
+        DJANGO_DESKTOP_HOME_LAST_NOTIFICATIONS_URL = "/web-api/desktop-home/get-last-notifications/";
+        DJANGO_DESKTOP_HOME_LAST_MESSAGES_URL = "/web-api/desktop-home/get-last-messages/";
+        DJANGO_DESKTOP_HOME_MARK_READ_MESSAGES_URL = "/web-api/desktop-home/mark-read-messages/";
+        DJANGO_DESKTOP_HOME_MARK_READ_NOTIFICATIONS_URL = "/web-api/desktop-home/mark-read-notifications/";
+        DJANGO_DESKTOP_HOME_PANEL_BOOKMARKS_LIST_URL = "/web-api/desktop-home/get-bookmarks-panel-list/";
+        DJANGO_DESKTOP_HOME__GENRES_LIST_URL = "/web-api/desktop-home/get-genres-list/";
+        DJANGO_DESKTOP_HOME_LAST_UPDATE_NOVELS_URL = "/web-api/desktop-home/get-last-update-novels/";
+        DJANGO_DESKTOP_HOME_LAST_UPDATE_NOVELS_PAGE_URL = "/truyen-moi-cap-nhat/";
+        DJANGO_FEEDBACK_USER_INFO_URL = '/web-api/feedback/get-current-user/';
+        DJANGO_FEEDBACK_SUBMIT_CONTACT_URL = '/web-api/feedback/submit-contact/';
+        DJANGO_FEEDBACK_SUBMIT_ISSUE_URL = '/web-api/feedback/submit-issue/';
+        DJANGO_FEEDBACK_SUBMIT_REQUEST_NEW_NOVEL_URL = '/web-api/feedback/submit-request-new-novel/';
+        DJANGO_DESKTOP_HOME_USERBOX_INFO_URL = '/web-api/desktop-home/get-user-box-info/';
+        DJANGO_DESKTOP_USER_AVATAR_URL = '';
+        DJANGO_DESKTOP_USER_IS_AUTH = false;</script>
+        <link rel="stylesheet" href="https://yycdn.truyenyy.com/static/desktop/novel-base/css/2.ee65d6ff.chunk.css">
+        <link rel="stylesheet" href="https://yycdn.truyenyy.com/static/desktop/novel-base/css/main.b0c62422.chunk.css">
+        <link rel="canonical" href="https://truyenyy.com/truyen/pokemon-the-gioi-di-den-hoi-ket/danh-sach-chuong/">
+        <link rel="preconnect" href="https://api.qrserver.com">
+        <meta property="og:type" content="book">
+        <meta property="og:url" content="https://truyenyy.com/truyen/pokemon-the-gioi-di-den-hoi-ket/">
+        <meta property="og:title" content="Pokemon: Thế Giới Đi Đến Hồi Kết - TAD - TruyenYY">
+        <meta property="og:description" content="Năm 15 tuổi, Triệu Phong mơ thấy mình xuất hiện trong một trò chơi. Triệu Phong không để ý gì nhiều, vô tư lự chơi trò chơi. Không bao lâu sau, hắn phát hiện trò chơi hắn chơi mỗi đêm thật ra là một thế giới chân thật, lúc này hắn bắt đầu sợ hãi và lo lắng.
+
+Ba năm sau, Triệu Phong nhận ra thế ...">
+        <meta property="og:image" content="https://i.imgur.com/H5i8hoM.jpg">
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+        <link rel="preconnect" href="https://www.google-analytics.com">
+        <style></style>
+        <link rel="preload" as="script" href="https://yycdn.truyenyy.com/static/desktop/js/desktop-base.90e96f8d.js">
+        <style>/* cyrillic-ext */
+        @font-face {
+            font-family: 'Roboto Condensed';
+            font-style: italic;
+            font-weight: 700;
+            src: local('Roboto Condensed Bold Italic'), local('RobotoCondensed-BoldItalic'), url(https://fonts.gstatic.com/s/robotocondensed/v18/ieVg2ZhZI2eCN5jzbjEETS9weq8-19eDtCYoYNNZQyQ.woff2) format('woff2');
+            unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+            font-display: swap;
+        }
+
+        /* cyrillic */
+        @font-face {
+            font-family: 'Roboto Condensed';
+            font-style: italic;
+            font-weight: 700;
+            src: local('Roboto Condensed Bold Italic'), local('RobotoCondensed-BoldItalic'), url(https://fonts.gstatic.com/s/robotocondensed/v18/ieVg2ZhZI2eCN5jzbjEETS9weq8-19eDtCYoadNZQyQ.woff2) format('woff2');
+            unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+            font-display: swap;
+        }
+
+        /* greek-ext */
+        @font-face {
+            font-family: 'Roboto Condensed';
+            font-style: italic;
+            font-weight: 700;
+            src: local('Roboto Condensed Bold Italic'), local('RobotoCondensed-BoldItalic'), url(https://fonts.gstatic.com/s/robotocondensed/v18/ieVg2ZhZI2eCN5jzbjEETS9weq8-19eDtCYoYdNZQyQ.woff2) format('woff2');
+            unicode-range: U+1F00-1FFF;
+            font-display: swap;
+        }
+
+        /* greek */
+        @font-face {
+            font-family: 'Roboto Condensed';
+            font-style: italic;
+            font-weight: 700;
+            src: local('Roboto Condensed Bold Italic'), local('RobotoCondensed-BoldItalic'), url(https://fonts.gstatic.com/s/robotocondensed/v18/ieVg2ZhZI2eCN5jzbjEETS9weq8-19eDtCYobtNZQyQ.woff2) format('woff2');
+            unicode-range: U+0370-03FF;
+            font-display: swap;
+        }
+
+        /* vietnamese */
+        @font-face {
+            font-family: 'Roboto Condensed';
+            font-style: italic;
+            font-weight: 700;
+            src: local('Roboto Condensed Bold Italic'), local('RobotoCondensed-BoldItalic'), url(https://fonts.gstatic.com/s/robotocondensed/v18/ieVg2ZhZI2eCN5jzbjEETS9weq8-19eDtCYoYtNZQyQ.woff2) format('woff2');
+            unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+            font-display: swap;
+        }
+
+        /* latin-ext */
+        @font-face {
+            font-family: 'Roboto Condensed';
+            font-style: italic;
+            font-weight: 700;
+            src: local('Roboto Condensed Bold Italic'), local('RobotoCondensed-BoldItalic'), url(https://fonts.gstatic.com/s/robotocondensed/v18/ieVg2ZhZI2eCN5jzbjEETS9weq8-19eDtCYoY9NZQyQ.woff2) format('woff2');
+            unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+            font-display: swap;
+        }
+
+        /* latin */
+        @font-face {
+            font-family: 'Roboto Condensed';
+            font-style: italic;
+            font-weight: 700;
+            src: local('Roboto Condensed Bold Italic'), local('RobotoCondensed-BoldItalic'), url(https://fonts.gstatic.com/s/robotocondensed/v18/ieVg2ZhZI2eCN5jzbjEETS9weq8-19eDtCYobdNZ.woff2) format('woff2');
+            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+            font-display: swap;
+        }
+
+        /* cyrillic-ext */
+        @font-face {
+            font-family: 'Roboto Condensed';
+            font-style: normal;
+            font-weight: 400;
+            src: local('Roboto Condensed'), local('RobotoCondensed-Regular'), url(https://fonts.gstatic.com/s/robotocondensed/v18/ieVl2ZhZI2eCN5jzbjEETS9weq8-19-7DRs5.woff2) format('woff2');
+            unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+            font-display: swap;
+        }
+
+        /* cyrillic */
+        @font-face {
+            font-family: 'Roboto Condensed';
+            font-style: normal;
+            font-weight: 400;
+            src: local('Roboto Condensed'), local('RobotoCondensed-Regular'), url(https://fonts.gstatic.com/s/robotocondensed/v18/ieVl2ZhZI2eCN5jzbjEETS9weq8-19a7DRs5.woff2) format('woff2');
+            unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+            font-display: swap;
+        }
+
+        /* greek-ext */
+        @font-face {
+            font-family: 'Roboto Condensed';
+            font-style: normal;
+            font-weight: 400;
+            src: local('Roboto Condensed'), local('RobotoCondensed-Regular'), url(https://fonts.gstatic.com/s/robotocondensed/v18/ieVl2ZhZI2eCN5jzbjEETS9weq8-1967DRs5.woff2) format('woff2');
+            unicode-range: U+1F00-1FFF;
+            font-display: swap;
+        }
+
+        /* greek */
+        @font-face {
+            font-family: 'Roboto Condensed';
+            font-style: normal;
+            font-weight: 400;
+            src: local('Roboto Condensed'), local('RobotoCondensed-Regular'), url(https://fonts.gstatic.com/s/robotocondensed/v18/ieVl2ZhZI2eCN5jzbjEETS9weq8-19G7DRs5.woff2) format('woff2');
+            unicode-range: U+0370-03FF;
+            font-display: swap;
+        }
+
+        /* vietnamese */
+        @font-face {
+            font-family: 'Roboto Condensed';
+            font-style: normal;
+            font-weight: 400;
+            src: local('Roboto Condensed'), local('RobotoCondensed-Regular'), url(https://fonts.gstatic.com/s/robotocondensed/v18/ieVl2ZhZI2eCN5jzbjEETS9weq8-1927DRs5.woff2) format('woff2');
+            unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+            font-display: swap;
+        }
+
+        /* latin-ext */
+        @font-face {
+            font-family: 'Roboto Condensed';
+            font-style: normal;
+            font-weight: 400;
+            src: local('Roboto Condensed'), local('RobotoCondensed-Regular'), url(https://fonts.gstatic.com/s/robotocondensed/v18/ieVl2ZhZI2eCN5jzbjEETS9weq8-19y7DRs5.woff2) format('woff2');
+            unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+            font-display: swap;
+        }
+
+        /* latin */
+        @font-face {
+            font-family: 'Roboto Condensed';
+            font-style: normal;
+            font-weight: 400;
+            src: local('Roboto Condensed'), local('RobotoCondensed-Regular'), url(https://fonts.gstatic.com/s/robotocondensed/v18/ieVl2ZhZI2eCN5jzbjEETS9weq8-19K7DQ.woff2) format('woff2');
+            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+            font-display: swap;
+        }
+
+        /* cyrillic-ext */
+        @font-face {
+            font-family: 'Roboto Condensed';
+            font-style: normal;
+            font-weight: 700;
+            src: local('Roboto Condensed Bold'), local('RobotoCondensed-Bold'), url(https://fonts.gstatic.com/s/robotocondensed/v18/ieVi2ZhZI2eCN5jzbjEETS9weq8-32meGCkYb8td.woff2) format('woff2');
+            unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+            font-display: swap;
+        }
+
+        /* cyrillic */
+        @font-face {
+            font-family: 'Roboto Condensed';
+            font-style: normal;
+            font-weight: 700;
+            src: local('Roboto Condensed Bold'), local('RobotoCondensed-Bold'), url(https://fonts.gstatic.com/s/robotocondensed/v18/ieVi2ZhZI2eCN5jzbjEETS9weq8-32meGCAYb8td.woff2) format('woff2');
+            unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+            font-display: swap;
+        }
+
+        /* greek-ext */
+        @font-face {
+            font-family: 'Roboto Condensed';
+            font-style: normal;
+            font-weight: 700;
+            src: local('Roboto Condensed Bold'), local('RobotoCondensed-Bold'), url(https://fonts.gstatic.com/s/robotocondensed/v18/ieVi2ZhZI2eCN5jzbjEETS9weq8-32meGCgYb8td.woff2) format('woff2');
+            unicode-range: U+1F00-1FFF;
+            font-display: swap;
+        }
+
+        /* greek */
+        @font-face {
+            font-family: 'Roboto Condensed';
+            font-style: normal;
+            font-weight: 700;
+            src: local('Roboto Condensed Bold'), local('RobotoCondensed-Bold'), url(https://fonts.gstatic.com/s/robotocondensed/v18/ieVi2ZhZI2eCN5jzbjEETS9weq8-32meGCcYb8td.woff2) format('woff2');
+            unicode-range: U+0370-03FF;
+            font-display: swap;
+        }
+
+        /* vietnamese */
+        @font-face {
+            font-family: 'Roboto Condensed';
+            font-style: normal;
+            font-weight: 700;
+            src: local('Roboto Condensed Bold'), local('RobotoCondensed-Bold'), url(https://fonts.gstatic.com/s/robotocondensed/v18/ieVi2ZhZI2eCN5jzbjEETS9weq8-32meGCsYb8td.woff2) format('woff2');
+            unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+            font-display: swap;
+        }
+
+        /* latin-ext */
+        @font-face {
+            font-family: 'Roboto Condensed';
+            font-style: normal;
+            font-weight: 700;
+            src: local('Roboto Condensed Bold'), local('RobotoCondensed-Bold'), url(https://fonts.gstatic.com/s/robotocondensed/v18/ieVi2ZhZI2eCN5jzbjEETS9weq8-32meGCoYb8td.woff2) format('woff2');
+            unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+            font-display: swap;
+        }
+
+        /* latin */
+        @font-face {
+            font-family: 'Roboto Condensed';
+            font-style: normal;
+            font-weight: 700;
+            src: local('Roboto Condensed Bold'), local('RobotoCondensed-Bold'), url(https://fonts.gstatic.com/s/robotocondensed/v18/ieVi2ZhZI2eCN5jzbjEETS9weq8-32meGCQYbw.woff2) format('woff2');
+            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+            font-display: swap;
+        }
+        </style>
+        <style data-emotion=""></style>
+        <style></style>
+        <style></style>
+        <style></style>
+        <style type="text/css">.fb_hidden {
+            position: absolute;
+            top: -10000px;
+            z-index: 10001
+        }
+
+        .fb_reposition {
+            overflow: hidden;
+            position: relative
+        }
+
+        .fb_invisible {
+            display: none
+        }
+
+        .fb_reset {
+            background: none;
+            border: 0;
+            border-spacing: 0;
+            color: #000;
+            cursor: auto;
+            direction: ltr;
+            font-family: "lucida grande", tahoma, verdana, arial, sans-serif;
+            font-size: 11px;
+            font-style: normal;
+            font-variant: normal;
+            font-weight: normal;
+            letter-spacing: normal;
+            line-height: 1;
+            margin: 0;
+            overflow: visible;
+            padding: 0;
+            text-align: left;
+            text-decoration: none;
+            text-indent: 0;
+            text-shadow: none;
+            text-transform: none;
+            visibility: visible;
+            white-space: normal;
+            word-spacing: normal
+        }
+
+        .fb_reset > div {
+            overflow: hidden
+        }
+
+        @keyframes fb_transform {
+            from {
+                opacity: 0;
+                transform: scale(.95)
+            }
+            to {
+                opacity: 1;
+                transform: scale(1)
+            }
+        }
+
+        .fb_animate {
+            animation: fb_transform .3s forwards
+        }
+
+        .fb_dialog {
+            background: rgba(82, 82, 82, .7);
+            position: absolute;
+            top: -10000px;
+            z-index: 10001
+        }
+
+        .fb_dialog_advanced {
+            border-radius: 8px;
+            padding: 10px
+        }
+
+        .fb_dialog_content {
+            background: #fff;
+            color: #373737
+        }
+
+        .fb_dialog_close_icon {
+            background: url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;
+            cursor: pointer;
+            display: block;
+            height: 15px;
+            position: absolute;
+            right: 18px;
+            top: 17px;
+            width: 15px
+        }
+
+        .fb_dialog_mobile .fb_dialog_close_icon {
+            left: 5px;
+            right: auto;
+            top: 5px
+        }
+
+        .fb_dialog_padding {
+            background-color: transparent;
+            position: absolute;
+            width: 1px;
+            z-index: -1
+        }
+
+        .fb_dialog_close_icon:hover {
+            background: url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent
+        }
+
+        .fb_dialog_close_icon:active {
+            background: url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent
+        }
+
+        .fb_dialog_iframe {
+            line-height: 0
+        }
+
+        .fb_dialog_content .dialog_title {
+            background: #6d84b4;
+            border: 1px solid #365899;
+            color: #fff;
+            font-size: 14px;
+            font-weight: bold;
+            margin: 0
+        }
+
+        .fb_dialog_content .dialog_title > span {
+            background: url(https://static.xx.fbcdn.net/rsrc.php/v3/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;
+            float: left;
+            padding: 5px 0 7px 26px
+        }
+
+        body.fb_hidden {
+            height: 100%;
+            left: 0;
+            margin: 0;
+            overflow: visible;
+            position: absolute;
+            top: -10000px;
+            transform: none;
+            width: 100%
+        }
+
+        .fb_dialog.fb_dialog_mobile.loading {
+            background: url(https://static.xx.fbcdn.net/rsrc.php/v3/ya/r/3rhSv5V8j3o.gif) white no-repeat 50% 50%;
+            min-height: 100%;
+            min-width: 100%;
+            overflow: hidden;
+            position: absolute;
+            top: 0;
+            z-index: 10001
+        }
+
+        .fb_dialog.fb_dialog_mobile.loading.centered {
+            background: none;
+            height: auto;
+            min-height: initial;
+            min-width: initial;
+            width: auto
+        }
+
+        .fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner {
+            width: 100%
+        }
+
+        .fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content {
+            background: none
+        }
+
+        .loading.centered #fb_dialog_loader_close {
+            clear: both;
+            color: #fff;
+            display: block;
+            font-size: 18px;
+            padding-top: 20px
+        }
+
+        #fb-root #fb_dialog_ipad_overlay {
+            background: rgba(0, 0, 0, .4);
+            bottom: 0;
+            left: 0;
+            min-height: 100%;
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 100%;
+            z-index: 10000
+        }
+
+        #fb-root #fb_dialog_ipad_overlay.hidden {
+            display: none
+        }
+
+        .fb_dialog.fb_dialog_mobile.loading iframe {
+            visibility: hidden
+        }
+
+        .fb_dialog_mobile .fb_dialog_iframe {
+            position: sticky;
+            top: 0
+        }
+
+        .fb_dialog_content .dialog_header {
+            background: linear-gradient(from(#738aba), to(#2c4987));
+            border-bottom: 1px solid;
+            border-color: #043b87;
+            box-shadow: white 0 1px 1px -1px inset;
+            color: #fff;
+            font: bold 14px Helvetica, sans-serif;
+            text-overflow: ellipsis;
+            text-shadow: rgba(0, 30, 84, .296875) 0 -1px 0;
+            vertical-align: middle;
+            white-space: nowrap
+        }
+
+        .fb_dialog_content .dialog_header table {
+            height: 43px;
+            width: 100%
+        }
+
+        .fb_dialog_content .dialog_header td.header_left {
+            font-size: 12px;
+            padding-left: 5px;
+            vertical-align: middle;
+            width: 60px
+        }
+
+        .fb_dialog_content .dialog_header td.header_right {
+            font-size: 12px;
+            padding-right: 5px;
+            vertical-align: middle;
+            width: 60px
+        }
+
+        .fb_dialog_content .touchable_button {
+            background: linear-gradient(from(#4267B2), to(#2a4887));
+            background-clip: padding-box;
+            border: 1px solid #29487d;
+            border-radius: 3px;
+            display: inline-block;
+            line-height: 18px;
+            margin-top: 3px;
+            max-width: 85px;
+            padding: 4px 12px;
+            position: relative
+        }
+
+        .fb_dialog_content .dialog_header .touchable_button input {
+            background: none;
+            border: none;
+            color: #fff;
+            font: bold 12px Helvetica, sans-serif;
+            margin: 2px -12px;
+            padding: 2px 6px 3px 6px;
+            text-shadow: rgba(0, 30, 84, .296875) 0 -1px 0
+        }
+
+        .fb_dialog_content .dialog_header .header_center {
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+            line-height: 18px;
+            text-align: center;
+            vertical-align: middle
+        }
+
+        .fb_dialog_content .dialog_content {
+            background: url(https://static.xx.fbcdn.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;
+            border: 1px solid #4a4a4a;
+            border-bottom: 0;
+            border-top: 0;
+            height: 150px
+        }
+
+        .fb_dialog_content .dialog_footer {
+            background: #f5f6f7;
+            border: 1px solid #4a4a4a;
+            border-top-color: #ccc;
+            height: 40px
+        }
+
+        #fb_dialog_loader_close {
+            float: left
+        }
+
+        .fb_dialog.fb_dialog_mobile .fb_dialog_close_button {
+            text-shadow: rgba(0, 30, 84, .296875) 0 -1px 0
+        }
+
+        .fb_dialog.fb_dialog_mobile .fb_dialog_close_icon {
+            visibility: hidden
+        }
+
+        #fb_dialog_loader_spinner {
+            animation: rotateSpinner 1.2s linear infinite;
+            background-color: transparent;
+            background-image: url(https://static.xx.fbcdn.net/rsrc.php/v3/yD/r/t-wz8gw1xG1.png);
+            background-position: 50% 50%;
+            background-repeat: no-repeat;
+            height: 24px;
+            width: 24px
+        }
+
+        @keyframes rotateSpinner {
+            0% {
+                transform: rotate(0deg)
+            }
+            100% {
+                transform: rotate(360deg)
+            }
+        }
+
+        .fb_iframe_widget {
+            display: inline-block;
+            position: relative
+        }
+
+        .fb_iframe_widget span {
+            display: inline-block;
+            position: relative;
+            text-align: justify
+        }
+
+        .fb_iframe_widget iframe {
+            position: absolute
+        }
+
+        .fb_iframe_widget_fluid_desktop, .fb_iframe_widget_fluid_desktop span, .fb_iframe_widget_fluid_desktop iframe {
+            max-width: 100%
+        }
+
+        .fb_iframe_widget_fluid_desktop iframe {
+            min-width: 220px;
+            position: relative
+        }
+
+        .fb_iframe_widget_lift {
+            z-index: 1
+        }
+
+        .fb_iframe_widget_fluid {
+            display: inline
+        }
+
+        .fb_iframe_widget_fluid span {
+            width: 100%
+        }</style>
+    </head>
+</div>
+<div th:fragment="container" xmlns:th="http://www.thymeleaf.org">
+    <div class="container novel-detail">
+        <div class="novel-info">
+            <a href="/truyen/pokemon-the-gioi-di-den-hoi-ket/chuong-1.html" class="cover position-relative">
+                <picture>
+                    <img
+                            class="zoom-me lazy loaded" title="Truyện Pokemon: Thế Giới Đi Đến Hồi Kết"
+                            th:src="${story.thubnail_file}">
+                </picture>
+            </a>
+            <div class="info">
+                <h1 th:text="${story.title}" class="name" style="padding-right: 130px;">
+
+                </h1>
+                <div class="author">
+                    <a  th:text="${story.actor}" href="/tac-gia/tad/"></a>
+                </div>
+                <ul class="tag-list list-unstyled mt-2">
+                    <li class="tag"><a href="/category/2">Huyền Huyễn</a></li>
+                    <li class="tag"><a href="/category/7">Dị Giới</a></li>
+                    <li class="tag"><a href="/category/16">Xuyên Không</a></li>
+                    <li class="tag"><a href="/category/10">Trinh thám</a></li>
+                </ul>
+                <ul class="tag-list list-unstyled">
+                    <li class="tag red"><a href="/category/19" target="_blank">Huyền bí</a></li>
+                    <li class="tag red"><a href="/category/33">Sáng Tác</a></li>
+                </ul>
+                <div style="flex: 1;"></div>
+                <div>
+                    <a th:href="${'/story/' + {story.id} + '/chapter/' + {1}}" class="btn btn-primary" role="button">Đọc
+                        Từ Đầu</a>
+                </div>
+            </div>
+        </div>
+        <ul class="nav nav-tabs mt-3">
+            <li class="nav-item">
+                <a class="nav-link active" href="/truyen/pokemon-the-gioi-di-den-hoi-ket/danh-sach-chuong/">Danh Sách
+                    Chương</a>
+            </li>
+        </ul>
+        <div class="d-flex">
+            <div class="left-col">
+                <div class="table-rounded mb-4">
+                    <table class="table table-dark my-0">
+                        <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Chương Số</th>
+                            <th scope="col">Tựa Chương</th>
+                            <th scope="col"><i class="iconfont icon-time"></i></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="i : ${chapters}">
+                            <th scope="row" class="text-muted"></th>
+                            <td ><a href="/truyen/pokemon-the-gioi-di-den-hoi-ket/chuong-1.html"><h5 th:text="${i.title}"></h5>
+                            </a></td>
+                            <td th:text="${i.name}"><a href="/truyen/pokemon-the-gioi-di-den-hoi-ket/chuong-1.html" class="table-chap-title"></a></td>
+                            <td>
+                                <time class="timeago" datetime="2019-11-14T20:45:23.330000+07:00" data-toggle="tooltip"
+                                      title="" data-original-title="Tháng 11. 14, 2019, 8:45 p.m.">12d
+                                </time>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div th:replace="fragments/app-page ::page"></div>
+                </div>
+            </div>
+            <div class="right-col">
+                <section class="right-widget author-box">
+                    <a href="/tac-gia/tad/" class="author-picture" target="_blank" ><img
+                            th:src="${story.thubnail_file}" data-was-processed="true"></a>
+                    <h3 class="author-name">
+                        <h3 th:text="${story.title}"></h3>
+                    </h3>
+                    <hr>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>

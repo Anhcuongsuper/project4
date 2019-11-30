@@ -17,7 +17,7 @@ public class CategoryService {
     @Autowired
     CategoryRepository categoryRepository;
 
-    public Page<Category> getAllPageCategory(int page, int limit) {
+    public Page<Category> getAllPageCategory(long id, int page, int limit) {
         return categoryRepository.findAll(PageRequest.of(page - 1, limit));
     }
 

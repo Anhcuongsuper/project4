@@ -26,7 +26,7 @@ public class AccountController {
         if(bindingResult.hasErrors()){
             return "login";
         }
-        return "index";
+        return "story/successLg";
     }
     @RequestMapping(method = RequestMethod.GET, value = "/create")
     public String createAccount(Model model) {
@@ -40,7 +40,7 @@ public class AccountController {
             return "register";
         }
         accountService.register(account);
-        return "index";
+        return "story/success";
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/{email}")

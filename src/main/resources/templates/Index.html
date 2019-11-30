@@ -3,14 +3,12 @@
 <head th:include="fragments/app-index :: head"></head>
 <body>
 <div th:replace="fragments/app-index ::top"></div>
-
 <!--end search-->
 <!--menu-->
 <div th:replace="fragments/app-index ::menu"></div>
 <!--END MENU-->
 <!--            CONTAINER-->
 <!--                1-->
-
 <div style="display: none; width: 1349px; height: 40px; float: none;"></div>
 <div class="container focus-box mt-4">
     <div class="row">
@@ -144,10 +142,7 @@
     </div>
 </div>
 <!--END 1-->
-
-
 <!--2 story update-->
-
 <div class="container home-grid mt-3">
     <div class="row">
         <div class="col-3">
@@ -159,8 +154,6 @@
         </div>
     </div>
 </div>
-
-
 <div class="container full-banner mt-3">
     <div class="tkb" style="width: 1110px; height: 60px; ">
         <a href="http://bit.ly/2vuTjfY" target="_blank" rel="noopener" title="Tài khoản TruyenYY Premium"
@@ -171,165 +164,12 @@
     </div>
 </div>
 
-
 <!--        Pre-->
-
-<div class="container headline-ranking mt-3">
-    <div class="row">
-        <div class="col-3 mb-3">
-            <div class="card card-home" id="topGenreHeadline-11">
-                    <a th:href="@{/category/{id}(id=${category1.id})}" aria-label="Thể loại Đô Thị">
-                        <h3 class="card-header">
-                            Huyền Huyễn
-                        <img
-                             class="card-icon lazy loaded" src="https://yycdn.truyenyy.com/static/desktop/svg/urban.svg"
-                             data-was-processed="true">
-                        </h3>
-                    </a>
-
-                <ol class="heading-list list-unstyled">
-                    <li th:each="i : ${storySet1}">
-                        <span class="num num2"></span>
-                        <a  th:text="${i.title}"  th:href="@{/story/{id}(id=${i.id})}" class="name" target="_blank"></a>
-                        <span class="count"><span style="font-size: 5px" th:text="${i.director}" class="num-format"></span></span>
-                    </li>
-                </ol>
-            </div>
-        </div>
-        <div class="col-3 mb-3">
-            <div class="card card-home" id="topGenreHeadline-13">
-
-                    <a th:href="@{/category/{id}(id=${category2.id})}" aria-label="Thể loại Huyền Huyễn">
-                        <h3 class="card-header">
-                            Kiếm hiệp
-                        <img  alt="Huyền Huyễn"
-                             class="card-icon lazy loaded"
-                             src="https://yycdn.truyenyy.com/static/desktop/svg/dragon.svg" data-was-processed="true">
-                        </h3>
-                    </a>
-                <ol class="heading-list list-unstyled">
-                    <li th:each="i : ${storySet2}">
-                        <span class="num num2"></span>
-                        <a  th:text="${i.title}"  th:href="@{/story/{id}(id=${i.id})}" class="name" target="_blank"></a>
-                        <span class="count"><span style="font-size: 5px" th:text="${i.director}" class="num-format"></span></span>
-                    </li>
-                </ol>
-            </div>
-        </div>
-        <div class="col-3 mb-3">
-            <div class="card card-home" id="topGenreHeadline-24">
-
-                    <a th:href="@{/category/{id}(id=${category3.id})}" aria-label="Thể loại Trọng Sinh">
-                        <h3 class="card-header">
-                            Dị giới
-                        <img data-src="https://yycdn.truyenyy.com/static/desktop/svg/time.svg" alt="Trọng Sinh"
-                             class="card-icon lazy loaded" src="https://yycdn.truyenyy.com/static/desktop/svg/time.svg"
-                             data-was-processed="true">
-                        </h3>
-                    </a>
-                <ol class="heading-list list-unstyled">
-                    <li th:each="i : ${storySet3}">
-                        <span class="num num2"></span>
-                        <a  th:text="${i.title}"  th:href="@{/story/{id}(id=${i.id})}" class="name" target="_blank"></a>
-                        <span class="count"><span style="font-size: 5px" th:text="${i.director}" class="num-format"></span></span>
-                    </li>
-                </ol>
-            </div>
-        </div>
-        <div class="col-3 mb-3">
-            <div class="card card-home" id="topGenreHeadline-5">
-                    <a th:href="@{/category/{id}(id=${category4.id})}" aria-label="Thể loại Võng Du">
-                        <h3 class="card-header">
-                            Trinh thám
-                        <img data-src="https://yycdn.truyenyy.com/static/desktop/svg/gaming.svg" alt="Võng Du"
-                             class="card-icon lazy loaded"
-                             src="https://yycdn.truyenyy.com/static/desktop/svg/gaming.svg" data-was-processed="true">
-                        </h3>
-                    </a>
-                <ol class="heading-list list-unstyled">
-                    <li th:each="i : ${storySet4}">
-                        <span class="num num2"></span>
-                        <a  th:text="${i.title}"  th:href="@{/story/{id}(id=${i.id})}" class="name" target="_blank"></a>
-                        <span class="count"><span style="font-size: 5px" th:text="${i.director}" class="num-format"></span></span>
-                    </li>
-                </ol>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!--        3 END PRE-->
-
-<!--        4 de cu-->
-
-
-
-<div class="container home-grid">
-    <div class="row">
-        <div class="col-9">
-            <div class="card card-home">
-                <h3 class="card-header">
-                    Top Đề Cử Gần Đây
-                </h3>
-                <div class="row">
-                    <div class="col-6">
-                        <div class="novel-item" th:each="ii : ${listStoryHot}">
-                            <a th:href="@{/story/{id}(id=${ii.id})}" class="cover" target="_blank"
-                               aria-label="Long Vương Truyền Thuyết">
-                                <picture>
-                                    <img
-                                     th:src="${ii.thubnail_file}"
-                                         data-sizes="auto" alt="" width="80" height="120" class="lazy zoom-me loaded"
-                                         sizes="auto"
-                                         data-was-processed="true">
-                                </picture>
-                            </a>
-                            <div class="info">
-                                <h4 th:text="${ii.title}"><a th:href="@{/story/{id}(id=${ii.id})}" target="_blank"></a></h4>
-                                <div>
-                                    <a th:href="@{/story/{id}(id=${ii.id})}"  th:text="${ii.author}" class="author" target="_blank"></a>
-                                    <i class="iconfont icon-full icon-24 text-info ml-1"></i>
-                                </div>
-                                <a th:href="@{/story/{id}(id=${ii.id})}" target="_blank" class="username"><b th:text="${ii.author}"></b></a></span>
-                                <blockquote th:text="${ii.description}" class="desc">
-                                </blockquote>
-                            </div>
-                        </div>
-                    </div>
-            </div>
-        </div>
-        </div>
-        <div class="col-3">
-            <div class="card card-home card-bg-dark">
-                <h3 class="card-header">
-                    Đề Cử Mới Đăng
-                    <a th:href="@{/story/story_new}" title="Danh Sách Đầy Đủ" target="_blank" class="card-more"><i
-                            class="iconfont icon-arrow-right icon-14"></i></a>
-                </h3>
-                <ul class="list-unstyled heading-list">
-                    <li th:each="storyItem : ${listStoryNew}">
-                        <div class="d-flex">
-                            <a th:text="${storyItem.title}" th:href="@{/story/{id}(id=${storyItem.id})}" class="name"
-                               target="_blank">Siêu Cấp Tiểu Bạch Long (Dịch)</a>
-                        </div>
-                        <div class="d-flex mt-1">
-                            <a th:href="@{/story/{id}(id=${storyItem.id})}" class="genre">
-                                <i th:text="${storyItem.actor}" class="iconfont icon-user icon-14"></i>
-                            </a>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!--END -->
-
-<!--FOOTER-->
-
+<!--4 cate index-->
+<div th:replace="fragments/app-index ::top-4-cate"></div>
+<!--//top de cu-->
+<div th:replace="fragments/app-index ::top-de-cu"></div>
 <div th:replace="fragments/app-index ::footer"></div>
-
 <!--END FOOTER-->
 </body>
 </html>

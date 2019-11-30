@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
 <body>
-<h1>Danh sách truyện trong danh mục <span th:text="${category.name}"></span></h1>
-<div class="content table-responsive table-full-width">
+<h1 style="padding: 100px">Danh sách truyện trong danh mục <span th:text="${category.name}"></span></h1>
+<div class="container table-responsive table-full-width">
     <table class="table table-striped">
         <thead>
         <th>ID</th>
@@ -21,12 +23,11 @@
             <td th:text="${story.title}"></td>
             <td th:text="${story.director}"></td>
             <td><a th:href="@{/story/{id}(id=${story.id})}" class="btn btn-primary">View</a></td>
-            <td><a th:href="@{'/story/' + ${story.id}}" class="btn btn-default">Edit</a></td>
+            <td><a th:href="@{'/story/' + ${story.id}}" class="btn btn-success">Edit</a></td>
             <td><a th:href="@{'/story/delete/' + ${story.id}}" class="btn btn-danger">Delete</a></td>
         </tr>
         </tbody>
     </table>
-
 </div>
 </body>
 </html>

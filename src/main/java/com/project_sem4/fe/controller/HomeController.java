@@ -66,5 +66,9 @@ CategoryService categoryService;
         return "contact";
     }
 
+    @RequestMapping(method = RequestMethod.GET, value = "/about")
+    public String about() {
 
+        return "about";
+    }
 }

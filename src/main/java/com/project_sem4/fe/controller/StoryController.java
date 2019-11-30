@@ -84,14 +84,6 @@ public class StoryController {
         return "Index";
     }
 
-//    @RequestMapping(method = RequestMethod.GET, value = "/{storyId}")
-//    public String getDetail(@PathVariable("storyId") long storyId, Model model) {
-//        model.addAttribute("detailStory", storyService.getDetail(storyId));
-//        model.addAttribute("chapters", chapterService.getAllChapterByStory(storyId));
-//        model.addAttribute("chapterService", chapterService.getDetail(storyId));
-//        return "story/detail";
-//
-//    }
 
     @RequestMapping(method = RequestMethod.POST, value = "/create")
     public String store(@Valid Story story, BindingResult bindingResult) {
@@ -128,6 +120,8 @@ public class StoryController {
     // list chapter by storyId
     @RequestMapping(method = RequestMethod.GET, value = "/{storyId}")
     public String getChaptersByStory(@PathVariable("storyId") long storyId, Model model) {
+        Page<Story> storyPage = storyService.getListRate(1, 5);
+        model.addAttribute("listStoryHot", storyPage.getContent());
         Optional<Story> storys = storyRepository.findById(storyId);
         model.addAttribute("story", storys.get());
         model.addAttribute("chapters", chapterService.getAllChapterByStory(storyId));
@@ -155,7 +149,7 @@ public class StoryController {
     @RequestMapping(value = "/{storyId}/chapter/{chapterId}")
     public String detailChapterByStoryId(Model model, @PathVariable("storyId") long storyId, @PathVariable("chapterId") long chapterId) {
         Optional<Story> story = storyRepository.findById(storyId);
-        model.addAttribute("story", story.get());
+        model.addAttribute("storyService", story.get());
         model.addAttribute("chapters", chapterService.findByIdAndStoryId(chapterId, storyId));
         return "story/chapter/detail";
     }
@@ -189,9 +183,9 @@ public class StoryController {
     @RequestMapping(method = RequestMethod.GET, value = "story_hot")
     public String getListRate(Model model,
                               @RequestParam(name = "page", required = false, defaultValue = "1") int page,
-                              @RequestParam(name = ",limit", required = false, defaultValue = "12") int limit
+                              @RequestParam(name = ",limit", required = false, defaultValue = "10") int limit
     ) {
-        Page<Story> storyPage = storyService.getListRate(page, limit);
+        Page<Story> storyPage = storyService.getListRate(1, 10);
         model.addAttribute("listStoryHot", storyPage.getContent());
         model.addAttribute("totalPage", storyPage.getTotalPages());
         model.addAttribute("totalElement", storyPage.getTotalElements());
@@ -217,10 +211,18 @@ public class StoryController {
 
     //list chapter
     @RequestMapping(method = RequestMethod.GET, value = "/{id}/list_chapter")
-    public String getChaptersByStory(@PathVariable("id") Long storyId, Model model) {
-        Optional<Story> storys = storyRepository.findById(storyId);
-        model.addAttribute("story", storys.get());
+    public String getChaptersByStory(@PathVariable("id") Long storyId, Model model,
+                                     @RequestParam(value = "keyword", required = false) String keyword,
+                                     @RequestParam(name = "page", defaultValue = "1") int page,
+                                     @RequestParam(name = "limit", defaultValue = "5") int limit
+    ) {
+        Optional<Story> story = storyRepository.findById(storyId);
+        model.addAttribute("story", story.get());
+        Page<Chapter> chapters = chapterService.getAllChapterByStory(storyId, PageRequest.of(page - 1, limit));
         model.addAttribute("chapters", chapterService.getAllChapterByStory(storyId));
+        model.addAttribute("pageChaper", chapters.getPageable().getPageNumber() + 1);
+        model.addAttribute("limit", chapters.getPageable().getPageSize());
+        model.addAttribute("totalPage", chapters.getTotalPages());
         return "story/list_chapter";
     }
 }

@@ -1,0 +1,27 @@
+<div th:fragment="page">
+    <div class="paging">
+        <form action="#" method="get" rel="nofollow">
+            <span style="font-size: 14px">Truyền Tống đến Trang:</span>
+            <input name="page" type="text" value="" style="width:60px;height: 35px;margin: 10px; border-radius: 5px">
+            <button class="btn btn-warning"><i class=""></i> <span
+                    class="jblack">Go</span></button>
+        </form>
+
+        <div class="pagination pagination-centered" >
+            <ul style="display: flex; text-decoration: none; list-style-type: none; font-size: 20px">
+                <li class="disabled" style="padding-right: 50px"><a th:href="@{?page=(- 1)}">&larr;</a></li>
+                <li style="padding-right: 50px" class="active"><a th:href="@{?page=(1)}">1</a></li>
+                <li style="padding-right: 50px"><a th:href="@{?page=(1 + 1)}">2</a></li>
+                <li style="padding-right: 50px"><a th:href="@{?page=(1 + 2)}">3</a></li>
+                <li style="padding-right: 50px"><a th:href="@{?page=(1 + 3)}">4</a></li>
+                <li style="padding-right: 50px"><a th:href="@{?page=(1 + 4)}">5</a></li>
+                <li style="padding-right: 50px"><a th:href="@{?page=(1 + 5)}">6</a></li>
+                <li style="padding-right: 50px"><a th:href="@{?page=(1 + 5)}">7</a></li>
+                <li style="padding-right: 50px"><a th:href="@{?page=(1 + 6)}">8</a></li>
+                <li style="padding-right: 50px"><a th:href="@{?page=(1 + 7)}">9</a></li>
+                <li style="padding-right: 50px"><a th:href="@{?page=(1 + 8)}">10</a></li>
+                <li style="padding-right: 50px"><a th:href="@{?page=((page) + 1)}">&rarr;</a></li>
+            </ul>
+        </div>
+    </div>
+</div>

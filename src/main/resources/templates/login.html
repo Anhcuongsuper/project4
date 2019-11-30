@@ -1,147 +1,44 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-	<meta charset="utf-8"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta property="fb:app_id" content="376408899112473"/>
-	<meta name="description" content="">
-	<meta name="keywords"
-		  content="Doc truyen online, truyen kiem hiep, truyen tien hiep, truyen sac hiep, truyen ngon tinh, truyen trinh tham, vong du, truyen convert full text">
-	<meta name="robots" content="noindex">
-	<title>Đăng Nhập Tài Khoản</title>
-	<link th:href="@{../css/bootstrap.min.css}" rel="stylesheet">
-	<link th:href="@{../css/bootstrap.min.css}" rel="stylesheet">
-	<link th:href="@{../css/bootstrap-responsive.css}" rel="stylesheet">
-	<link th:href="@{../css/yamm.css}" rel="stylesheet">
-	<link th:href="@{../css/style.css}" rel="stylesheet">
-	<link th:href="@{../css/chosen.css}" rel="stylesheet">
-	<link rel="icon" type="image/png" th:href="@{../img/favicon.png}"/>
-	<link href="https://plus.google.com/103281900225927837176/" rel="author">
-	<script th:src="@{../js/jquery-1.12.4.js}"></script>
-	<script th:src="@{../js/chosen.jquery.js}"></script>
-	<script th:src="@{../js/bootstrap.min.js}"></script>
-	<script type="text/javascript" th:src="@{../js/csrf.js}"></script>
+<title>Đăng nhập tài khoản</title>
+<link th:href="@{../css/desktop-base.11d940c6.css}" rel="stylesheet">
+<link th:href="@{../css/boostrap.css}" rel="stylesheet">
+<link th:href="@{../css/bootstrap-responsive.css}" rel="stylesheet">
+<link th:href="@{../css/yamm.css}" rel="stylesheet">
+<link th:href="@{../css/style.css}" rel="stylesheet">
+<link th:href="@{../css/chosen.css}" rel="stylesheet">
 
-	<style>
-		body {
-			padding-top: 60px;
-			padding-bottom: 40px;
-			height: auto;
-		}
-	</style>
-</head>
+<style>
+	body {
+		padding-bottom: 40px;
+		height: auto;
+	}
+	.input-cors{
+		display: -ms-flexbox; /* IE10 */
+		display: flex;
+		width: 100%;
+		margin-bottom: 15px;
+	}
+	.iconinput {
+		padding: 10px;
+		background: dodgerblue;
+		color: white;
+		min-width: 50px;
+		text-align: center;
+	}
+	.input-fielder {
+		width: 100%;
+		padding: 10px;
+		outline: none;
+		border-radius: 10px;
+	}
+	.input-fielder:focus {
+		border: 2px solid dodgerblue;
+	}
+</style>
 <body>
-<div class="yamm navbar navbar-fixed-top">
-	<div class="navbar-inner">
-		<div class="container">
-			<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</a>
-			<a class="brand truyenyy-logo" th:href="@{/}">TruyệnYY</a>
-			<div class="nav-collapse">
-				<ul class="nav">
-					<li class="active"><a th:href="@{/}"><i class="icon-home"></i> Trang Chủ</a></li>
-					<li class="dropdown">
-						<a href="javascript:" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-book"></i>
-							Danh Mục<b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<li class="yamm-content">
-								<ul class="span2 unstyled" style="width:158px;">
-									<li><input type="hidden" value="all"><a href="#">Tất cả Thể Loại</a></li>
-									<li><input type="hidden" value="1"><a href="#">Kiếm Hiệp</a></li>
-								</ul>
-								<ul class="span2 unstyled" style="width:158px;">
-									<li><input type="hidden" value="2"><a href="#">Tiên Hiệp</a></li>
-								</ul>
-								<ul class="span2 unstyled" style="width:158px;">
-									<li><input type="hidden" value="3"><a href="#">Huyển Ảo</a></li>
-								</ul>
-								<ul class="span2 unstyled" style="width:158px;">
-									<li><input type="hidden" value="4"><a href="#">Sắc Hiệp</a></li>
-								</ul>
-								<ul class="span2 unstyled" style="width:158px;">
-									<li><input type="hidden" value="7"><a href="#">Đô Thị</a></li>
-								</ul>
-								<ul class="span2 unstyled" style="width:158px;">
-									<li><input type="hidden" value="26"><a href="#">Võng Du</a></li>
-								</ul>
-								<ul class="span2 unstyled" style="width:158px;">
-									<li><input type="hidden" value="5"><a href="#">Xuyên Không</a></li>
-								</ul>
-								<ul class="span2 unstyled" style="width:158px;">
-									<li><input type="hidden" value="6"><a href="#">Dị Giới</a></li>
-								</ul>
-								<ul class="span2 unstyled" style="width:158px;">
-									<li><input type="hidden" value="8"><a href="#">Dị Năng</a></li>
-								</ul>
-								<ul class="span2 unstyled" style="width:158px;">
-									<li><input type="hidden" value="10"><a href="#">Huyền Huyễn</a></li>
-								</ul>
-								<ul class="span2 unstyled" style="width:158px;">
-									<li><input type="hidden" value="11"><a href="#">Khoa Huyễn</a></li>
-								</ul>
-								<ul class="span2 unstyled" style="width:158px;">
-									<li><input type="hidden" value="12"><a href="#">Tu Chân</a></li>
-								</ul>
-								<ul class="span2 unstyled" style="width:158px;">
-									<li><input type="hidden" value="13"><a href="#">Lịch Sử Quân Sự</a></li>
-								</ul>
-								<ul class="span2 unstyled" style="width:158px;">
-									<li><input type="hidden" value="14"><a href="#">Viễn Tưởng</a></li>
-								</ul>
-								<ul class="span2 unstyled" style="width:158px;">
-									<li><input type="hidden" value="15"><a href="#">Trinh Thám</a></li>
-								</ul>
-								<ul class="span2 unstyled" style="width:158px;">
-									<li><input type="hidden" value="16"><a href="#">Ngôn Tình</a></li>
-								</ul>
-								<ul class="span2 unstyled" style="width:158px;">
-									<li><input type="hidden" value="19"><a href="#">Quan Trường</a></li>
-								</ul>
-								<ul class="span2 unstyled" style="width:158px;">
-									<li><input type="hidden" value="17"><a href="#">Truyện Teen</a></li>
-								</ul>
-								<ul class="span2 unstyled" style="width:158px;">
-									<li><input type="hidden" value="20"><a href="#">Thám Hiểm</a></li>
-								</ul>
-								<ul class="span2 unstyled" style="width:158px;">
-									<li><input type="hidden" value="21"><a href="#">Kỳ Bí</a></li>
-								</ul>
-								<ul class="span2 unstyled" style="width:158px;">
-									<li><input type="hidden" value="22"><a href="#">Ma Pháp</a></li>
-								</ul>
-								<ul class="span2 unstyled" style="width:158px;">
-									<li><input type="hidden" value="24"><a href="#">Quỷ Tu</a></li>
-								</ul>
-								<ul class="span2 unstyled" style="width:158px;">
-									<li><input type="hidden" value="25"><a href="#">Cổ Đại</a></li>
-								</ul>
-							</li>
-						</ul>
-					</li>
-				</ul>
-				<ul class="nav pull-right">
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-user"></i></a>
-						<ul class="dropdown-menu">
-							<li><a th:href="@{/accounts/login}"><i class="icon-arrow-right"></i> Đăng Nhập</a></li>
-							<li><a th:href="@{/accounts/create}"><i class="icon-refresh"></i> Đăng Ký</a></li>
-						</ul>
-					</li>
-				</ul>
-
-				<form class="navbar-search form-search pull-right" action=" search/" method="GET">
-					<div class="input-append">
-						<input type="text" name="q" class="search-query span2" placeholder="Nhập tên truyện">
-						<button class="btn" type="submit" value=""><i class="icon-search"></i></button>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-</div>
+<div th:replace="fragments/app-index ::top"></div>
+<div th:replace="fragments/app-index ::menu"></div>
 
 <div class="container">
 	<div class="row">
@@ -149,47 +46,39 @@
 			<div class="container">
 				<div class="row">
 					<div class="span12 auth">
-						<h1 class="page-header">Đăng Nhập Tài Khoản</h1>
+						<h1 class="page-header" style="padding: 20px">Đăng Nhập Tài Khoản</h1>
 						<div class="alert alert-info">
 							<p><b>Chú ý:</b> Các bạn trước đây đã đăng nhập bằng Facebook không cần đăng ký mới, các bạn
 								có thể đăng nhập với thông tin như sau:</p>
 							<p><b>Username:</b> Địa chỉ Email dùng để đăng nhập tài khoản của các bạn. Ví dụ:
 								thetung.dev@gmail.com</p>
 							<p><b>Mật khẩu:</b> Mật khẩu đăng nhập. Ví dụ: lacongaiphaixinh</p>
-							<p><i>Sau khi đăng nhập thành công, các bạn cần đổi mật khẩu để đảm bảo an toàn.</i></p>
 						</div>
 						<div class="row">
 							<div class="span9">
 								<form th:action="@{/login}" method="post" role="form">
-									<div style='display:none'><input type='hidden' name='csrfmiddlewaretoken'
-																	 value='GBFs8dpdU4oMnI92HERYMd33OUWHunmM'/></div>
-									<div style='display:none'><input type='hidden' name='csrfmiddlewaretoken'
-																	 value='GBFs8dpdU4oMnI92HERYMd33OUWHunmM'/></div>
 									<div id="div_id_username" class="control-group">
-										<label for="id_username" class="control-label requiredField">Tên đăng nhập<span
+										<label class="control-label requiredField">Tên đăng nhập(Email)<span
 												class="asteriskField">*</span></label>
-										<div class="controls">
-											<input name="username" maxlength="254" type="text" autofocus="autofocus"
-												   required="required" placeholder="Tên tài khoản"
-												   class="textinput textInput" id="id_username"/>
+										<div id="div_id_email" class="form-group">
+											<div class="input-cors">
+												<input name="username" type="text" autofocus="autofocus" required="required" placeholder="Tên tài khoản đăng nhập" class="input-fielder" id="id_email"/></div>
 										</div>
 									</div>
-									<div id="div_id_password" class="control-group">
-										<label for="id_password" class="control-label requiredField">Mật khẩu<span
-												class="asteriskField">*</span></label>
-										<div class="controls">
-											<input name="password" placeholder="Mật khẩu" required="required"
-												   type="password" class="textinput textInput" id="id_password"/>
-										</div>
+									<label class="control-label requiredField">Mật khẩu<span
+											class="asteriskField">*</span></label>
+									<div id="" class="form-group">
+										<div class="input-cors">
+											<input name="password" type="password" autofocus="autofocus" required="required" placeholder="Nhập mật khẩu" class="input-fielder" id="id_email"/></div>
 									</div>
 									<button type="submit" class="btn btn-primary btn-lg" data-loading-text="Đang xử lí">
-										<i class="icon-arrow-right"></i> Đăng nhập
+										<i class=""></i> Đăng nhập
 									</button>
-									<button type="reset" class="btn btn-default">Xóa</button>
+									<button type="reset" class="btn btn-danger">Xóa</button>
 									<input name="next" type="hidden" value=""/>
 								</form>
 								<ul style="margin: 0">
-									<li class="nav"><i class="icon-arrow-right"></i> <a th:href="@{/accounts/create}">
+									<li class="nav" style="margin: 20px 10px 10px -30px"><i class=""></i> <a class="btn btn-primary" th:href="@{/create}">
 										Đăng ký Tài khoản mới</a></li>
 								</ul>
 							</div>
@@ -197,132 +86,9 @@
 					</div>
 				</div>
 			</div>
-			<script>
-				$(document).ready(function () {
-					$('input.form-control').keyup(function () {
-						var e = $(this);
-						var label = e.closest('.form-group').find('label');
-						label.removeClass('animated fadeInLeft fadeOutLeft');
-						if (e.val()) {
-							label.css('visibility', 'visible').addClass('animated fadeInLeft');
-						} else {
-							label.addClass('animated fadeOutLeft');
-							setTimeout(function () {
-								label.css('visibility', 'hidden');
-							}, 500);
-						}
-					});
-
-					$('button[type=reset]').click(function () {
-						var label = $('label');
-						label.removeClass('animated fadeInLeft fadeOutLeft').addClass('animated fadeOutLeft');
-						setTimeout(function () {
-							label.css('visibility', 'hidden');
-						}, 500);
-					});
-
-					$('button[type=submit]').button('reset').removeAttr('disabled');
-					$('form').submit(function () {
-						var form = $(this);
-						form.find('button[type=reset]').attr('disabled', 'disabled');
-						form.find('button[type=submit]').button('loading');
-					});
-				});
-			</script>
-
-			<div class="clearfix"></div>
-			<hr/>
-			<div class="row footer">
-				<div class="inner span3"><h3>Đọc Truyện Online</h3>
-					<ul>
-						<li><a href="#">Danh Mục</a></li>
-						<li><a href="#">Võng Du</a></li>
-						<li><a href="#">Huyền Ảo</a></li>
-						<li><a href="#">Trinh Thám</a></li>
-						<li><a href="#">Truyện Teen</a></li>
-						<li><a href="#">Cổ Đại</a></li>
-						<li><a href="#">Xuyên Không</a></li>
-					</ul>
-				</div>
-				<div class="inner span3"><h3>Truyện Kiếm Hiệp</h3>
-					<div style="padding-right: 10px;font-size: 11px;">
-						<a href="#" title="dinh cap luu manh">dinh cap luu manh</a>
-						<a href="#" title="dau pha thuong khung"><span
-								style="font-size:12px;">dau pha thuong khung</span></a>
-						<a href="#" title="yeu than ky">yeu than ky</a>
-						<a href="#" title="pham nhan tu tien"><span style="font-size:13px;">pham nhan tu tien</span></a>
-						<a href="#">kiem dong cuu thien</a>
-						<a href="#" title="thieu gia bi bo roi"><span style="font-size:13px;">thieu gia bi bo roi</span></a>
-						<a href="#" title="vu cuc thien ha">vu cuc thien ha</a>
-						<a href="#" title="tao hoa chi mon">tao hoa chi mon</a>
-						<a href="#" title="truyen kiem hiep"><span style="font-size:13px;">truyen kiem hiep</span></a>
-						<a href="#" title="bach luyen thanh tien"><span
-								style="font-size:12px;">bach luyen thanh tien</span></a>
-						<a href="#" title="tien nghich">tien nghich</a>
-						<a href="#" title="sat than">sat than</a>
-						<a href="#" title="ma thien ky">ma thien ky</a>
-						<a href="#" title="dai chua te">dai chua te</a>
-						<a href="index.html" title="truyenyy">N.T.L</a>
-						<a href="#">ngao the cuu trong thien</a>
-					</div>
-				</div>
-				<div class="inner span3 hide-x"><h3>Liên Kết</h3>
-					<ul>
-						<li><a href="#" target="_blank">truyenyy iOS</a></li>
-						<li><a href="#" target="_blank">truyenyy android</a></li>
-						<li><a href="#" target="_blank">truyenyy extension</a></li>
-						<li><a href="#" target="_blank">thanh toan bao kim</a></li>
-						<li><a href="#" target="_blank">Feeds</a></li>
-						<li><a href="#" target="_blank">truyenyy</a></li>
-						<li><a href="#" target="_blank">Thương Khung</a></li>
-					</ul>
-				</div>
-				<div class="right-inner span3"><h3>Liên Hệ</h3>
-					<ul>
-						<li><a href="#" target="_blank">Twitter</a></li>
-						<li><a href="#" target="_blank">Google+</a></li>
-						<li><a href="#" target="_blank">Email</a></li>
-						<li><a href="#" target="_blank">Chính sách</a></li>
-						<li><a href="#" target="_blank">Liên Hệ</a></li>
-						<li><a href="#">Về Đầu Trang</a></li>
-						<li><a href="#" title="DMCA.com Protection Status" class="dmca-badge"> <img th:src="@{../img/dmca.png}"
-																									alt="thetung.com Protection Status"/></a>
-					</ul>
-				</div>
-			</div>
-
-			<footer class="site-footer row">
-				<div class="span6">© 2019 N.G.U</div>
-			</footer>
 		</div>
 	</div>
 </div>
-<script>(function (d, s, a, i, j, r, l, m, t) {
-	try {
-		l = d.getElementsByTagName('a');
-		t = d.createElement('textarea');
-		for (i = 0; l.length - i; i++) {
-			try {
-				a = l[i].href;
-				s = a.indexOf('/cdn-cgi/l/email-protection');
-				m = a.length;
-				if (a && s > -1 && m > 28) {
-					j = 28 + s;
-					s = '';
-					if (j < m) {
-						r = '0x' + a.substr(j, 2) | 0;
-						for (j += 2; j < m && a.charAt(j) != 'X'; j += 2) s += '%' + ('0' + ('0x' + a.substr(j, 2) ^ r).toString(16)).slice(-2);
-						j++;
-						s = decodeURIComponent(s) + a.substr(j, m - j)
-					}
-					t.innerHTML = s.replace(/</g, '&lt;').replace(/\>/g, '&gt;');
-					l[i].href = 'mailto:' + t.value
-				}
-			} catch (e) {
-			}
-		}
-	} catch (e) {
-	}
-})(document);/* ]]> */</script>
+<div th:replace="fragments/app-index ::footer"></div>
 </body>
 </html>
